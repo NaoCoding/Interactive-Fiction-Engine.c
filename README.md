@@ -1,4 +1,4 @@
-## 台師大112-2學年度程式設計二期末專題：文字遊戲引擎
+## Interactive Fiction Engine, IFE
 
 <br><br>
 
