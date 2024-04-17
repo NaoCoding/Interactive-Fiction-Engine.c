@@ -24,16 +24,20 @@ void Script_read_scene(Script * target, FILE * html,FILE * js){
     
     int didId = 0,didFirst = 0;
     char in[1025];
+    char id[1025] = {0};
+    char onclick[1025] = {0};
     char bg[1025] = {0};
     while(fgets(in,1025,target->source)){
 
         fgetsDelendl(in);
         if(in[0] == '#') break;
         if(string_compare(0,3,in,"id:")){
-            fwrite("<div class=",11,1,html);
+            fwrite("<div id=",8,1,html);
             didId = 1;
             int idx = 0;
+            
             while(in[idx]!='\"')idx ++;
+            strcpy(id,in+idx);
             while(in[idx]){
                 fwrite(&in[idx],1,1,html);
                 idx ++;
@@ -53,9 +57,36 @@ void Script_read_scene(Script * target, FILE * html,FILE * js){
             strcpy(bg,in+idx+1);
         }
 
+        if(string_compare(0,19,in,"click.change_scene:") && didId){
+            int idx = 19;
+            while(in[idx]!='\"')idx ++;
+            strcpy(onclick,in+idx+1);
+        }
+
     }
-    
+
     if(!didFirst)fwrite("\"display:none;\"",15,1,html);
+
+    if(strlen(onclick)){
+        fwrite("onclick = ",10,1,html);
+        fwrite(id+1,strlen(id)-2,1,html);
+        fwrite(onclick,strlen(onclick)-1,1,html);
+        fwrite("()",2,1,html);
+        fwrite("function ",9,1,js);
+        fwrite(id+1,strlen(id)-2,1,js);
+        fwrite(onclick,strlen(onclick)-1,1,js);
+        fwrite("(){\n",4,1,js);
+        fwrite("document.getElementById(",24,1,js);
+        fwrite(id,strlen(id),1,js);
+        fwrite(").style.display = \"none\";\n",26,1,js);
+        fwrite("document.getElementById(\"",25,1,js);
+        fwrite(onclick,strlen(onclick),1,js);
+        fwrite(").style.display = \"block\"\n;",27,1,js);
+
+        fwrite("}\n",2,1,js);
+    }
+
+
     fwrite(">",1,1,html);
     
     if(strlen(bg)){
@@ -76,6 +107,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js){
 void Script_read_general(Script * target, FILE * html,FILE * js){
     didGeneral = 1;
     fwrite("<head>\n",7,1,html);
+    fwrite("<script src=\"output.js\"></script>",33,1,html);
     fwrite("<meta charset=\"utf-8\">\n",23,1,html);
     
     char in[1025];
