@@ -1,6 +1,6 @@
 ## Interactive Fiction Engine, IFE
 
-<br><br>
+<br>
 
 ## How to create your own game / story
 
