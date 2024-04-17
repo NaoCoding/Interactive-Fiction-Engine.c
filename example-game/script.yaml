@@ -1,0 +1,12 @@
+#script
+#general
+title:"Hello World"
+
+#scene
+id:"test01"
+first:True
+background:"images/bg.png"
+
+#scene
+id:"test333"
+background:"images/n.jpg"
