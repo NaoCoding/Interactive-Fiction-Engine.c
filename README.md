@@ -17,6 +17,7 @@ Format :
 tags:
 #script  // must be placed at the first line of your script.yaml (*required)
 #general // general settings of your script.yaml (*required)
+#character // config of a character
 #scene   // create a scene for your script
 
 
