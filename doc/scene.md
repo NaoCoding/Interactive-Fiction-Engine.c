@@ -37,4 +37,6 @@ id:"example01"  // set the scene's id to example01
 first:True      // set the scene example01 to be the first scene of the game
 background:"images/bg.png"  // set the background to images/bg.png
 click.change_scene:"test01" // when player click example01, redirect to scene test01
+character.show:"capoo",20,25 // show character's img (character named capoo) to x=20,y=25
+character.show:3,36,24  // show character's img (character's id = 3) to x=36,y=24
 ```
