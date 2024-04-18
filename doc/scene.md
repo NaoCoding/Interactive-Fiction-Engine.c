@@ -21,6 +21,12 @@ click.change_scene:[scene's id]
 // not required
 // the target scene should be exist or it may cause errors
 
+character.show:[id/name],[x(uint)],[y(uint)]
+// show the img of the character (id / name are both supported) to x,y at screen
+// not required
+// support same character show multiple times
+// img show first will be placed at lower z-index.
+
 ```
 
 <h3>Example Code</h3>
