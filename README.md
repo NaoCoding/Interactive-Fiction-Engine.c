@@ -1,6 +1,11 @@
 ## Interactive Fiction Engine, IFE
 
-<br>
+<h2>Run Example Script</h2>
+
+```py
+make
+./engine ./example-game/
+```
 
 ## How to create your own game / story
 
