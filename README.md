@@ -26,3 +26,4 @@ tags:
 
 [#general](/doc/general.md)<br>
 [#scene](/doc/scene.md)<br>
+[#character](/doc/character.md)<br>
