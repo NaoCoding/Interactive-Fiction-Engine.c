@@ -2,8 +2,9 @@
 #include "script.h"
 #include "smallfn.h"
 #include "ui.h"
+#include "debug.h"
 
-
+void runHTML(); // run the output.html 
 
 int main(int argc,char *argv_input_path[]){
 
@@ -21,6 +22,7 @@ int main(int argc,char *argv_input_path[]){
     FILE * temp_js = fopen("output/temp.js","w+");
     
     npc = calloc(1000,sizeof(Character));
+    for(int i=0;i<1000;i++)npc[i].active = 0;
 
 
     Script_read(input_file,output_file,output_js,temp_js);
@@ -31,21 +33,26 @@ int main(int argc,char *argv_input_path[]){
     merge_js(temp_js_rMode,output_js);
 
     Script_freespace(input_file);
+    free(npc);
     fclose(output_file);
     fclose(output_js);
 
-    /*
+    
+    //runHTML();
+    
+    //DEBUG_checkNPCTag();
+    
+
+
+
+}
+
+void runHTML(){
     if(didGeneral){
         char *cwd = calloc(1025,sizeof(char));
         getcwd(cwd,1025);
         strcat(cwd,"/output/output.html");
         system(cwd);
     }
-    */
-   //printf("%d",npc_size);
-    
-
-
-
 }
 
