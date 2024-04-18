@@ -13,14 +13,14 @@ typedef struct _SCRIPT_{
 Script * Script_setup(char p[]);
 void Script_freespace(Script * target);
 int Script_start_general_check(Script * target);
-void Script_read(Script * target, FILE * html , FILE * js);
-void Script_read_general(Script * target, FILE * html,FILE * js);
-void Script_read_scene(Script * target, FILE * html,FILE * js);
-void checkPoundSign(char * in,Script * target, FILE * html,FILE * js);
+void Script_read(Script * target, FILE * html , FILE * js,FILE * fnjs);
+void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs);
+void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs);
+void checkPoundSign(char * in,Script * target, FILE * html,FILE * js,FILE * fnjs);
 
 static int didGeneral = 0;
 
-void Script_read_scene(Script * target, FILE * html,FILE * js){  
+void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){  
     
     int didId = 0,didFirst = 0;
     char in[1025];
@@ -48,7 +48,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js){
 
         if(string_compare(0,10,in,"first:True") && didId){
             didFirst = 1;
-            fwrite("\"display:block;\"",16,1,html);
+            fwrite("\"display:block;",15,1,html);
         }
 
         if(string_compare(0,11,in,"background:") && didId){
@@ -65,46 +65,50 @@ void Script_read_scene(Script * target, FILE * html,FILE * js){
 
     }
 
-    if(!didFirst)fwrite("\"display:none;\"",15,1,html);
+    if(!didFirst)fwrite("\"display:none;",14,1,html);
+    
+    fwrite("position:absolute;width:100%;height:100%;top:0px;left:0px;",58,1,html);
+
+    fwrite("\"",1,1,html);
 
     if(strlen(onclick)){
         fwrite("onclick = ",10,1,html);
         fwrite(id+1,strlen(id)-2,1,html);
         fwrite(onclick,strlen(onclick)-1,1,html);
         fwrite("()",2,1,html);
-        fwrite("function ",9,1,js);
-        fwrite(id+1,strlen(id)-2,1,js);
-        fwrite(onclick,strlen(onclick)-1,1,js);
-        fwrite("(){\n",4,1,js);
-        fwrite("document.getElementById(",24,1,js);
-        fwrite(id,strlen(id),1,js);
-        fwrite(").style.display = \"none\";\n",26,1,js);
-        fwrite("document.getElementById(\"",25,1,js);
-        fwrite(onclick,strlen(onclick),1,js);
-        fwrite(").style.display = \"block\"\n;",27,1,js);
+        fwrite("function ",9,1,fnjs);
+        fwrite(id+1,strlen(id)-2,1,fnjs);
+        fwrite(onclick,strlen(onclick)-1,1,fnjs);
+        fwrite("(){\n",4,1,fnjs);
+        fwrite("document.getElementById(",24,1,fnjs);
+        fwrite(id,strlen(id),1,fnjs);
+        fwrite(").style.display = \"none\";\n",26,1,fnjs);
+        fwrite("document.getElementById(\"",25,1,fnjs);
+        fwrite(onclick,strlen(onclick),1,fnjs);
+        fwrite(").style.display = \"block\"\n;",27,1,fnjs);
 
-        fwrite("}\n",2,1,js);
+        fwrite("}\n",2,1,fnjs);
     }
 
 
     fwrite(">",1,1,html);
     
     if(strlen(bg)){
-        fwrite("<img src=\"",10,1,html);
+        fwrite("<img src=\".",11,1,html);
         fwrite(target->folder,strlen(target->folder),1,html);
         fwrite(bg,strlen(bg),1,html); 
-        fwrite(">",1,1,html);
+        fwrite("style=\"position:absolute;height:100%;width:100%;top:0px;left:0px;\">",67,1,html);
     }
    
 
     fwrite("</div>\n",7,1,html);
 
-    checkPoundSign(in,target,html,js);
+    checkPoundSign(in,target,html,js,fnjs);
 
 }
 
 
-void Script_read_general(Script * target, FILE * html,FILE * js){
+void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs){
     didGeneral = 1;
     fwrite("<head>\n",7,1,html);
     fwrite("<script src=\"output.js\"></script>",33,1,html);
@@ -127,17 +131,26 @@ void Script_read_general(Script * target, FILE * html,FILE * js){
             fwrite("</title>\n",9,1,html);
         }
 
+        if(string_compare(0,15,in,"characterCount:")){
+            int idx = 15;
+            while(isdigit(in[idx])){
+                npc_size = npc_size * 10 + in[idx] - '0';
+                idx ++;
+            }
+           
+        }
+
 
     }
     fwrite("</head>\n<body>\n",15,1,html);
 
-    checkPoundSign(in,target,html,js);
+    checkPoundSign(in,target,html,js,fnjs);
 
 }
 
-void checkPoundSign(char * in,Script * target, FILE * html,FILE * js){
-    if(!strcmp(in,"#general"))Script_read_general(target,html,js);
-    if(!strcmp(in,"#scene"))Script_read_scene(target,html,js);
+void checkPoundSign(char * in,Script * target, FILE * html,FILE * js,FILE * fnjs){
+    if(!strcmp(in,"#general"))Script_read_general(target,html,js,fnjs);
+    if(!strcmp(in,"#scene"))Script_read_scene(target,html,js,fnjs);
 }
 
 
@@ -162,13 +175,13 @@ int Script_start_general_check(Script * target){
     return strcmp(in,"#script");
 }
 
-void Script_read(Script * target, FILE * html , FILE * js){
+void Script_read(Script * target, FILE * html , FILE * js,FILE * fnjs){
 
     char in[1025];
     html_setup(html);
     while(fgets(in,1025,target->source)){
         fgetsDelendl(in);
-        checkPoundSign(in,target,html,js);
+        checkPoundSign(in,target,html,js,fnjs);
     
     }
 

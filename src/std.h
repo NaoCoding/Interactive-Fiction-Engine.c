@@ -7,6 +7,10 @@
 #include <stdint.h>
 #include <ctype.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+
 
 
 #endif
