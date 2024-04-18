@@ -34,6 +34,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
     char speak[2][1000];
     int speakToggle = 0;
     int characters_atScene = 0;
+
     for(int i=0;i<1000;i++){
         characters[i] = -1;
         for(int j=0;j<4;j++){
@@ -45,6 +46,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
 
         fgetsDelendl(in);
         if(in[0] == '#') break;
+
         if(string_compare(0,3,in,"id:")){
             fwrite("<div id=",8,1,html);
             didId = 1;
@@ -63,6 +65,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
         if(string_compare(0,10,in,"first:True") && didId){
             didFirst = 1;
             fwrite("\"display:block;",15,1,html);
+            
         }
 
         if(string_compare(0,11,in,"background:") && didId){
@@ -143,6 +146,8 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
 
     fwrite("\"",1,1,html);
 
+    
+
     if(strlen(onclick)){
         fwrite("onclick = ",10,1,html);
         fwrite(id+1,strlen(id)-2,1,html);
@@ -165,6 +170,8 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
 
     fwrite(">",1,1,html);
     fwrite("\n",1,1,html);
+    if(didFirst && ani_config->didfirst_fadein)animation_fadeIn_windowonload(id,html);
+
     if(strlen(bg)){
         fwrite("<img src=\".",11,1,html);
         fwrite(target->folder,strlen(target->folder),1,html);
@@ -279,6 +286,7 @@ void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs){
 
         fgetsDelendl(in);
         if(in[0] == '#') break;
+
         if(string_compare(0,6,in,"title:")){
             fwrite("<title>",7,1,html);
             int idx = 0;
@@ -304,8 +312,15 @@ void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs){
             strcpy(speakDiv->src,in + 10);
         }
 
+        if(string_compare(0,22,in,"animation.first_scene:")){
+            if(!strcmp("\"fadeIn\"",in+22)){
+                ani_config->didfirst_fadein = 1;
+            }
+        }
+
 
     }
+    
     fwrite("</head>\n<body>\n",15,1,html);
 
     checkPoundSign(in,target,html,js,fnjs);

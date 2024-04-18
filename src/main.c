@@ -6,6 +6,7 @@
 
 void runHTML(); // run the output.html 
 
+
 int main(int argc,char *argv_input_path[]){
 
     Script * input_file = Script_setup(argv_input_path[1]);
@@ -20,9 +21,13 @@ int main(int argc,char *argv_input_path[]){
     FILE * output_file = fopen("output/output.html","w+");
     FILE * output_js = fopen("output/output.js","w+");
     FILE * temp_js = fopen("output/temp.js","w+");
+
     
     npc = calloc(1000,sizeof(Character));
     speakDiv = calloc(1,sizeof(Div));
+    ani_config = calloc(1,sizeof(ANICONFIG));
+    ANICONFIG_initialize();
+
     speakDiv->x = 0;
     speakDiv->y = 60;
     speakDiv->xsize = 100;
@@ -34,6 +39,9 @@ int main(int argc,char *argv_input_path[]){
 
 
     Script_read(input_file,output_file,output_js,temp_js);
+
+    
+
     fwrite("</body>\n</html>\n",16,1,output_file);
     fclose(temp_js);
 
@@ -41,6 +49,8 @@ int main(int argc,char *argv_input_path[]){
     merge_js(temp_js_rMode,output_js);
 
     Script_freespace(input_file);
+
+    free(ani_config);
     free(npc);
     free(speakDiv);
     fclose(output_file);
@@ -55,6 +65,7 @@ int main(int argc,char *argv_input_path[]){
 
 
 }
+
 
 void runHTML(){
     if(didGeneral){

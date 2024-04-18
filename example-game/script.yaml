@@ -1,28 +1,35 @@
 #script
 #general
-title:"Hello World"
-characterCount:4
-dialogBox:"images/speak.png"
-
-#character
-id:3
-name:"咖波"
-img:"images/test.png"
-place:40%,40%,8%,8%
-
+title:"A"
+characterCount:7
+dialogBox:"images/bg.png"
+animation.first_scene:"fadeIn"
 
 #character
 id:2
+name:"呂昊謙"
+img:"images/howard.png"
+place:20%,400px,auto,auto
 
+#character
+id:1
+name:"takala"
+img:"images/takala.png"
+place:60%,20%,auto,auto
 
 #scene
-id:"test01"
+id:"example01"
 first:True
-background:"images/bg.png"
-character.speak:"咖波","今天天氣真好"
-character.show:"咖波",15%,15%,30%,30%
-character.show:3
+background:"images/test.png"
+character.speak:"howard09","我要當你們的第四個組員！"
+character.show:1
+character.show:"呂昊謙"
+click.change_scene:"scene02"
 
 #scene
-id:"test333"
-background:"images/n.jpg"
+id:"scene02"
+background:"images/test.png"
+
+
+
+

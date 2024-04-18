@@ -6,6 +6,14 @@
 void html_setup(FILE * html);
 void merge_js(FILE * fnjs,FILE * js);
 int _CHAR_NameIDSearch(char * target);
+void animation_fadeIn_windowonload(char * target, FILE * html);
+void ANICONFIG_initialize();
+
+typedef struct _ANICONFIG
+{
+    int didfirst_fadein;
+}ANICONFIG;
+
 
 typedef struct _SPEAK__
 {
@@ -26,6 +34,7 @@ typedef struct _CHAR_{
 }Character;
 
 Character * npc;
+ANICONFIG * ani_config;
 Div * speakDiv;
 int npc_size = 0;
 
@@ -47,6 +56,25 @@ int _CHAR_NameIDSearch(char * target){
         if(!strcmp(npc[i].name,target)) return i;
     }
     return -1;
+}
+
+void animation_fadeIn_windowonload(char * target, FILE * html){
+    fwrite("<script type=\"text/javascript\">\n",32,1,html);
+    fwrite("window.onload = fadeIn;\n",24,1,html);
+    fwrite("function fadeIn() {\n",20,1,html);
+    fwrite("var fade = document.getElementById(",35,1,html);
+    fwrite(target,strlen(target),1,html);
+    fwrite(");\n",3,1,html);
+    fwrite("var opacity = 0;\n",17,1,html);
+    fwrite("var intervalID = setInterval(function() {\n",42,1,html);
+    fwrite("if (opacity < 1) {\n opacity = opacity + 0.1\n fade.style.opacity = opacity;\n",75,1,html);
+    fwrite("} else {\n clearInterval(intervalID);\n }\n }, 105);\n }\n </script> \n",65,1,html);
+
+    
+}
+
+void ANICONFIG_initialize(){
+    ani_config->didfirst_fadein = 0;
 }
 
 #endif
