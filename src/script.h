@@ -29,9 +29,17 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
     char id[1025] = {0};
     char onclick[1025] = {0};
     char bg[1025] = {0};
-    int characters[1000][3];
+    int characters[1000];
+    char characters_parameters[1000][4][25];
+    char speak[2][1000];
+    int speakToggle = 0;
     int characters_atScene = 0;
-    for(int i=0;i<1000;i++) characters[i][0] = -1;
+    for(int i=0;i<1000;i++){
+        characters[i] = -1;
+        for(int j=0;j<4;j++){
+            characters_parameters[i][j][0] = 0;
+        }
+    }
 
     while(fgets(in,1025,target->source)){
 
@@ -69,6 +77,16 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
             strcpy(onclick,in+idx+1);
         }
 
+        if(string_compare(0,16,in,"character.speak:") && didId){
+            int idx = 16;
+            char * name = strtok_withoutReplace(in+idx,',');
+            idx += strlen(name);
+            speakToggle = 1;
+            idx += 1;
+            strcpy(speak[1],in+idx);
+            strcpy(speak[0],name);
+        }
+
         if(string_compare(0,15,in,"character.show:") && didId){
 
             int idx = 15;
@@ -77,15 +95,15 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
             if(in[idx] == '\"'){
 
                 char * name = strtok_withoutReplace(in+idx,',');
-                characters[characters_atScene][0] = _CHAR_NameIDSearch(name);
+                characters[characters_atScene] = _CHAR_NameIDSearch(name);
                 idx += strlen(name);
 
             }
             else{
-                characters[characters_atScene][0] = 0;
+                characters[characters_atScene] = 0;
                 while(isdigit(in[idx])){
-                    characters[characters_atScene][0] *= 10;
-                    characters[characters_atScene][0] += in[idx] - '0';
+                    characters[characters_atScene] *= 10;
+                    characters[characters_atScene] += in[idx] - '0';
                     idx ++;
                 }
                 
@@ -95,26 +113,20 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
             //printf("DEBUG_MESSAGE");
             idx ++;
             
-            
-            if(isdigit(in[idx])){
-
-                characters[characters_atScene][1] = 0;
-                characters[characters_atScene][2] = 0;
-                while(isdigit(in[idx])){
-                    characters[characters_atScene][1] *= 10;
-                    characters[characters_atScene][1] += in[idx] - '0';
-                    idx ++;
+            if(in[idx-1]==','){
+                for(int j=0;j<4;j++){
+                    strcpy(characters_parameters[characters_atScene][j],strtok_withoutReplace(in+idx,','));
+                    idx += strlen(characters_parameters[characters_atScene][j]);
+                    idx += 1;
                 }
-
-                idx += 1;
-
-                while(isdigit(in[idx])){
-                    characters[characters_atScene][2] *= 10;
-                    characters[characters_atScene][2] += in[idx] - '0';
-                    idx ++;
-                }
-                
             }
+
+            else{
+                for(int j=0;j<4;j++){
+                    strcpy(characters_parameters[characters_atScene][j],npc[characters[characters_atScene]].place[j]);
+                }
+            }
+            
             
 
             //debug
@@ -157,21 +169,49 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
         fwrite("<img src=\".",11,1,html);
         fwrite(target->folder,strlen(target->folder),1,html);
         fwrite(bg,strlen(bg),1,html); 
-        fwrite("style=\"position:absolute;height:100%;width:100%;top:0px;left:0px;\">",67,1,html);
+        fwrite("style=\"position:absolute;height:100%;width:100%;top:0px;left:0px;z-index:-2;\">",78,1,html);
     }
     fwrite("\n",1,1,html);
 
     for(int i=0;i<characters_atScene;i++){
         fwrite("<img src=\".",11,1,html);
         fwrite(target->folder,strlen(target->folder),1,html);
-        printf("%s",npc[characters[i][0]].src);
-        fwrite(npc[characters[i][0]].src+1,strlen(npc[characters[i][0]].src)-1,1,html);
+        //printf("%s",npc[characters[i][0]].src);
+        fwrite(npc[characters[i]].src+1,strlen(npc[characters[i]].src)-1,1,html);
         fwrite("style=\"position:absolute;left:",30,1,html);
-        writeInInt(characters[i][1],html);
-        fwrite("px;top:",7,1,html);
-        writeInInt(characters[i][2],html);
-        fwrite("px;\"",4,1,html);
-        fwrite(">\n",2,1,html);
+        fwrite(characters_parameters[i][0],strlen(characters_parameters[i][0]),1,html);
+        fwrite(";top:",5,1,html);
+        fwrite(characters_parameters[i][1],strlen(characters_parameters[i][1]),1,html);
+        fwrite(";width:",7,1,html);
+        fwrite(characters_parameters[i][2],strlen(characters_parameters[i][2]),1,html);
+        fwrite(";height:",8,1,html);
+        fwrite(characters_parameters[i][3],strlen(characters_parameters[i][3]),1,html);
+        fwrite("\">\n",3,1,html);
+    }
+
+    if(speakToggle){
+        fwrite("<div style=\"position:absolute;top:",34,1,html);
+        writeInInt(speakDiv->y,html);
+        fwrite("%;left:",7,1,html);
+        writeInInt(speakDiv->x,html);
+        fwrite("%;height:",9,1,html);
+        writeInInt(speakDiv->ysize,html);
+        fwrite("%;width:",8,1,html);
+        writeInInt(speakDiv->xsize,html);
+        fwrite("%;\">\n",5,1,html);
+        if(speakDiv->srcactive){
+            fwrite("<img style=\"position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:-1;\" src=\".",89,1,html);
+            fwrite(target->folder,strlen(target->folder),1,html);
+            fwrite(speakDiv->src+1,strlen(speakDiv->src)-1,1,html);
+            fwrite("></img>\n",8,1,html);
+        }
+        fwrite("<h1 style=\"left:5%;position:absolute;\">",39,1,html);
+        fwrite(speak[0]+1,strlen(speak[0])-2,1,html);
+        fwrite("</h1>\n<h3 style=\"left:7%;top:23%;position:absolute;\">",53,1,html);
+        fwrite(speak[1]+1,strlen(speak[1])-2,1,html);
+        fwrite("</h3>\n",6,1,html);
+
+        fwrite("</div>\n",7,1,html);
     }
    
 
@@ -209,6 +249,16 @@ void Script_read_character(Script * target, FILE * html,FILE * js,FILE * fnjs){
         }
 
 
+        if(string_compare(0,6,in,"place:") && npcidx != -1){
+            int idx = 6;
+            for(int j=0;j<4;j++){
+                strcpy(npc[npcidx].place[j],strtok_withoutReplace(in+idx,','));
+                idx += strlen(npc[npcidx].place[j]);
+                idx += 1;
+            }
+        }
+
+
 
     }
 
@@ -222,7 +272,7 @@ void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs){
     didGeneral = 1;
     fwrite("<head>\n",7,1,html);
     fwrite("<script src=\"output.js\"></script>",33,1,html);
-    fwrite("<meta charset=\"utf-8\">\n",23,1,html);
+    fwrite("<meta charset=\"big-5\">\n",23,1,html);
     
     char in[1025];
     while(fgets(in,1025,target->source)){
@@ -248,6 +298,10 @@ void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs){
                 idx ++;
             }
            
+        }
+        if(string_compare(0,10,in,"dialogBox:")){
+            speakDiv->srcactive = 1;
+            strcpy(speakDiv->src,in + 10);
         }
 
 

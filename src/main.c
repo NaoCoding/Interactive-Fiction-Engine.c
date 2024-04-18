@@ -22,6 +22,14 @@ int main(int argc,char *argv_input_path[]){
     FILE * temp_js = fopen("output/temp.js","w+");
     
     npc = calloc(1000,sizeof(Character));
+    speakDiv = calloc(1,sizeof(Div));
+    speakDiv->x = 0;
+    speakDiv->y = 60;
+    speakDiv->xsize = 100;
+    speakDiv->ysize = 30;
+    speakDiv->srcactive = 0;
+
+
     for(int i=0;i<1000;i++)npc[i].active = 0;
 
 
@@ -34,6 +42,7 @@ int main(int argc,char *argv_input_path[]){
 
     Script_freespace(input_file);
     free(npc);
+    free(speakDiv);
     fclose(output_file);
     fclose(output_js);
 
