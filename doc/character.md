@@ -1,4 +1,4 @@
-<h2> #general </h2>
+<h2> #character </h2>
 
 ```c
 id:[uint]
