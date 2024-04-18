@@ -10,7 +10,9 @@ make
 ## How to create your own game / story
 
 ```
-First of all, you need to write a script.yaml
+Create a new folder/dir and ready for saving all of your file.
+
+To run your own story/game, you need to write a script.yaml
 It contains all of your game's / story's settings.
 ```
 
