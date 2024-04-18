@@ -28,7 +28,7 @@ tags:
 #scene   // create a scene for your script
 
 *path attributions should be relative path to your folder
-(ex. images/example.png   == ./example-game/images/example.png)
+(ex. images/example.png   -> ./example-game/images/example.png)
 
 ```
 <h3>Attributes / Elements of tags</h3>
