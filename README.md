@@ -27,6 +27,7 @@ tags:
 #character // config of a character
 #scene   // create a scene for your script
 
+*path attributions should be relative path to your folder
 
 ```
 <h3>Attributes / Elements of tags</h3>
