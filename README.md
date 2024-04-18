@@ -37,6 +37,10 @@ tags:
 [#scene](/doc/scene.md)<br>
 [#character](/doc/character.md)<br>
 
+<h3>Structures of generated file</h3>
+
+[#scene](/doc/generate_scene.md)<br>
+
 <h3>Update Log</h3>
 
 [Update_log](/doc/update_log.md)<br>
