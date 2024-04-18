@@ -7,13 +7,26 @@ void html_setup(FILE * html);
 void merge_js(FILE * fnjs,FILE * js);
 int _CHAR_NameIDSearch(char * target);
 
+typedef struct _SPEAK__
+{
+    char src[1025];
+    int x;
+    int y;
+    int xsize;
+    int ysize;
+    int srcactive;
+}Div;
+
+
 typedef struct _CHAR_{
     char src[1025];
     char name[1025];
     int active;
+    char place[4][25];
 }Character;
 
 Character * npc;
+Div * speakDiv;
 int npc_size = 0;
 
 void html_setup(FILE * html){

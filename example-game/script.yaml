@@ -2,11 +2,14 @@
 #general
 title:"Hello World"
 characterCount:4
+dialogBox:"images/speak.png"
 
 #character
 id:3
 name:"咖波"
-img:"images/n.jpg"
+img:"images/test.png"
+place:40%,40%,8%,8%
+
 
 #character
 id:2
@@ -16,8 +19,9 @@ id:2
 id:"test01"
 first:True
 background:"images/bg.png"
-character.show:"咖波",50,300
-click.change_scene:"test333"
+character.speak:"咖波","今天天氣真好"
+character.show:"咖波",15%,15%,30%,30%
+character.show:3
 
 #scene
 id:"test333"

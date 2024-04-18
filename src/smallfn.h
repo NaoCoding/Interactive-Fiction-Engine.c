@@ -36,7 +36,7 @@ void writeInInt(int target, FILE * f){
     while(target>=val) val *= 10;
     val /= 10;
 
-    if(val==1){
+    if(val==0){
         char n = target + '0';
         fwrite(&n,1,1,f);
     }
