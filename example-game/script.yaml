@@ -1,11 +1,23 @@
 #script
 #general
 title:"Hello World"
+characterCount:4
+
+#character
+id:3
+name:"©@ªi"
+img:"images/n.jpg"
+
+#character
+id:2
+
 
 #scene
 id:"test01"
 first:True
 background:"images/bg.png"
+character.show:"©@ªi",50,300
+click.change_scene:"test333"
 
 #scene
 id:"test333"
