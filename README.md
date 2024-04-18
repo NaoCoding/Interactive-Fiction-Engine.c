@@ -1,5 +1,5 @@
 ## Interactive Fiction Engine, IFE
-hello
+
 <h2>Run Example Script</h2>
 
 ```py
@@ -36,3 +36,7 @@ tags:
 [#general](/doc/general.md)<br>
 [#scene](/doc/scene.md)<br>
 [#character](/doc/character.md)<br>
+
+<h3>Update Log</h3>
+
+[Update_log](/doc/update_log.md)<br>
