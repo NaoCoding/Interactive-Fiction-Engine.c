@@ -67,10 +67,32 @@ void animation_fadeIn_windowonload(char * target, FILE * html){
     fwrite(");\n",3,1,html);
     fwrite("var opacity = 0;\n",17,1,html);
     fwrite("var intervalID = setInterval(function() {\n",42,1,html);
-    fwrite("if (opacity < 1) {\n opacity = opacity + 0.1\n fade.style.opacity = opacity;\n",75,1,html);
+    fwrite("if (opacity < 1) {\n opacity = opacity + 0.05\n fade.style.opacity = opacity;\n",76,1,html);
     fwrite("} else {\n clearInterval(intervalID);\n }\n }, 105);\n }\n </script> \n",65,1,html);
 
     
+}
+
+void animation_fadeIn_click_change_scene(char * target, FILE * html){
+    fwrite("var fade = document.getElementById(",35,1,html);
+    fwrite(target,strlen(target),1,html);
+    fwrite(");\n",3,1,html);
+    fwrite("fade.style.display = \"block\";\n",30,1,html);
+    fwrite("var opacity = 0;\n",17,1,html);
+    fwrite("var intervalID = setInterval(function() {\n",42,1,html);
+    fwrite("if (opacity < 1) {\n opacity = opacity + 0.05\n fade.style.opacity = opacity;\n",76,1,html);
+    fwrite("} else {\n clearInterval(intervalID);\n }\n }, 105);\n \n",52,1,html);
+}
+
+void animation_fadeOut_click_change_scene(char * target, FILE * html){
+    fwrite("var fade = document.getElementById(",35,1,html);
+    //fwrite("fade.style.display = \"block\";\n",30,1,html);
+    fwrite(target,strlen(target),1,html);
+    fwrite(");\n",3,1,html);
+    fwrite("var opacity = 1;\n",17,1,html);
+    fwrite("var intervalID = setInterval(function() {\n",42,1,html);
+    fwrite("if (opacity > 0) {\n opacity = opacity - 0.05\n fade.style.opacity = opacity;\n",76,1,html);
+    fwrite("} else {\n clearInterval(intervalID);\n }\n }, 105);\n \n",52,1,html);
 }
 
 void ANICONFIG_initialize(){

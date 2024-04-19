@@ -1,6 +1,6 @@
 #script
 #general
-title:"A"
+title:"ด๚ธี"
 characterCount:7
 dialogBox:"images/bg.png"
 animation.first_scene:"fadeIn"
@@ -9,7 +9,7 @@ animation.first_scene:"fadeIn"
 id:2
 name:"งfฉþมพ"
 img:"images/howard.png"
-place:20%,400px,auto,auto
+place:20%,20%,auto,auto
 
 #character
 id:1
@@ -28,7 +28,7 @@ click.change_scene:"scene02"
 
 #scene
 id:"scene02"
-background:"images/test.png"
+background:"images/bg.png"
 
 
 

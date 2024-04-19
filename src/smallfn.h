@@ -2,6 +2,13 @@
 #define SMALLFN_H
 #include "std.h"
 
+char * merge_string(char * a, char * b){
+    char *c = calloc(strlen(a) + strlen(b),sizeof(char));
+    for(int i=0;i<strlen(a);i++)c[i] = a[i];
+    for(int i=0;i<strlen(b);i++)c[i+strlen(a)] = b[i];
+    return c;
+}
+
 void fgetsDelendl(char * target){
 
     if(target[strlen(target)-1] <= 25)target[strlen(target)-1] = 0;

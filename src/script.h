@@ -157,12 +157,22 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
         fwrite(id+1,strlen(id)-2,1,fnjs);
         fwrite(onclick,strlen(onclick)-1,1,fnjs);
         fwrite("(){\n",4,1,fnjs);
-        fwrite("document.getElementById(",24,1,fnjs);
-        fwrite(id,strlen(id),1,fnjs);
-        fwrite(").style.display = \"none\";\n",26,1,fnjs);
-        fwrite("document.getElementById(\"",25,1,fnjs);
-        fwrite(onclick,strlen(onclick),1,fnjs);
-        fwrite(").style.display = \"block\"\n;",27,1,fnjs);
+        animation_fadeOut_click_change_scene(id,fnjs);
+        fwrite("\n",1,1,fnjs);
+        //fwrite("fade.style.display = \"none\";\n",29,1,fnjs);
+        fwrite(merge_string("fadeIn",onclick),strlen(merge_string("fadeIn",onclick))-1,1,fnjs);
+        fwrite("()",2,1,fnjs);
+
+        fwrite("}\n",2,1,fnjs);
+
+       
+
+        fwrite("function ",9,1,fnjs);
+        fwrite(merge_string("fadeIn",onclick),strlen(merge_string("fadeIn",onclick))-1,1,fnjs);
+        fwrite("(){\n",4,1,fnjs);
+        fwrite("\n",1,1,fnjs);
+        
+         animation_fadeIn_click_change_scene(merge_string("\"",onclick),fnjs);
 
         fwrite("}\n",2,1,fnjs);
     }
