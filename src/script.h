@@ -138,6 +138,8 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
             characters_atScene ++;
         }
 
+        
+
     }
 
     if(!didFirst)fwrite("\"display:none;",14,1,html);

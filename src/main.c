@@ -57,7 +57,7 @@ int main(int argc,char *argv_input_path[]){
     fclose(output_js);
 
     
-    //runHTML();
+    runHTML();
     
     //DEBUG_checkNPCTag();
     
