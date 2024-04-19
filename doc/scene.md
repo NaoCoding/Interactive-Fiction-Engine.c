@@ -33,6 +33,13 @@ character.speak:[name : string],[conversation : string]
 // set character name say conversation
 // note that character name here can be any string, no need to be one of the character's name
 
+player.active:True
+// active and show the player in this scene
+player.left:True
+// enable left movement of player
+player.right:True
+// enable right movement of player
+
 ```
 
 <h3>Example Code</h3>
