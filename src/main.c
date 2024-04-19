@@ -26,6 +26,8 @@ int main(int argc,char *argv_input_path[]){
     npc = calloc(1000,sizeof(Character));
     speakDiv = calloc(1,sizeof(Div));
     ani_config = calloc(1,sizeof(ANICONFIG));
+    player = calloc(1,sizeof(_Player));
+    PLAYERCONFIG_initialize();
     ANICONFIG_initialize();
 
     speakDiv->x = 0;
@@ -57,7 +59,7 @@ int main(int argc,char *argv_input_path[]){
     fclose(output_js);
 
     
-    runHTML();
+    //runHTML();
     
     //DEBUG_checkNPCTag();
     

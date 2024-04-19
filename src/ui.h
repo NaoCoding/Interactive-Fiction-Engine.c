@@ -8,11 +8,38 @@ void merge_js(FILE * fnjs,FILE * js);
 int _CHAR_NameIDSearch(char * target);
 void animation_fadeIn_windowonload(char * target, FILE * html);
 void ANICONFIG_initialize();
+void PLAYERCONFIG_initialize();
+void ui_player_show(FILE *html);
+
+typedef struct _SCRIPT_{
+    char path[1025];
+    char folder[1025];
+    FILE *source;
+}Script;
 
 typedef struct _ANICONFIG
 {
     int didfirst_fadein;
 }ANICONFIG;
+
+typedef struct _Player_{
+
+    int movement_speed;
+    int movement_multiply;
+    int movement_xy[2];
+
+    char movement_src[4][1025]; // left,right,up,sneak
+    int movement_src_active[4];
+
+    char normal_src[1025];
+    int normal_src_active;
+
+    char style_place[4][1025]; //left,top,width,height
+
+    int active;
+
+
+}_Player;
 
 
 typedef struct _SPEAK__
@@ -33,10 +60,61 @@ typedef struct _CHAR_{
     char place[4][25];
 }Character;
 
+_Player *player;
 Character * npc;
 ANICONFIG * ani_config;
 Div * speakDiv;
 int npc_size = 0;
+
+void ui_player_key_left(FILE * html){
+    fwrite("PLAYERSTATUS = document.getElementById(\"UI_PLAYER_CONST\")\n",58,1,html);
+    fwrite("if(parseInt(PLAYERSTATUS.style.left) >= ",39,1,html);
+    writeInInt(player->movement_multiply * player->movement_speed,html);
+    fwrite(")PLAYERSTATUS.style.left = (parseInt(PLAYERSTATUS.style.left) - ",64,1,html);
+    //printf("%d %d",player->movement_speed,player->movement_multiply);
+    writeInInt(player->movement_multiply * player->movement_speed,html);
+    fwrite(").toString()+\"%\"",16,1,html);
+    fwrite("\n",1,1,html);
+    
+}
+
+void ui_player_key_right(FILE * html){
+    fwrite("PLAYERSTATUS = document.getElementById(\"UI_PLAYER_CONST\")\n",58,1,html);
+    fwrite("if(parseInt(PLAYERSTATUS.style.left) + ",39,1,html);
+    writeInInt(player->movement_multiply * player->movement_speed,html);
+    fwrite(" < 100",6,1,html);
+    fwrite(")PLAYERSTATUS.style.left = (parseInt(PLAYERSTATUS.style.left) + ",64,1,html);
+    //printf("%d %d",player->movement_speed,player->movement_multiply);
+    writeInInt(player->movement_multiply * player->movement_speed,html);
+    fwrite(").toString()+\"%\"",16,1,html);
+    fwrite("\n",1,1,html);
+}
+
+void ui_player_img_normal(Script * target,FILE * html){
+
+    fwrite("document.getElementById(\"UI_PLAYER_CONST\").src=\".",49,1,html);
+    fwrite(target->folder,strlen(target->folder),1,html);
+    fwrite(player->normal_src+1,strlen(player->normal_src)-1,1,html);
+    fwrite("\n",1,1,html);
+}
+
+void ui_player_show(FILE *html){
+    
+    fwrite("document.getElementById(\"UI_PLAYER_CONST\").style.display=\"block\"\n",65,1,html);
+    
+}
+
+void PLAYERCONFIG_initialize(){
+
+    player->movement_multiply = 1;
+    player->movement_speed = 1;
+    for(int i=0;i<4;i++) player->movement_src_active[i] = 0;
+    player->normal_src_active = 0;
+    player->active = 0;
+    player->movement_xy[0] = 0;
+    player->movement_xy[1] = 0;
+
+}
 
 void html_setup(FILE * html){
 

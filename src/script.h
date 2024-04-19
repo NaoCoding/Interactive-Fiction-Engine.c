@@ -5,11 +5,7 @@
 #include "ui.h"
 
 
-typedef struct _SCRIPT_{
-    char path[1025];
-    char folder[1025];
-    FILE *source;
-}Script;
+
 
 Script * Script_setup(char p[]);
 void Script_freespace(Script * target);
@@ -18,6 +14,7 @@ void Script_read(Script * target, FILE * html , FILE * js,FILE * fnjs);
 void Script_read_general(Script * target, FILE * html,FILE * js,FILE * fnjs);
 void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs);
 void Script_read_character(Script * target, FILE * html,FILE * js,FILE * fnjs);
+void Script_read_player(Script * target, FILE * html,FILE * js,FILE * fnjs);
 void checkPoundSign(char * in,Script * target, FILE * html,FILE * js,FILE * fnjs);
 
 static int didGeneral = 0;
@@ -31,6 +28,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
     char bg[1025] = {0};
     int characters[1000];
     char characters_parameters[1000][4][25];
+    int player_atScene[5] = {0}; // active,left,right,up,sneak
     char speak[2][1000];
     int speakToggle = 0;
     int characters_atScene = 0;
@@ -138,6 +136,10 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
             characters_atScene ++;
         }
 
+
+        if(string_compare(0,13,in,"player.active:True"))player_atScene[0] = 1;
+        if(string_compare(0,16,in,"player.left:True")) player_atScene[1] = 1;
+        if(string_compare(0,17,in,"player.right:True")) player_atScene[2] = 1;
         
 
     }
@@ -221,6 +223,7 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
         if(speakDiv->srcactive){
             fwrite("<img style=\"position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:-1;\" src=\".",89,1,html);
             fwrite(target->folder,strlen(target->folder),1,html);
+            
             fwrite(speakDiv->src+1,strlen(speakDiv->src)-1,1,html);
             fwrite("></img>\n",8,1,html);
         }
@@ -232,9 +235,77 @@ void Script_read_scene(Script * target, FILE * html,FILE * js,FILE * fnjs){
 
         fwrite("</div>\n",7,1,html);
     }
+
+    if(player_atScene[0]){
+        fwrite("<script type=\"text/javascript\">\n",32,1,html);
+        
+        ui_player_show(html);
+        ui_player_img_normal(target,html);
+        
+        fwrite("function keyPressed(){\n",23,1,html);
+        fwrite("var k = event.keyCode\n",22,1,html);
+        //fwrite("console.log(k==37)\n",19,1,html);
+        if(player_atScene[1]){
+            fwrite("if(k==37){",10,1,html);
+            ui_player_key_left(html);
+            fwrite("}\n",1,1,html);
+        }
+        if(player_atScene[2]){
+            fwrite("if(k==39){",10,1,html);
+            ui_player_key_right(html);
+            fwrite("}\n",1,1,html);
+        }
+        // 38 up 40 down
+        fwrite("}document.onkeydown=keyPressed",30,1,html);
+        fwrite("</script> \n",11,1,html);
+        
+    }
    
 
     fwrite("</div>\n",7,1,html);
+
+    checkPoundSign(in,target,html,js,fnjs);
+
+}
+
+void Script_read_player(Script * target, FILE * html,FILE * js,FILE * fnjs){
+
+    char in[1025];
+    player->active = 1;
+    fwrite("<img id=\"UI_PLAYER_CONST\" style=\"position:absolute;display:none;left:0%;top:0%;",79,1,html);
+    //fwrite("\n",1,1,html);
+    while(fgets(in,1025,target->source)){
+
+        fgetsDelendl(in);
+        if(in[0] == '#') break;
+
+        if(string_compare(0,13,in,"player.speed:")){
+            player->movement_speed = 0;
+            int idx = 13;
+            while(isdigit(in[idx])){
+                player->movement_speed *= 10;
+                player->movement_speed += in[idx] - '0';
+                idx ++;
+            }
+        }
+
+        if(string_compare(0,20,in,"player.normal.image:")){
+            strcpy(player->normal_src,in+20);
+            player->normal_src_active = 1; 
+        }
+
+        if(string_compare(0,11,in,"player.size:")){
+            strcpy(player->style_place[2],strtok_withoutReplace(in+12,','));
+            strcpy(player->style_place[3],in+11+strlen(player->style_place[2])+2);
+            fwrite("width:",6,1,html);
+            fwrite(player->style_place[2],strlen(player->style_place[2]),1,html);
+            fwrite(";height:",8,1,html);
+            fwrite(player->style_place[3],strlen(player->style_place[3]),1,html);
+            fwrite(";",1,1,html);
+        }
+
+    }
+    fwrite("\">",2,1,html);
 
     checkPoundSign(in,target,html,js,fnjs);
 
@@ -343,6 +414,7 @@ void checkPoundSign(char * in,Script * target, FILE * html,FILE * js,FILE * fnjs
     if(!strcmp(in,"#general"))Script_read_general(target,html,js,fnjs);
     else if(!strcmp(in,"#scene"))Script_read_scene(target,html,js,fnjs);
     else if(!strcmp(in,"#character"))Script_read_character(target,html,js,fnjs);
+    else if(!strcmp(in,"#player"))Script_read_player(target,html,js,fnjs);
 
 }
 
