@@ -1,2 +1,2 @@
 all:
-	gcc ./src/main.c ./src/ui.h ./src/debug.h ./src/smallfn.h ./src/script.h ./src/std.h -o engine -lm
+	gcc ./src/main.c ./src/SMALLFUNCTION.h ./src/GLOBALVARIABLE.h ./src/PROCESS.h ./src/SCRIPT.h ./src/std.h -o engine -lm

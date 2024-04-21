@@ -1,35 +1,7 @@
-#script
-#general
-title:"測試"
-characterCount:7
-dialogBox:"images/bg.png"
-animation.first_scene:"fadeIn"
+window.title:"Hello World"
+character.count:10
 
-#character
-id:2
-name:"呂昊謙"
-img:"images/howard.png"
-place:20%,20%,auto,auto
+character.create:Mance
+character.Mance.src.normal_stand:"images/character01.png"
 
-#character
-id:1
-name:"takala"
-img:"images/takala.png"
-place:60%,20%,auto,auto
-
-#scene
-id:"example01"
-first:True
-background:"images/test.png"
-character.speak:"howard09","我要當你們的第四個組員！"
-character.show:1
-character.show:"呂昊謙"
-click.change_scene:"scene02"
-
-#scene
-id:"scene02"
-background:"images/bg.png"
-
-
-
-
+character.Mance.show:normal_stand
