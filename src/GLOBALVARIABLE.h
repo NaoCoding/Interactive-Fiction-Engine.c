@@ -4,6 +4,7 @@
 #include "std.h"
 
 //character
+//html id : name + src_name
 typedef struct GB_STRUCT_CHARACTER{
     char *src[50];
     char *src_name[50];

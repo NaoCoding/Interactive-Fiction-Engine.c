@@ -5,3 +5,9 @@ character.create:Mance
 character.Mance.src.normal_stand:"images/character01.png"
 
 character.Mance.show:normal_stand
+character.Mance.style:normal_stand,left,"11%"
+character.Mance.hide:normal_stand
+
+dialogBox.show
+dialogBox.background:"images/bg.png"
+dialogBox.style:top,"75%"

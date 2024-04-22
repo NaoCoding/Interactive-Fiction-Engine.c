@@ -23,7 +23,7 @@ int FN_nameToIdx(int idx , char * target){
 
 char ** FN_splitDot(char * p){
 
-    char * target = calloc(strlen(p),sizeof(char));
+    char * target = calloc(strlen(p)+1,sizeof(char));
     strcpy(target,p);
     char **a = calloc(50,sizeof(char *));
     int n = 0;
@@ -47,11 +47,26 @@ char ** FN_splitDot(char * p){
                 n += 1;
                 target += strlen(ff) + 1;
             }
-
+            else break;
         }
         
         
     }
+    
+    while(strlen(target)){
+        ff = FN_STRTOK(target,',');
+        if(strlen(ff) == strlen(target))break;
+       
+        a[n] = calloc(strlen(ff)+1,sizeof(char));
+        strcpy(a[n],ff);
+        n += 1;
+        target += strlen(ff) + 1;
+        
+        
+    }
+    //printf("%s",target);
+
+
     a[n] = calloc(strlen(target)+1,sizeof(char));
     strcpy(a[n],target);
     
@@ -78,7 +93,7 @@ char * FN_STRTOK(char * target, char token){
     int size = 0;
     while(target[size]!=token && size < strlen(target))size += 1;
     
-    char * n = calloc(size,sizeof(char));
+    char * n = calloc(size + 1,sizeof(char));
     for(int i=0;i<size;i++)n[i] = target[i];
     return n;
 

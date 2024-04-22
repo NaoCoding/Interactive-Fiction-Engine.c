@@ -16,10 +16,11 @@ int main(int argc,char *argv_input_path[]){
 
     PROCESS_createOutputFile();
     PROCESS_writeInHTMLHeader();
+    PROCESS_createDialogBox();
 
     SCRIPT_read();
 
-
+    PROCESS_writeInScript();
     PROCESS_closeOutputFile();
     PROCESS_fnjsToJS();
     PROCESS_delTempJS();
