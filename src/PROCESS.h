@@ -18,7 +18,38 @@ void PROCESS_createDialogBox();
 void PROCESS_showElement(char * id);
 void PROCESS_hideElement(char * id);
 void PROCESS_modifySrcElement(char * id, char * target);
+void PROCESS_modifyStyleElement(char * id,char * style,char * target);
+void PROCESS_modifyInnerHTMLElement(char * id, char * target);
+void PROCESS_contentAppearAnimation(char * target, char * content, int speed);
+void PROCESS_contentAppearAnimationFunctionWriteInFnJs();
+void PROCESS_characterMovingAnimation(char * target, int val,int speed,char * f);
+void PROCESS_characterMovingAnimationFunctionWriteInFnJs();
+void PROCESS_characterMovingHTMLWriteIn(char * target);
+void PROCESS_writeInInt(int target, FILE * dir);
 
+
+
+void PROCESS_modifyInnerHTMLElement(char * id, char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").innerHTML=",13,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+
+}
+
+void PROCESS_modifyStyleElement(char * id,char * style,char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").style.",9,1,fnjs);
+    fwrite(style,strlen(style),1,fnjs);
+    fwrite("=",1,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+
+}
 
 void PROCESS_modifySrcElement(char * id, char * target){
 
@@ -42,7 +73,6 @@ void PROCESS_showElement(char * id){
     fwrite("document.getElementById(\"",25,1,fnjs);
     fwrite(id,strlen(id),1,fnjs);
     fwrite("\").style.display=\"block\"\n",25,1,fnjs);
-
 
 }
 
@@ -90,7 +120,7 @@ void PROCESS_writeInHTMLHeader(){
     fwrite("<!DOCTYPE html>\n<html>\n",23,1,html);
     fwrite("<title id=\"HTML_TITLE\"></title>\n",32,1,html);
     fwrite("<meta charset=\"big-5\">\n",23,1,html);
-    
+    fwrite("<body style=\"height:97.8%;width:99%;position:absolute;top:0px;left:0px;\">",73,1,html);
 
 
 }
@@ -130,9 +160,98 @@ void PROCESS_writeInScript(){
 
 
 void PROCESS_createDialogBox(){
-    fwrite("<div id=\"DIALOG_BOX\" style=\"display:none;\">\n",44,1,html);
-    fwrite("<img id=\"DIALOG_BOX_BG\"></img>\n</div>\n",38,1,html);
+    fwrite("<div id=\"DIALOG_BOX\" style=\"display:none;position:absolute;z-index:5;\">\n",72,1,html);
+    fwrite("<img id=\"DIALOG_BOX_BG\" style=\"position:absolute;z-index:-1;\"></img>\n</div>\n",76,1,html);
+    fwrite("<h1 id=\"DIALOG_BOX_SPEAKER\" style=\"position:absolute;z-index:6;\"></h1>\n",71,1,html);
+    fwrite("<h3 id=\"DIALOG_BOX_CONTENT\" style=\"position:absolute;z-index:7;\"></h3>\n",71,1,html);
     
+}
+
+void PROCESS_contentAppearAnimation(char * target, char * content, int speed){
+    fwrite("PROCESS_contentAppearAnimation(\"",32,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\",",2,1,fnjs);
+    fwrite(content,strlen(content),1,fnjs);
+    fwrite(",",1,1,fnjs);
+    PROCESS_writeInInt(speed,fnjs);
+    fwrite(")\n",2,1,fnjs);
+
+}
+
+void PROCESS_writeInInt(int target, FILE * dir){
+
+    int val = 1;
+    if(!target) fwrite("0",1,1,dir);
+    else{
+        while(target >= val) val *= 10;
+        val /= 10;
+        while(val){
+            int q = target/val;
+            q += '0';
+            fwrite(&q,1,1,dir);
+            target %= val;
+            val /= 10;
+        }
+    }
+
+}
+
+void PROCESS_contentAppearAnimationFunctionWriteInFnJs(){
+    
+    fwrite("function PROCESS_contentAppearAnimation(a,b,c){\n",48,1,fnjs);
+    fwrite("var fade = document.getElementById(a);\n",39,1,fnjs);
+    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
+    fwrite("fade.innerHTML += b[0];\n",24,1,fnjs);
+    fwrite("if(fade.innerHTML.length%60 == 0){\n",35,1,fnjs);
+    fwrite("fade.innerHTML += '/n'}\n",24,1,fnjs);
+    fwrite("b = b.substring(1);\n",20,1,fnjs);
+    fwrite("if(b.length == 0) clearInterval(q)\n",35,1,fnjs);
+    fwrite("}, c);}\n",8,1,fnjs);
+    
+
+
+}
+
+void PROCESS_characterMovingAnimation(char * target, int val,int speed, char *f){
+
+    fwrite("PROCESS_characterMovingAnimation(\"",34,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\",",2,1,fnjs);
+    PROCESS_writeInInt(val,fnjs);
+    fwrite(",",1,1,fnjs);
+    PROCESS_writeInInt(speed,fnjs);
+    fwrite(",",1,1,fnjs);
+    fwrite(f,strlen(f),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
+}
+
+
+
+void PROCESS_characterMovingAnimationFunctionWriteInFnJs(){
+    
+    fwrite("function PROCESS_characterMovingAnimation(a,b,c,d){\n",52,1,fnjs);
+    fwrite("var qs = document.getElementById(a);\n",37,1,fnjs);
+    fwrite("var cc = 0;\n",12,1,fnjs);
+    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
+    fwrite("qs.src=d[cc]\n",13,1,fnjs);
+    fwrite("cc += 1\n",8,1,fnjs);
+    fwrite("if(cc == b) cc = 0\n",19,1,fnjs);
+    
+    fwrite("}, c);}\n",8,1,fnjs);
+}
+
+void PROCESS_characterMovingHTMLWriteIn(char * target){
+
+    char * fq = FN_mergeString(target,"MOVINGIMG");
+    //printf("%s",fq);
+    fwrite("<img id=\"",9,1,html);
+    fwrite(fq,strlen(fq),1,html);
+    fwrite("\" ",2,1,html);
+
+    
+    fwrite("style=\"display:none;position:absolute;\">\n",41,1,html);
+    free(fq);
+
 }
 
 #endif

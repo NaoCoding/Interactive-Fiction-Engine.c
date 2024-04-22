@@ -3,11 +3,24 @@ character.count:10
 
 character.create:Mance
 character.Mance.src.normal_stand:"images/character01.png"
+character.Mance.moving.1:"images/moving1.png"
+character.Mance.moving.2:"images/moving2.png"
+character.Mance.moving.3:"images/moving3.png"
+character.Mance.moving.4:"images/moving4.png"
+character.Mance.moving_place:"auto","auto","30%","30%"
+#character.Mance.place:moving,"auto","auto","30%","30%"
 
-character.Mance.show:normal_stand
-character.Mance.style:normal_stand,left,"11%"
-character.Mance.hide:normal_stand
+character.Mance.place:normal_stand,"300px","auto","11%","3%"
 
-dialogBox.show
-dialogBox.background:"images/bg.png"
-dialogBox.style:top,"75%"
+dialogBox.background.src:"images/bg.png"
+dialogBox.background.place:"100%","100%","0px","0px"
+dialogBox.place:"100%","100%","0px","0%"
+
+dialogBox.speaker.place:"26%","auto","70%","48%"
+dialogBox.content.place:"91%","26%","4%","62%"
+
+
+#scene01
+
+character.Mance.moveAnimation:4
+

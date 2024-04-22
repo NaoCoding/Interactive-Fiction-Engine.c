@@ -10,6 +10,27 @@ char * FN_STRTOK(char * target, char token);
 int FN_charInString(char * target, char token);
 int FN_nameToIdx(int idx , char * target);
 char ** FN_splitDot(char * p);
+char ** FN_splitDotWithoutComma(char * p);
+char * FN_arr2String(int i,int val);
+
+
+char * FN_arr2String(int i, int val){
+
+    char * ns = FN_mergeString("[","");
+    
+    for(int j=0;j<val;j++){
+        ns = FN_mergeString(ns,"\".");
+        ns = FN_mergeString(ns,file_folder);
+        ns = FN_mergeString(ns,character[i].moving_src[j]+1);
+        if(j < val - 1) ns = FN_mergeString(ns,",");
+        
+        
+    }
+    ns = FN_mergeString(ns,"]");
+    //printf("%s\n",ns);
+    return ns;
+}
+
 
 int FN_nameToIdx(int idx , char * target){
     for(int i=0;i<character[idx].src_count;i++){
@@ -64,6 +85,53 @@ char ** FN_splitDot(char * p){
         
         
     }
+    //printf("%s",target);
+
+
+    a[n] = calloc(strlen(target)+1,sizeof(char));
+    strcpy(a[n],target);
+    
+    //free(target);
+    free(ff);
+    //for(int i=0;i<n+1;i++)printf("%s ",a[i]);
+    
+    return a;
+
+
+}
+
+char ** FN_splitDotWithoutComma(char * p){
+
+    char * target = calloc(strlen(p)+1,sizeof(char));
+    strcpy(target,p);
+    char **a = calloc(50,sizeof(char *));
+    int n = 0;
+
+    char * ff;
+    while(strlen(target)){
+        ff = FN_STRTOK(target,':');
+        if(strlen(ff) < strlen(FN_STRTOK(target,'.'))){
+            a[n] = calloc(strlen(ff)+1,sizeof(char));
+            strcpy(a[n],ff);
+            n += 1;
+            target += strlen(ff) + 1;
+            break;
+        }
+       
+        else{
+            ff = FN_STRTOK(target,'.');
+            if(strlen(ff) != strlen(target)){
+                a[n] = calloc(strlen(ff)+1,sizeof(char));
+                strcpy(a[n],ff);
+                n += 1;
+                target += strlen(ff) + 1;
+            }
+            else break;
+        }
+        
+        
+    }
+    
     //printf("%s",target);
 
 

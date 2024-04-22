@@ -46,6 +46,7 @@ void SCRIPT_readDot(char * n){
         else if(!strcmp(para[1],"create")){
             character[character_count].name = calloc(strlen(para[2]),sizeof(char));
             strcpy(character[character_count++].name,para[2]);
+            PROCESS_characterMovingHTMLWriteIn(character[character_count-1].name);
         }
         
 
@@ -62,18 +63,40 @@ void SCRIPT_readDot(char * n){
                         PROCESS_characterSrcHTMLWriteIn(i , src_count);
                     }
 
-                    if(!strcmp(para[2],"show")){
+                    else if(!strcmp(para[2],"show")){
                         int idx = FN_nameToIdx(i,para[3]);
                         SCRIPT_showCharacterImage(i,idx);
                     }
 
-                     if(!strcmp(para[2],"hide")){
+                    else if(!strcmp(para[2],"hide")){
                         int idx = FN_nameToIdx(i,para[3]);
                         SCRIPT_hideCharacterImage(i,idx);
                     }
-                    if(!strcmp(para[2],"style")){
+                    else if(!strcmp(para[2],"style")){
                         int idx = FN_nameToIdx(i,para[3]);
                         SCRIPT_modifyCharacterStyle(i,idx,para[4],para[5]);
+                    }
+                    else if(!strcmp(para[2],"place")){
+                        int idx = FN_nameToIdx(i,para[3]);
+                        char * elementid = FN_mergeString(character[i].name,character[i].src_name[idx]);
+                        PROCESS_modifyStyleElement(elementid,"width",para[4]);
+                        PROCESS_modifyStyleElement(elementid,"height",para[5]);
+                        PROCESS_modifyStyleElement(elementid,"left",para[6]);
+                        PROCESS_modifyStyleElement(elementid,"top",para[7]);
+                        free(elementid);
+                    }
+
+                    else if(!strcmp(para[2],"moving")){
+                        character[i].moving_src[atoi(para[3])-1] = calloc(strlen(para[4])+1,sizeof(char));
+                        strcpy(character[i].moving_src[atoi(para[3])-1],para[4]);
+                    }
+
+                    else if(!strcmp(para[2],"moveAnimation")){
+                        int qq = atoi(para[3]);
+                        
+                        PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
+                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,200,FN_arr2String(i,qq));
+
                     }
                 }
             }
@@ -85,7 +108,55 @@ void SCRIPT_readDot(char * n){
         if(!strcmp(para[1],"show"))PROCESS_showElement("DIALOG_BOX");
         else if(!strcmp(para[1],"hide"))PROCESS_hideElement("DIALOG_BOX");
 
-        else if(!strcmp(para[1],"background"))PROCESS_modifySrcElement("DIALOG_BOX_BG",para[2]);
+        else if(!strcmp(para[1],"background")){
+            if(!strcmp(para[2],"src"))PROCESS_modifySrcElement("DIALOG_BOX_BG",para[3]);
+            else if(!strcmp(para[2],"style"))PROCESS_modifyStyleElement("DIALOG_BOX_BG",para[3],para[4]);
+
+            else if(!strcmp(para[2],"place")){
+                PROCESS_modifyStyleElement("DIALOG_BOX_BG","width",para[3]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_BG","height",para[4]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_BG","left",para[5]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_BG","top",para[6]);
+            }
+        
+        }
+        
+        else if(!strcmp(para[1],"style"))PROCESS_modifyStyleElement("DIALOG_BOX",para[2],para[3]);
+        else if(!strcmp(para[1],"place")){
+            PROCESS_modifyStyleElement("DIALOG_BOX","width",para[2]);
+            PROCESS_modifyStyleElement("DIALOG_BOX","height",para[3]);
+            PROCESS_modifyStyleElement("DIALOG_BOX","left",para[4]);
+            PROCESS_modifyStyleElement("DIALOG_BOX","top",para[5]);
+        }
+
+        else if(!strcmp(para[1],"speaker")){
+            if(!strcmp(para[2],"place")){
+                PROCESS_modifyStyleElement("DIALOG_BOX_SPEAKER","width",para[3]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_SPEAKER","height",para[4]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_SPEAKER","left",para[5]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_SPEAKER","top",para[6]);
+            }
+
+            else if(!strcmp(para[2],"set"))PROCESS_modifyInnerHTMLElement("DIALOG_BOX_SPEAKER",para[3]);
+            else if(!strcmp(para[2],"style"))PROCESS_modifyStyleElement("DIALOG_BOX_SPEAKER",para[3],para[4]);
+        
+        }
+
+        else if(!strcmp(para[1],"content")){
+            if(!strcmp(para[2],"place")){
+                PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT","width",para[3]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT","height",para[4]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT","left",para[5]);
+                PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT","top",para[6]);
+            }
+
+            else if(!strcmp(para[2],"set")){
+                char **sln = FN_splitDotWithoutComma(n);
+                PROCESS_contentAppearAnimation("DIALOG_BOX_CONTENT",sln[3],30);
+            }
+            else if(!strcmp(para[2],"style"))PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT",para[3],para[4]);
+        
+        }
 
     }
 

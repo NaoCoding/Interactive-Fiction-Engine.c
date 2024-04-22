@@ -18,6 +18,10 @@ int main(int argc,char *argv_input_path[]){
     PROCESS_writeInHTMLHeader();
     PROCESS_createDialogBox();
 
+    
+    PROCESS_contentAppearAnimationFunctionWriteInFnJs();
+    PROCESS_characterMovingAnimationFunctionWriteInFnJs();
+
     SCRIPT_read();
 
     PROCESS_writeInScript();
