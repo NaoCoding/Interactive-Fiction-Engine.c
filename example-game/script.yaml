@@ -12,11 +12,21 @@ character.Mance.moving.6:"images/moving2.png"
 character.Mance.moving.7:"images/moving5.png"
 character.Mance.moving.8:"images/moving2.png"
 character.Mance.moving.9:"images/moving6.png"
+character.Mance.moving.10:"images/moving2.png"
 
-character.Mance.moving.10:"images/moving1.png"
-character.Mance.moving.11:"images/moving2.png"
-character.Mance.moving.12:"images/moving3.png"
-character.Mance.moving.13:"images/moving2.png"
+character.Mance.moving.11:"images/moving1.png"
+character.Mance.moving.12:"images/moving2.png"
+character.Mance.moving.13:"images/moving3.png"
+character.Mance.moving.14:"images/moving2.png"
+character.Mance.moving.15:"images/moving1.png"
+character.Mance.moving.16:"images/moving2.png"
+character.Mance.moving.17:"images/moving7.png"
+character.Mance.moving.18:"images/moving2.png"
+
+
+
+
+
 
 
 #character.Mance.place:moving,"auto","auto","30%","30%"
@@ -35,11 +45,12 @@ dialogBox.content.place:"91%","26%","4%","62%"
 
 
 #scene01
+background:"images/bg.jpg"
+character.Mance.moving_place:"10%","auto","40%","50%"
+character.Mance.moving_src:"images/moving2.png"
 
-character.Mance.moving_place:"auto","auto","40%","15%"
-dialogBox.show
-character.Mance.show:normal_stand
-character.Mance.moveAnimation:10,13
-dialogBox.speaker.set:"Roku"
-dialogBox.content.set:"Hello!, I am roku and today is my birthday!"
+
+character.Mance.control.start
+character.Mance.control.movingAnimation:11,18
+character.Mance.control.standingAnimation:1,10
 

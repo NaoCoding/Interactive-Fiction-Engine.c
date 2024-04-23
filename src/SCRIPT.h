@@ -35,6 +35,8 @@ void SCRIPT_readDot(char * n){
     
     if(!strcmp(para[0],"//")) return;
 
+    if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
+
     else if(!strcmp(para[0],"window")){
         if(!strcmp(para[1],"title"))SCRIPT_window_title(para[2]);
     }
@@ -61,6 +63,30 @@ void SCRIPT_readDot(char * n){
                         strcpy(character[i].src[src_count],para[4]);
                         
                         PROCESS_characterSrcHTMLWriteIn(i , src_count);
+                    }
+
+                    else if(!strcmp(para[2],"control")){
+                        if(!strcmp(para[3],"start")){
+                            PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
+                            fwrite("control = \"",11,1,fnjs);
+                            fwrite(FN_mergeString(character[i].name,"MOVINGIMG"),strlen(FN_mergeString(character[i].name,"MOVINGIMG")),1,fnjs);
+                            fwrite("\"\n",2,1,fnjs);
+                        }
+                        else if(!strcmp(para[3],"stop")){
+                            PROCESS_hideElement(FN_mergeString(character[i].name,"MOVINGIMG"));
+                            fwrite("control = \"\"\n",13,1,fnjs);
+                        }
+
+                        else if(!strcmp(para[3],"movingAnimation")){
+                            fwrite("control_movingAnimation = ",26,1,fnjs);
+                            PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[5]));
+                        }
+
+                        else if(!strcmp(para[3],"standingAnimation")){
+                            fwrite("control_standingAnimation = ",28,1,fnjs);
+                            PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[5]));
+                        }
+
                     }
 
                     else if(!strcmp(para[2],"show")){
@@ -99,13 +125,18 @@ void SCRIPT_readDot(char * n){
                         PROCESS_modifyStyleElement(fq,"top",para[6]);
                         free(fq);
                     }
+                    
+                    else if(!strcmp(para[2],"moving_src")){
+                        PROCESS_modifySrcElement(FN_mergeString(character[i].name,"MOVINGIMG"),para[3]);
+                    }
 
                     else if(!strcmp(para[2],"moveAnimation")){
                         int qq = atoi(para[3]);
                         int qqlast = atoi(para[4]);
                         //printf("%d %d",qq,qqlast);
                         PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
-                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,qqlast,200,FN_arr2String(i,qq,qqlast));
+                        fwrite("control_move = 1",16,1,fnjs);
+                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,qqlast,200,FN_arr2String(i,qq,qqlast),0);
 
                     }
                 }

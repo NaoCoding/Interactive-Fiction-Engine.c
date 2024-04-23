@@ -16,11 +16,13 @@ int main(int argc,char *argv_input_path[]){
 
     PROCESS_createOutputFile();
     PROCESS_writeInHTMLHeader();
+    PROCESS_writeInBackGround();
     PROCESS_createDialogBox();
 
-    
+    PROCESS_playerControlFunctionWriteInFnJs();    
     PROCESS_contentAppearAnimationFunctionWriteInFnJs();
     PROCESS_characterMovingAnimationFunctionWriteInFnJs();
+
 
     SCRIPT_read();
 
