@@ -216,21 +216,23 @@ void PROCESS_playerControlFunctionWriteInFnJs(){
     fwrite("var control_movingAnimation = []\n",33,1,fnjs);
     fwrite("var control_standingAnimation = []\n",35,1,fnjs);
     fwrite("var lastcontrol_move = 0\n",25,1,fnjs);
+    fwrite("var standed = 0\n",16,1,fnjs);
+    
 
     fwrite("async function PROCESS_playerControlFunction2(){\n",49,1,fnjs);
     fwrite("var key = event.keyCode\n",24,1,fnjs);
     fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
-    fwrite("if(key==37 && control.length > 0){\n",35,1,fnjs);    
+    fwrite("if((key==37 || key==65) && control.length > 0){\n",48,1,fnjs);    
     fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
-    fwrite("control_move = 0;",17,1,fnjs);
+    fwrite("standed = 1;\ncontrol_move=0",27,1,fnjs);
     fwrite("\n}\n",3,1,fnjs);
-    fwrite("else if(key==39 && control.length > 0){\n",40   ,1,fnjs);    
+    fwrite("else if((key==39 || key==68) && control.length > 0){\n",53,1,fnjs);    
     fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
-    fwrite("control_move = 0;}\n",19,1,fnjs);
-    fwrite("if(control_move==1){\n",21,1,fnjs);
-    fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_movingAnimation,0)}else{\n",82,1,fnjs);
+    fwrite("standed = 1;\ncontrol_move=0}\n",29,1,fnjs);
+    fwrite("if(standed==1){\n",16,1,fnjs);
+    fwrite("control_move = 0\n",17,1,fnjs);
     fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
-    fwrite("lastcontrol_move = control_move}\n\n",34,1,fnjs);
+    fwrite("lastcontrol_move = control_move\nstanded=0}\n\n",44,1,fnjs);
 
 
     
@@ -239,12 +241,12 @@ void PROCESS_playerControlFunctionWriteInFnJs(){
     fwrite("var key = event.keyCode\n",24,1,fnjs);
     //fwrite("console.log(control_move)\n",26,1,fnjs);
     fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
-    fwrite("if(key==37 && control.length > 0){\n",35,1,fnjs);    
+    fwrite("if((key==37 || key==65) && control.length > 0){\n",48,1,fnjs);    
     fwrite("if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + \"%\"",91,1,fnjs);
     fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
     fwrite("control_move = 1;}",18,1,fnjs);
     fwrite("\n}\n",3,1,fnjs);
-    fwrite("else if(key==39 && control.length > 0){\n",40   ,1,fnjs);    
+    fwrite("else if((key==39 || key==68) && control.length > 0){\n",53 ,1,fnjs);    
     fwrite("if(parseInt(p.style.left) + parseInt(p.style.width) < 100){p.style.left = (parseInt(p.style.left) + 1).toString() + \"%\"",119,1,fnjs);
     fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
     fwrite("control_move = 1;}}\n",20,1,fnjs);
