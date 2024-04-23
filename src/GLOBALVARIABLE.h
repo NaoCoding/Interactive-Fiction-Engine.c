@@ -8,7 +8,7 @@
 typedef struct GB_STRUCT_CHARACTER{
     char *src[50];
     char *src_name[50];
-    char *moving_src[10];
+    char *moving_src[50];
     int src_count;
     char * name;
 

@@ -11,18 +11,18 @@ int FN_charInString(char * target, char token);
 int FN_nameToIdx(int idx , char * target);
 char ** FN_splitDot(char * p);
 char ** FN_splitDotWithoutComma(char * p);
-char * FN_arr2String(int i,int val);
+char * FN_arr2String(int i,int val,int vallast);
 
 
-char * FN_arr2String(int i, int val){
+char * FN_arr2String(int i, int val,int vallast){
 
     char * ns = FN_mergeString("[","");
     
-    for(int j=0;j<val;j++){
+    for(int j=val;j<=vallast;j++){
         ns = FN_mergeString(ns,"\".");
         ns = FN_mergeString(ns,file_folder);
-        ns = FN_mergeString(ns,character[i].moving_src[j]+1);
-        if(j < val - 1) ns = FN_mergeString(ns,",");
+        ns = FN_mergeString(ns,character[i].moving_src[j-1]+1);
+        if(j < vallast) ns = FN_mergeString(ns,",");
         
         
     }

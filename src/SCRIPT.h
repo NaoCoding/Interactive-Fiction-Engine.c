@@ -91,11 +91,21 @@ void SCRIPT_readDot(char * n){
                         strcpy(character[i].moving_src[atoi(para[3])-1],para[4]);
                     }
 
+                    else if(!strcmp(para[2],"moving_place")){
+                        char * fq = FN_mergeString(character[i].name,"MOVINGIMG");
+                        PROCESS_modifyStyleElement(fq,"width",para[3]);
+                        PROCESS_modifyStyleElement(fq,"height",para[4]);
+                        PROCESS_modifyStyleElement(fq,"left",para[5]);
+                        PROCESS_modifyStyleElement(fq,"top",para[6]);
+                        free(fq);
+                    }
+
                     else if(!strcmp(para[2],"moveAnimation")){
                         int qq = atoi(para[3]);
-                        
+                        int qqlast = atoi(para[4]);
+                        //printf("%d %d",qq,qqlast);
                         PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
-                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,200,FN_arr2String(i,qq));
+                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,qqlast,200,FN_arr2String(i,qq,qqlast));
 
                     }
                 }

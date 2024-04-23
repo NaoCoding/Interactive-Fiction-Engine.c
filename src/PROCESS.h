@@ -22,7 +22,7 @@ void PROCESS_modifyStyleElement(char * id,char * style,char * target);
 void PROCESS_modifyInnerHTMLElement(char * id, char * target);
 void PROCESS_contentAppearAnimation(char * target, char * content, int speed);
 void PROCESS_contentAppearAnimationFunctionWriteInFnJs();
-void PROCESS_characterMovingAnimation(char * target, int val,int speed,char * f);
+void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f);
 void PROCESS_characterMovingAnimationFunctionWriteInFnJs();
 void PROCESS_characterMovingHTMLWriteIn(char * target);
 void PROCESS_writeInInt(int target, FILE * dir);
@@ -212,12 +212,14 @@ void PROCESS_contentAppearAnimationFunctionWriteInFnJs(){
 
 }
 
-void PROCESS_characterMovingAnimation(char * target, int val,int speed, char *f){
+void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f){
 
     fwrite("PROCESS_characterMovingAnimation(\"",34,1,fnjs);
     fwrite(target,strlen(target),1,fnjs);
     fwrite("\",",2,1,fnjs);
     PROCESS_writeInInt(val,fnjs);
+    fwrite(",",1,1,fnjs);
+    PROCESS_writeInInt(vallast,fnjs);
     fwrite(",",1,1,fnjs);
     PROCESS_writeInInt(speed,fnjs);
     fwrite(",",1,1,fnjs);
@@ -229,15 +231,15 @@ void PROCESS_characterMovingAnimation(char * target, int val,int speed, char *f)
 
 void PROCESS_characterMovingAnimationFunctionWriteInFnJs(){
     
-    fwrite("function PROCESS_characterMovingAnimation(a,b,c,d){\n",52,1,fnjs);
+    fwrite("function PROCESS_characterMovingAnimation(a,b,c,d,e){\n",54,1,fnjs);
     fwrite("var qs = document.getElementById(a);\n",37,1,fnjs);
     fwrite("var cc = 0;\n",12,1,fnjs);
     fwrite("var q = setInterval(() => {\n",28,1,fnjs);
-    fwrite("qs.src=d[cc]\n",13,1,fnjs);
+    fwrite("qs.src=e[cc]\n",13,1,fnjs);
     fwrite("cc += 1\n",8,1,fnjs);
-    fwrite("if(cc == b) cc = 0\n",19,1,fnjs);
+    fwrite("if(cc == e.length) cc = 0\n",26,1,fnjs);
     
-    fwrite("}, c);}\n",8,1,fnjs);
+    fwrite("}, d);}\n",8,1,fnjs);
 }
 
 void PROCESS_characterMovingHTMLWriteIn(char * target){
