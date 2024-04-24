@@ -86,6 +86,12 @@ void SCRIPT_readDot(char * n){
                             fwrite("control_standingAnimation = ",28,1,fnjs);
                             PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[5]));
                         }
+                        else if(!strcmp(para[3],"jumpingAnimation")){
+                            //printf("%d",atoi(para[4]));
+                            fwrite("control_jumpingAnimation = ",27,1,fnjs);
+                            PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[4]));
+                            fwrite("\n",1,1,fnjs);
+                        }
 
                     }
 
@@ -143,6 +149,76 @@ void SCRIPT_readDot(char * n){
             }
         }
     }
+    else if(!strcmp(para[0],"platform")){
+        if(!strcmp(para[1],"clear"))fwrite("control_platfrom = []",21,1,fnjs);
+        if(!strcmp(para[1],"add")){
+            char * target = FN_mergeString("OBJECTPLATFORM",para[2]);
+            fwrite("control_platfrom.push(\"",23,1,fnjs);
+            fwrite(target,strlen(target),1,fnjs);
+            fwrite("\")\n",3,1,fnjs);
+            free(target);
+        }
+    }
+
+    else if(!strcmp(para[0],"object")){
+
+        if(!strcmp(para[1],"create")){
+
+            if(!strcmp(para[2],"platform")){
+                char * target = FN_mergeString("OBJECTPLATFORM",para[3]);
+                PROCESS_modifyStyleElement(target,"width",para[4]);
+                PROCESS_modifyStyleElement(target,"height",para[5]);
+                PROCESS_modifyStyleElement(target,"left",para[6]);
+                PROCESS_modifyStyleElement(target,"top",para[7]);
+                PROCESS_hideElement(target);
+                target = FN_mergeString("\"",target);
+                target = FN_mergeString(target,"\"");
+                PROCESS_createObject(target);
+                strcpy(object[object_count ++].id,para[3]);
+                
+                free(target);
+            }
+
+        }
+
+        else if(!strcmp(para[1],"src")){
+            if(!strcmp(para[2],"platform")){
+                for(int i=0;i<object_count;i++){
+                    if(!strcmp(object[i].id,para[3])){
+                        PROCESS_modifySrcElement(FN_mergeString("OBJECTPLATFORM",para[3]),para[4]);
+                    }
+                }
+            }
+        }
+
+        else if(!strcmp(para[1],"show")){
+
+            if(!strcmp(para[2],"platform")){
+                PROCESS_showElement(FN_mergeString("OBJECTPLATFORM",para[3]));
+            }
+        }
+
+        else if(!strcmp(para[1],"hide")){
+
+            if(!strcmp(para[2],"platform")){
+                PROCESS_hideElement(FN_mergeString("OBJECTPLATFORM",para[3]));
+            }
+        }
+
+        else if(!strcmp(para[1],"style")){
+
+            if(!strcmp(para[2],"platform")){
+                for(int i=0;i<object_count;i++){
+                    if(!strcmp(object[i].id,para[3])){
+                        PROCESS_modifyStyleElement(FN_mergeString("OBJECTPLATFORM",para[3]),para[4],para[5]);
+                    }
+                }
+            }
+        }
+
+    }
+
+    
 
     else if(!strcmp(para[0],"dialogBox")){
 

@@ -16,6 +16,16 @@ typedef struct GB_STRUCT_CHARACTER{
 GB_CHARACTER * character;
 int character_count = 0;
 
+// objects
+typedef struct GB_STRUCT_OBJECT{
+
+    char id[1025];
+
+
+}  GB_OBJECT;
+GB_OBJECT * object;
+int object_count = 0;
+
 //paths
 char file_folder[1025];
 

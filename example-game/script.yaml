@@ -23,15 +23,18 @@ character.Mance.moving.16:"images/moving2.png"
 character.Mance.moving.17:"images/moving7.png"
 character.Mance.moving.18:"images/moving2.png"
 
+character.Mance.moving.19:"images/moving8.png"
 
 
 
 
 
-
+character.Mance.control.movingAnimation:11,18
+character.Mance.control.standingAnimation:1,10
+character.Mance.control.jumpingAnimation:19
 #character.Mance.place:moving,"auto","auto","30%","30%"
 
-character.Mance.place:normal_stand,"300px","auto","11%","3%"
+character.Mance.place:normal_stand,"20%","20%","11%","3%"
 
 dialogBox.background.src:"images/bg.png"
 dialogBox.background.place:"100%","100%","0px","0px"
@@ -43,14 +46,22 @@ dialogBox.speaker.style.fontFamily:"Tempus Sans ITC"
 dialogBox.speaker.place:"26%","auto","70%","48%"
 dialogBox.content.place:"91%","26%","4%","62%"
 
+object.create.platform:test,"80%","3%","15%","80%"
+object.src.platform.test:"images/block.png"
+object.style.platform.test:zIndex,1
+
+object.create.platform:test2,"40%","3%","15%","75%"
+object.src.platform.test2:"images/block.png"
+object.style.platform.test2:zIndex,1
 
 #scene01
 background:"images/bg.jpg"
-character.Mance.moving_place:"10%","auto","40%","50%"
+character.Mance.moving_place:"10%","25%","40%","10%"
 character.Mance.moving_src:"images/moving2.png"
-
-
 character.Mance.control.start
-character.Mance.control.movingAnimation:11,18
-character.Mance.control.standingAnimation:1,10
+
+platform.add:test
+platform.add:test2
+object.show.platform.test
+object.show.platform.test2
 

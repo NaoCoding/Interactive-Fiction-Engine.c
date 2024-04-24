@@ -29,74 +29,30 @@ void PROCESS_writeInInt(int target, FILE * dir);
 void PROCESS_playerControlFunctionWriteInFnJs();
 void PROCESS_writeInFN_str2ARR(int  i,int a , int b);
 void PROCESS_writeInBackGround();
+void PROCESS_callocObject();
+void PROCESS_freeAll();
+void PROCESS_createObject(char * id);
 
 
-void PROCESS_writeInBackGround(){
-    fwrite("<img id=\"BACKGROUND\" style=\"position:absolute;width:100%;height:100%;top:0px;left:0px;\"></img>\n",95,1,html);
+void PROCESS_createObject(char * id){
+
+    fwrite(FN_mergeString("<img id=",id),strlen(FN_mergeString("<img id=",id)),1,html);
+    fwrite(" style=\"position:absolute;\">\n",29,1,html);
+    fwrite("</img>\n",7,1,html);
+}
+
+void PROCESS_freeAll(){
+    free(character);
+    free(object);
+}
+
+void PROCESS_callocObject(){
+
+    object = calloc(3000,sizeof(GB_OBJECT));
+
 }
 
 
-void PROCESS_writeInFN_str2ARR(int i,int a , int b){
-
-    fwrite(FN_arr2String(i,a,b),strlen(FN_arr2String(i,a,b)),1,fnjs);
-    fwrite("\n",1,1,fnjs);
-}
-
-void PROCESS_modifyInnerHTMLElement(char * id, char * target){
-
-    fwrite("document.getElementById(\"",25,1,fnjs);
-    fwrite(id,strlen(id),1,fnjs);
-    fwrite("\").innerHTML=",13,1,fnjs);
-    fwrite(target,strlen(target),1,fnjs);
-    fwrite("\n",1,1,fnjs);
-
-}
-
-void PROCESS_modifyStyleElement(char * id,char * style,char * target){
-
-    fwrite("document.getElementById(\"",25,1,fnjs);
-    fwrite(id,strlen(id),1,fnjs);
-    fwrite("\").style.",9,1,fnjs);
-    fwrite(style,strlen(style),1,fnjs);
-    fwrite("=",1,1,fnjs);
-    fwrite(target,strlen(target),1,fnjs);
-    fwrite("\n",1,1,fnjs);
-
-}
-
-void PROCESS_modifySrcElement(char * id, char * target){
-
-    fwrite("document.getElementById(\"",25,1,fnjs);
-    fwrite(id,strlen(id),1,fnjs);
-    fwrite("\").src=",7,1,fnjs);
-
-    char * n = FN_mergeString(file_folder,target+1);
-    n = FN_mergeString("\".",n);
-
-    fwrite(n,strlen(n),1,fnjs);
-    fwrite("\n",1,1,fnjs);
-
-
-    free(n);
-
-}
-
-void PROCESS_showElement(char * id){
-
-    fwrite("document.getElementById(\"",25,1,fnjs);
-    fwrite(id,strlen(id),1,fnjs);
-    fwrite("\").style.display=\"block\"\n",25,1,fnjs);
-
-}
-
-void PROCESS_hideElement(char * id){
-
-    fwrite("document.getElementById(\"",25,1,fnjs);
-    fwrite(id,strlen(id),1,fnjs);
-    fwrite("\").style.display=\"none\"\n",24,1,fnjs);
-
-
-}
 
 void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index){
     
@@ -215,24 +171,68 @@ void PROCESS_playerControlFunctionWriteInFnJs(){
     fwrite("var control_move = 0\n",21,1,fnjs);
     fwrite("var control_movingAnimation = []\n",33,1,fnjs);
     fwrite("var control_standingAnimation = []\n",35,1,fnjs);
+    fwrite("var control_jumpingAnimation = \"\"\n",34,1,fnjs);
     fwrite("var lastcontrol_move = 0\n",25,1,fnjs);
+    fwrite("var control_platfrom = []\n",26,1,fnjs);
     fwrite("var standed = 0\n",16,1,fnjs);
     
+
+
+
+    fwrite("function controlatsky(){\n",25,1,fnjs);
+    fwrite("var p = document.getElementById(control).style\n",47,1,fnjs);
+    fwrite("var pleft = parseFloat(p.left)\n",31,1,fnjs);
+    fwrite("var pwidth = parseFloat(p.width)\n",33,1,fnjs);
+    fwrite("for(var i=0;i<control_platfrom.length;i++){\n",44,1,fnjs);
+    fwrite("    var c = document.getElementById(control_platfrom[i]).style\n",63,1,fnjs);
+    fwrite("var cleft = parseFloat(c.left)\n",31,1,fnjs);
+    fwrite("    var cwidth = parseFloat(c.width)\n",37,1,fnjs);
+    //fwrite("console.log(cleft)\n",19,1,fnjs);
+    //fwrite("console.log(parseFloat(c.top),parseFloat(p.top) + parseFloat(p.height))\n",72,1,fnjs);
+    fwrite("    if(cleft <= pleft + pwidth/2 && cleft + cwidth >= pleft + pwidth/2){\n",73,1,fnjs);
+    
+    fwrite("        if(parseFloat(c.top) + 2 >= parseFloat(p.top) + parseFloat(p.height) && parseFloat(p.top) + parseFloat(p.height) >= parseFloat(c.top) - 2){\n",148,1,fnjs);
+    //fwrite("console.log(1)\n",15,1,fnjs);
+    fwrite("p.top =(parseFloat(c.top) -parseFloat(p.height)).toString() + \"%\"\n  return false;\n",82,1,fnjs);
+    fwrite("}\n",2,1,fnjs);
+    fwrite("    }}\n",7,1,fnjs);
+    
+    
+    fwrite("return true;}\n",14,1,fnjs);
+
+
+    fwrite("function controlfall(){\n",24,1,fnjs);
+    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
+    fwrite("var p = document.getElementById(control).style\n",47,1,fnjs);
+    fwrite("if(controlatsky() && ",21,1,fnjs);
+    fwrite("parseFloat(p.height) + parseFloat(p.top) <= 99.5) p.top = (parseFloat(p.top) + 0.5).toString() + \"%\"\n",101,1,fnjs);
+    fwrite("else clearInterval(q)\n",22,1,fnjs);
+    
+    fwrite("}, 1000/30);}\n",14,1,fnjs);
+    
+    fwrite("controlfall()\n",14,1,fnjs);
+
 
     fwrite("async function PROCESS_playerControlFunction2(){\n",49,1,fnjs);
     fwrite("var key = event.keyCode\n",24,1,fnjs);
     fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
-    fwrite("if((key==37 || key==65) && control.length > 0){\n",48,1,fnjs);    
+    fwrite("if((key==37 || key==65) && control.length > 0 && !controlatsky()){\n",67,1,fnjs);    
     fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
     fwrite("standed = 1;\ncontrol_move=0",27,1,fnjs);
     fwrite("\n}\n",3,1,fnjs);
-    fwrite("else if((key==39 || key==68) && control.length > 0){\n",53,1,fnjs);    
+    fwrite("else if((key==38 || key==87) && control.length > 0){\n",53,1,fnjs);    
+    fwrite("standed = 1;\ncontrol_move=0}\n",29,1,fnjs);
+    fwrite("else if((key==39 || key==68) && control.length > 0 && !controlatsky()){\n",72,1,fnjs);    
     fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
     fwrite("standed = 1;\ncontrol_move=0}\n",29,1,fnjs);
-    fwrite("if(standed==1){\n",16,1,fnjs);
+    fwrite("if(controlatsky()){p.src = control_jumpingAnimation[0]\n",55,1,fnjs);
+    fwrite("controlfall()\n}",15,1,fnjs);
+    fwrite("else if(standed==1){\n",21,1,fnjs);
     fwrite("control_move = 0\n",17,1,fnjs);
     fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
-    fwrite("lastcontrol_move = control_move\nstanded=0}\n\n",44,1,fnjs);
+    fwrite("lastcontrol_move = control_move\nstanded=0\n\n",43,1,fnjs);
+    //fwrite("PROCESS_playerControlFunction()\n",32,1,fnjs);
+    fwrite("}",1,1,fnjs);
 
 
     
@@ -242,25 +242,40 @@ void PROCESS_playerControlFunctionWriteInFnJs(){
     //fwrite("console.log(control_move)\n",26,1,fnjs);
     fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
     fwrite("if((key==37 || key==65) && control.length > 0){\n",48,1,fnjs);    
-    fwrite("if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + \"%\"",91,1,fnjs);
+    fwrite("if(parseFloat(p.style.left) > 1.3){p.style.left = (parseFloat(p.style.left) - 1.3).toString() + \"%\"",99,1,fnjs);
     fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
     fwrite("control_move = 1;}",18,1,fnjs);
     fwrite("\n}\n",3,1,fnjs);
+    fwrite("else if((key==38 || key==87) && control.length > 0 && !controlatsky()){\n",72,1,fnjs);
+    fwrite("p.src = control_jumpingAnimation[0]\n",36,1,fnjs);
+    fwrite("if(parseFloat(p.style.top) > 16){\n",34,1,fnjs);
+    fwrite("cc = 0\n",7,1,fnjs);
+    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
+    fwrite("p.style.top=(parseFloat(p.style.top) - 3.2).toString() + \"%\"\n",61,1,fnjs);
+    fwrite("cc += 1\n",8,1,fnjs);
+    fwrite("if(cc == 5) clearInterval(q)\n",29,1,fnjs);
+    fwrite("}, 20);\n",8,1,fnjs);
+    fwrite("control_move = 1;\n",18,1,fnjs);
+    fwrite("}}\n",3,1,fnjs);
+
+
     fwrite("else if((key==39 || key==68) && control.length > 0){\n",53 ,1,fnjs);    
-    fwrite("if(parseInt(p.style.left) + parseInt(p.style.width) < 100){p.style.left = (parseInt(p.style.left) + 1).toString() + \"%\"",119,1,fnjs);
+    fwrite("if(parseFloat(p.style.left) + parseFloat(p.style.width) < 98.7){p.style.left = (parseFloat(p.style.left) + 1.3).toString() + \"%\"",128,1,fnjs);
     fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
     fwrite("control_move = 1;}}\n",20,1,fnjs);
     fwrite("else control_move = 0\n",22,1,fnjs );
     fwrite("if(lastcontrol_move!=control_move){\n",36,1,fnjs);
-    fwrite("if(control_move==1){\n",21,1,fnjs);
+    fwrite("if(controlatsky()){p.src = control_jumpingAnimation[0]\n",55,1,fnjs);
+    fwrite("controlfall()}\n",15,1,fnjs);
+    fwrite("else if(control_move==1){\n",26,1,fnjs);
     fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_movingAnimation,0)}else{\n",82,1,fnjs);
-     fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
+    fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
     fwrite("lastcontrol_move = control_move}\n\n",34,1,fnjs);
 
 
 
     fwrite("}document.onkeydown=PROCESS_playerControlFunction\ndocument.onkeyup=PROCESS_playerControlFunction2\n",98,1,fnjs);
-    fwrite("PROCESS_playerControlFunction()\n",32,1,fnjs);
+    
 }
 
 void PROCESS_contentAppearAnimationFunctionWriteInFnJs(){
@@ -322,6 +337,75 @@ void PROCESS_characterMovingHTMLWriteIn(char * target){
     
     fwrite("style=\"display:none;position:absolute;\">\n",41,1,html);   
     free(fq);
+
+}
+
+void PROCESS_writeInBackGround(){
+    fwrite("<img id=\"BACKGROUND\" style=\"position:absolute;width:100%;height:100%;top:0px;left:0px;\"></img>\n",95,1,html);
+}
+
+
+void PROCESS_writeInFN_str2ARR(int i,int a , int b){
+    //printf("%s",FN_arr2String(i,a,b));
+    char * target = FN_arr2String(i,a,b);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+    free(target);
+}
+
+void PROCESS_modifyInnerHTMLElement(char * id, char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").innerHTML=",13,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+
+}
+
+void PROCESS_modifyStyleElement(char * id,char * style,char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").style.",9,1,fnjs);
+    fwrite(style,strlen(style),1,fnjs);
+    fwrite("=",1,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+
+}
+
+void PROCESS_modifySrcElement(char * id, char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").src=",7,1,fnjs);
+
+    char * n = FN_mergeString(file_folder,target+1);
+    n = FN_mergeString("\".",n);
+
+    fwrite(n,strlen(n),1,fnjs);
+    fwrite("\n",1,1,fnjs);
+
+
+    free(n);
+
+}
+
+void PROCESS_showElement(char * id){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").style.display=\"block\"\n",25,1,fnjs);
+
+}
+
+void PROCESS_hideElement(char * id){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").style.display=\"none\"\n",24,1,fnjs);
+
 
 }
 

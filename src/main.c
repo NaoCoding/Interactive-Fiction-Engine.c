@@ -19,6 +19,8 @@ int main(int argc,char *argv_input_path[]){
     PROCESS_writeInBackGround();
     PROCESS_createDialogBox();
 
+    PROCESS_callocObject();
+
     PROCESS_playerControlFunctionWriteInFnJs();    
     PROCESS_contentAppearAnimationFunctionWriteInFnJs();
     PROCESS_characterMovingAnimationFunctionWriteInFnJs();
@@ -30,6 +32,8 @@ int main(int argc,char *argv_input_path[]){
     PROCESS_closeOutputFile();
     PROCESS_fnjsToJS();
     PROCESS_delTempJS();
+    PROCESS_freeAll();
+
 }
 
 
