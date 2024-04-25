@@ -33,6 +33,8 @@ char file_folder[1025];
 //input
 char in[3000];
 
+int scene = 0;
+char charScene[100] = {0};
 
 //files
 FILE * html;

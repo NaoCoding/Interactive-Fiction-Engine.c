@@ -1,39 +1,42 @@
 #include "std.h"
-#include "GLOBALVARIABLE.h"
-#include "PROCESS.h"
-#include "SCRIPT.h"
 #include "SMALLFUNCTION.h"
-
+#include "GLOBALVARIABLE.h"
+#include "SCRIPT.h"
+#include "PROCESS.h"
 
 
 int main(int argc,char *argv_input_path[]){
 
-    
     strcpy(file_folder,argv_input_path[1]);
-    
-    PROCESS_getScript();
-    PROCESS_checkScript_NULL();
+    mkdir("output",0777);
+    sprintf(charScene,"%d",scene);
+    html = fopen(FN_mergeString("./output/scene",FN_mergeString(charScene,".html")),"w+");
+    js = fopen("./output/temp.js","w+");
+    fnjs = fopen(FN_mergeString("./output/scene",FN_mergeString(charScene,".js")),"w+");
+    script = fopen(FN_mergeString(file_folder,"script.yaml"),"r");
 
-    PROCESS_createOutputFile();
-    PROCESS_writeInHTMLHeader();
-    PROCESS_writeInBackGround();
+
+    PROCESS_checkScript_NULL(script);
+
+    //PROCESS_playerControlFunctionWriteInFnJs();    
+    //PROCESS_characterMovingAnimationFunctionWriteInFnJs();
+    //PROCESS_contentAppearAnimationFunctionWriteInFnJs();
+
     PROCESS_createDialogBox();
 
-    PROCESS_callocObject();
-
-    PROCESS_playerControlFunctionWriteInFnJs();    
-    PROCESS_contentAppearAnimationFunctionWriteInFnJs();
-    PROCESS_characterMovingAnimationFunctionWriteInFnJs();
+    SCRIPT_READ(script,html,js,fnjs);
 
 
-    SCRIPT_read();
+    fclose(html);
+    fclose(js);
+    fclose(fnjs);
+    fclose(script);
 
-    PROCESS_writeInScript();
-    PROCESS_closeOutputFile();
-    PROCESS_fnjsToJS();
-    PROCESS_delTempJS();
-    PROCESS_freeAll();
 
+
+    system("python3 ./src/server.py");
+
+    system("rm -r ./output");
 }
 
 

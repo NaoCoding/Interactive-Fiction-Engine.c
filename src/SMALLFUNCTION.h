@@ -168,7 +168,11 @@ char * FN_STRTOK(char * target, char token){
 }
 
 void FN_fgetsDelEndl(){
-    while(in[strlen(in)-1] <= 32 && strlen(in))in[strlen(in)-1] = 0;
+    if(!strlen(in))return;
+    while(in[strlen(in)-1] <= 32){
+        in[strlen(in)-1] = 0;
+        if(!strlen(in))break;
+    }
 }
 
 char * FN_mergeString(char * a, char *b){

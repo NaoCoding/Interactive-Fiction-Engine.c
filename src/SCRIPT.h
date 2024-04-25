@@ -2,38 +2,20 @@
 #define SCRIPT_H_
 
 #include "std.h"
+#include "SMALLFUNCTION.h"
 #include "GLOBALVARIABLE.h"
 #include "PROCESS.h"
-#include "SMALLFUNCTION.h"
 
-void SCRIPT_read();
-void SCRIPT_readDot(char * para);
+void SCRIPT_READ();
+void SCRIPT_ANALYZE();
 void SCRIPT_window_title();
 void SCRIPT_showCharacterImage(int character_index, int src_index);
 void SCRIPT_hideCharacterImage(int character_index, int src_index);
 void SCRIPT_modifyCharacterStyle(int character_index, int src_index, char * attr, char * content);
 
-void SCRIPT_read(){
+void SCRIPT_ANALYZE(){
 
-    
-    
-    while(fgets(in,3000,script)){
-
-        FN_fgetsDelEndl();
-        printf("%s\n",in);
-
-
-        if(strlen(in))SCRIPT_readDot(in);
-
-    }
-
-}
-
-void SCRIPT_readDot(char * n){
-
-    char **para = FN_splitDot(n);
-    
-    if(!strcmp(para[0],"//")) return;
+    char **para = FN_splitDot(in);
 
     if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
 
@@ -268,7 +250,7 @@ void SCRIPT_readDot(char * n){
             }
 
             else if(!strcmp(para[2],"set")){
-                char **sln = FN_splitDotWithoutComma(n);
+                char **sln = FN_splitDotWithoutComma(in);
                 PROCESS_contentAppearAnimation("DIALOG_BOX_CONTENT",sln[3],30);
             }
             else if(!strcmp(para[2],"style"))PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT",para[3],para[4]);
@@ -281,7 +263,26 @@ void SCRIPT_readDot(char * n){
 
     free(para);
    
+
+
 }
+
+
+void SCRIPT_READ(){
+
+    while(fgets(in,1025,script)){
+
+        FN_fgetsDelEndl(in);
+        printf("%s\n",in);
+        if(strlen(in)) SCRIPT_ANALYZE();
+
+    }
+
+}
+
+
+
+    
 
 void SCRIPT_window_title(char * target){
     fwrite("document.getElementById(\"HTML_TITLE\").innerHTML = ",50,1,fnjs);
@@ -330,5 +331,6 @@ void SCRIPT_modifyCharacterStyle(int character_index, int src_index, char * attr
     free(target);
 
 }
+
 
 #endif
