@@ -20,7 +20,6 @@ It contains all of your game's / story's settings.
 ```
 node.js (sudo apt install nodejs)
 python3 (sudo apt install build-essential)
-
 ```
 
 
