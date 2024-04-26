@@ -20,5 +20,6 @@ It contains all of your game's / story's settings.
 
 ```c
 ./api del_saves    //delete all saves (include folder)
+./api start_server [file_folder]  // equals to ./engine [file_folder]
 ```
 
