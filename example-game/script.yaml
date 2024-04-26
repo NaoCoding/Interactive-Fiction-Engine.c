@@ -47,9 +47,8 @@ character.Mance.control.standingAnimation:1,10
 
 character.Mance.place:normal_stand,"20%","20%","11%","3%"
 background:"images/bg.jpg"
-character.Mance.moving_place:"10%","25%","40%","10%"
+character.Mance.moving_place:"10%","40%","40%","10%"
 character.Mance.moving_src:"images/moving2.png"
 character.Mance.control.start
-
-
-
+dialogBox.show
+dialogBox.content.set:"Hello World"
