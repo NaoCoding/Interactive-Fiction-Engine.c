@@ -8,12 +8,12 @@ var lastcontrol_move = 0
 async function PROCESS_playerControlFunction(){
     var key = event.keyCode
     var p = document.getElementById(control)
-    if(key==37 && control.length > 0){
+    if((key==37 || key==65) && control.length > 0){
     if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + "%"
     p.style.transform = ""
     control_move = 1;}
     }
-    else if(key==39 && control.length > 0){
+    else if((key==39 || key==68) && control.length > 0){
     if(parseInt(p.style.left) + parseInt(p.style.width) < 100){p.style.left = (parseInt(p.style.left) + 1).toString() + "%"
     p.style.transform = "scaleX(-1)"
     control_move = 1;}}
@@ -29,12 +29,12 @@ async function PROCESS_playerControlFunction(){
 async function PROCESS_playerControlFunction2(){
     var key = event.keyCode
     var p = document.getElementById(control)
-    if(key==37 && control.length > 0){
+    if((key==37 || key==65) && control.length > 0){
     
     p.style.transform = ""
     control_move = 0;
     }
-    else if(key==39 && control.length > 0){
+    else if((key==39 || key==68) && control.length > 0){
     
     p.style.transform = "scaleX(-1)"
     control_move = 0;}
@@ -44,8 +44,9 @@ async function PROCESS_playerControlFunction2(){
     PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}
     lastcontrol_move = control_move}
 
-function PROCESS_contentAppearAnimation(a,b,c){
+async function PROCESS_contentAppearAnimation(a,b,c){
     var fade = document.getElementById(a);
+    await new Promise(r => setTimeout(r,1000))
     var q = setInterval(() => {
         fade.innerHTML += b[0];
         if(fade.innerHTML.length%60 == 0){

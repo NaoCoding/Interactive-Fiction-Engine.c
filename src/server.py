@@ -1,6 +1,7 @@
 import sys
 import http.server
 from http.server import BaseHTTPRequestHandler,HTTPServer
+from subprocess import check_output
 
 host = ("localhost",8000)
 downloaded = []
@@ -16,21 +17,26 @@ class Server(BaseHTTPRequestHandler):
             self.wfile.write(bytes(html , 'utf-8'))
         
         elif "command" not in self.path:
-            self.send_response(200)
-            file = open("." + self.path,"rb").read()
-            self.end_headers()
-            self.wfile.write(file)
+            if self.path != "/favicon.ico":
+            
+                self.send_response(200)
+                file = open("." + self.path,"rb").read()
+                self.end_headers()
+                self.wfile.write(file)
 
         else:
             self.send_response(200)
             cmd = self.path.split("/")
             self.end_headers()
+            
             if "start_game_html" in cmd[-1]:
-                file = open("./output/scene" + cmd[-1].split('_')[-1] + ".html","rb" ).read()
+                out = check_output(["./api","html",cmd[-1][len("start_game_html"):]])
+                file = open("./output/" + out.decode(),"rb" ).read()
                 self.wfile.write(file)
             
             elif "start_game_js" in cmd[-1]:
-                file = open("./output/scene" + cmd[-1].split('_')[-1] + ".js" ,"rb").read()
+                out = check_output(["./api","js",cmd[-1][len("start_game_js"):]])
+                file = open("./output/" + out.decode() ,"rb").read()
                 self.wfile.write(file)
             
             
@@ -43,5 +49,5 @@ class Server(BaseHTTPRequestHandler):
 
 
 server = HTTPServer(host,Server)
-
+print("Server started at" + str(server.server_address))
 server.serve_forever()
