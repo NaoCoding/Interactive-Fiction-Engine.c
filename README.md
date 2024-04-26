@@ -16,5 +16,9 @@ To run your own story/game, you need to write a script.yaml
 It contains all of your game's / story's settings.
 ```
 
+## server
 
+```c
+./api del_saves    //delete all saves (include folder)
+```
 
