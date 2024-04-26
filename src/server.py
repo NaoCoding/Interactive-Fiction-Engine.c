@@ -26,26 +26,17 @@ class Server(BaseHTTPRequestHandler):
 
         else:
             self.send_response(200)
-            cmd = self.path.split("/")
+            cmd = self.path.split("/")[-1]
             self.end_headers()
             
-            if "start_game_html" in cmd[-1]:
-                out = check_output(["./api","html",cmd[-1][len("start_game_html"):]])
-                file = open("./output/" + out.decode(),"rb" ).read()
-                self.wfile.write(file)
-            
-            elif "start_game_js" in cmd[-1]:
-                out = check_output(["./api","js",cmd[-1][len("start_game_js"):]])
-                file = open("./output/" + out.decode() ,"rb").read()
-                self.wfile.write(file)
-            
-            
-
-
-        
-        
-
-
+            if "new_game" in cmd:
+                cmd = cmd.split("_")
+                out = check_output(["./api","new_game",cmd[-1]])
+                if(cmd[-1] == "createFile"):
+                    self.wfile.write(out)
+                else:
+                    file = open("./output/" + out.decode(),"rb" ).read()
+                    self.wfile.write(file)
 
 
 server = HTTPServer(host,Server)

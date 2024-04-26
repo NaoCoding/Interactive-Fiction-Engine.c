@@ -19,12 +19,9 @@ void PROCESS_modifySrcElement(char * id, char * target);
 void PROCESS_modifyStyleElement(char * id,char * style,char * target);
 void PROCESS_modifyInnerHTMLElement(char * id, char * target);
 void PROCESS_contentAppearAnimation(char * target, char * content, int speed);
-void PROCESS_contentAppearAnimationFunctionWriteInFnJs();
 void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f,int moves);
-void PROCESS_characterMovingAnimationFunctionWriteInFnJs();
 void PROCESS_characterMovingHTMLWriteIn(char * target);
 void PROCESS_writeInInt(int target, FILE * dir);
-void PROCESS_playerControlFunctionWriteInFnJs();
 void PROCESS_writeInFN_str2ARR(int  i,int a , int b);
 void PROCESS_writeInBackGround();
 void PROCESS_callocObject();
@@ -166,74 +163,6 @@ void PROCESS_writeInInt(int target, FILE * dir){
 
 }
 
-void PROCESS_playerControlFunctionWriteInFnJs(){
-
-    fwrite("var control = \"\"\n",17,1,fnjs);
-    fwrite("var control_move = 0\n",21,1,fnjs);
-    fwrite("var control_movingAnimation = []\n",33,1,fnjs);
-    fwrite("var control_standingAnimation = []\n",35,1,fnjs);
-    fwrite("var lastcontrol_move = 0\n",25,1,fnjs);
-
-    fwrite("async function PROCESS_playerControlFunction2(){\n",49,1,fnjs);
-    fwrite("var key = event.keyCode\n",24,1,fnjs);
-    fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
-    fwrite("if(key==37 && control.length > 0){\n",35,1,fnjs);    
-    fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
-    fwrite("control_move = 0;",17,1,fnjs);
-    fwrite("\n}\n",3,1,fnjs);
-    fwrite("else if(key==39 && control.length > 0){\n",40   ,1,fnjs);    
-    fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
-    fwrite("control_move = 0;}\n",19,1,fnjs);
-    fwrite("if(control_move==1){\n",21,1,fnjs);
-    fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_movingAnimation,0)}else{\n",82,1,fnjs);
-    fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
-    fwrite("lastcontrol_move = control_move}\n\n",34,1,fnjs);
-
-
-
-
-    fwrite("async function PROCESS_playerControlFunction(){\n",48,1,fnjs);
-    fwrite("var key = event.keyCode\n",24,1,fnjs);
-    //fwrite("console.log(control_move)\n",26,1,fnjs);
-    fwrite("var p = document.getElementById(control)\n",41,1,fnjs);
-    fwrite("if(key==37 && control.length > 0){\n",35,1,fnjs);    
-    fwrite("if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + \"%\"",91,1,fnjs);
-    fwrite("\np.style.transform = \"\"\n",24,1,fnjs);
-    fwrite("control_move = 1;}",18,1,fnjs);
-    fwrite("\n}\n",3,1,fnjs);
-    fwrite("else if(key==39 && control.length > 0){\n",40   ,1,fnjs);    
-    fwrite("if(parseInt(p.style.left) + parseInt(p.style.width) < 100){p.style.left = (parseInt(p.style.left) + 1).toString() + \"%\"",119,1,fnjs);
-    fwrite("\np.style.transform = \"scaleX(-1)\"\n",34,1,fnjs);
-    fwrite("control_move = 1;}}\n",20,1,fnjs);
-    fwrite("else control_move = 0\n",22,1,fnjs );
-    fwrite("if(lastcontrol_move!=control_move){\n",36,1,fnjs);
-    fwrite("if(control_move==1){\n",21,1,fnjs);
-    fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_movingAnimation,0)}else{\n",82,1,fnjs);
-     fwrite("PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}\n",79,1,fnjs);
-    fwrite("lastcontrol_move = control_move}\n\n",34,1,fnjs);
-
-
-
-    fwrite("}document.onkeydown=PROCESS_playerControlFunction\ndocument.onkeyup=PROCESS_playerControlFunction2\n",98,1,fnjs);
-    fwrite("PROCESS_playerControlFunction()\n",32,1,fnjs);
-    
-}
-
-void PROCESS_contentAppearAnimationFunctionWriteInFnJs(){
-    
-    fwrite("function PROCESS_contentAppearAnimation(a,b,c){\n",48,1,fnjs);
-    fwrite("var fade = document.getElementById(a);\n",39,1,fnjs);
-    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
-    fwrite("fade.innerHTML += b[0];\n",24,1,fnjs);
-    fwrite("if(fade.innerHTML.length%60 == 0){\n",35,1,fnjs);
-    fwrite("fade.innerHTML += '/n'}\n",24,1,fnjs);
-    fwrite("b = b.substring(1);\n",20,1,fnjs);
-    fwrite("if(b.length == 0) clearInterval(q)\n",35,1,fnjs);
-    fwrite("}, c);}\n",8,1,fnjs);
-    
-
-
-}
 
 void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f,int moves){
 
@@ -254,18 +183,7 @@ void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int spe
 
 
 
-void PROCESS_characterMovingAnimationFunctionWriteInFnJs(){
-    
-    fwrite("function PROCESS_characterMovingAnimation(a,b,c,d,e,f){\n",56,1,fnjs);
-    fwrite("var qs = document.getElementById(a);\n",37,1,fnjs);
-    fwrite("var cc = 0;\n",12,1,fnjs);
-    fwrite("var q = setInterval(() => {\n",28,1,fnjs);
-    fwrite("qs.src=e[cc]\n",13,1,fnjs);
-    fwrite("cc += 1\n",8,1,fnjs);
-    fwrite("if(cc == e.length) cc = 0\n",26,1,fnjs);
-    fwrite("if(control_move == f) clearInterval(q)\n",39,1,fnjs);
-    fwrite("}, d);}\n",8,1,fnjs);
-}
+
 
 void PROCESS_characterMovingHTMLWriteIn(char * target){
 
