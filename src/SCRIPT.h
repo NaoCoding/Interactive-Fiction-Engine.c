@@ -130,7 +130,32 @@ void SCRIPT_ANALYZE(){
                 }
             }
         }
-    } 
+    }
+
+    else if(!strcmp(para[0],"first_scene")){
+        fwrite("scene_send(",11,1,fnjs);
+        fwrite(para[1],strlen(para[1]),1,fnjs);
+        fwrite(")\n",2,1,fnjs);
+    }
+
+    else if(!strcmp(para[0],"scene")){
+        fclose(html);
+        fclose(fnjs);
+        html = fopen(FN_mergeString("./output/scene",FN_mergeString(para[1],".html")),"w+");
+        fnjs = fopen(FN_mergeString("./output/scene",FN_mergeString(para[1],".js")),"w+");
+    }
+
+    else if(!strcmp(para[0],"change_scene")){
+
+        if(!strcmp(para[1],"character")){
+            if(!strcmp(para[2],"right")){
+                fwrite("change_sceneTargetFn[1] = \"",27,1,fnjs);
+                fwrite(para[3],strlen(para[3]),1,fnjs);
+                fwrite("\"\nchange_scenePlace[1] = 1\n",27,1,fnjs);
+            }
+        }
+
+    }
 
     else if(!strcmp(para[0],"dialogBox")){
 

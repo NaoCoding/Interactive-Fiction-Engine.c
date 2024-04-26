@@ -1,3 +1,4 @@
+
 window.title:"Hello World"
 character.count:10
 
@@ -16,9 +17,9 @@ dialogBox.speaker.style.fontFamily:"Tempus Sans ITC"
 dialogBox.speaker.place:"26%","auto","70%","48%"
 dialogBox.content.place:"91%","26%","4%","62%"
 
+first_scene:0
 
-
-#scene01
+scene.0
 character.Mance.moving.1:"images/moving5.png"
 character.Mance.moving.2:"images/moving2.png"
 character.Mance.moving.3:"images/moving5.png"
@@ -52,3 +53,12 @@ character.Mance.moving_src:"images/moving2.png"
 character.Mance.control.start
 dialogBox.show
 dialogBox.content.set:"Hello World"
+change_scene.character.right:01
+
+scene.01
+character.Mance.control.start
+dialogBox.content.set:"This is working!"
+change_scene.character.right:02
+
+scene.02
+dialogBox.content.set:"How are u, I am fine"

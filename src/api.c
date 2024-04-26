@@ -25,18 +25,23 @@ int main(int argc,char *argv_input_path[]){
             mkdir("./saves",0777);
             char * dir = API_RANDOMFILENAME();
             FILE * save = fopen(FN_mergeString("./saves/",dir),"w+");
-            fwrite("scene=0",7,1,save);
+            fwrite("scene=NULL",13,1,save);
             fclose(save);
             printf("%s",dir);
             free(dir);
         }
-        else  printf("%s",FN_mergeString("scene0.",argv_input_path[2]));
+        else  printf("%s",FN_mergeString("general.",argv_input_path[2]));
     }
+
+    else if(!strcmp(argv_input_path[1],"change_scene")){
+        printf("%s",FN_mergeString("scene",FN_mergeString(argv_input_path[3],FN_mergeString(".",argv_input_path[2]))));
+    }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
 
     else if(!strcmp(argv_input_path[1],"del_saves")){
         system("rm -r ./saves");
     }
     else if(!strcmp(argv_input_path[1],"start_server")){
+        //system("make");
         system(FN_mergeString("./engine ",argv_input_path[2]));
     }
    

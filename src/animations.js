@@ -1,9 +1,30 @@
 var control = ""
 var control_move = 0
+var change_scenePlace = [-1,-1]
+var change_sceneTargetFn = ["",""]
 var control_movingAnimation = []
 var control_standingAnimation = []
 var lastcontrol_move = 0
 
+async function change_sceneCharacterFunction(){
+
+    var q = setInterval(() =>{
+        if(control.length > 1){
+            var p = document.getElementById(control)
+            if(parseFloat(p.style.left) >= (95 - parseFloat(p.style.width))  && change_scenePlace[1] != -1){
+                change_scenePlace = [-1,-1]
+                p.style.left = "0%"
+                p.style.display = "none"
+                control = ""
+                scene_send(change_sceneTargetFn[1])
+                change_sceneTargetFn = ["",""]
+            }
+        }
+        
+    },40)
+
+
+}
 
 async function PROCESS_playerControlFunction(){
     var key = event.keyCode
@@ -46,7 +67,9 @@ async function PROCESS_playerControlFunction2(){
 
 async function PROCESS_contentAppearAnimation(a,b,c){
     var fade = document.getElementById(a);
-    await new Promise(r => setTimeout(r,1000))
+    await new Promise(r => setTimeout(r,800))
+    fade.innerHTML = ""
+
     var q = setInterval(() => {
         fade.innerHTML += b[0];
         if(fade.innerHTML.length%60 == 0){
@@ -67,3 +90,4 @@ function PROCESS_characterMovingAnimation(a,b,c,d,e,f){
 
 document.onkeydown=PROCESS_playerControlFunction
 document.onkeyup=PROCESS_playerControlFunction2
+change_sceneCharacterFunction()

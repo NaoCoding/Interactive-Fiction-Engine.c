@@ -9,14 +9,14 @@ int main(int argc,char *argv_input_path[]){
 
     strcpy(file_folder,argv_input_path[1]);
     mkdir("output",0777);
-    mkdir("./outout/save",0777);
-    sprintf(charScene,"%d",scene);
-    html = fopen(FN_mergeString("./output/scene",FN_mergeString(charScene,".html")),"w+");
-    js = fopen("./output/temp.js","w+");
-    fnjs = fopen(FN_mergeString("./output/scene",FN_mergeString(charScene,".js")),"w+");
+    //mkdir("./outout/save",0777);
+
+    html = fopen("./output/general.html","w+");
+    js = fopen("./output/functions.js","w+");
+    fnjs = fopen("./output/general.js","w+");
     script = fopen(FN_mergeString(file_folder,"script.yaml"),"r");
 
-
+    //printf("DEBUG_MESSAGE\n");
     PROCESS_checkScript_NULL(script);
 
     //PROCESS_playerControlFunctionWriteInFnJs();    

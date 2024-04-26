@@ -32,7 +32,7 @@ function new_save(){
         method:"GET",
 
         success:function(res){
-            document.getElementById("HTML_BODY").innerHTML = res;
+            document.getElementById("HTML_GENERAL").innerHTML = res;
         }
 
     })
@@ -59,6 +59,7 @@ function scene_send(scene){
         method:"GET",
 
         success:function(res){
+            
             document.getElementById("HTML_BODY").innerHTML = res;
         },
     }

@@ -37,6 +37,12 @@ class Server(BaseHTTPRequestHandler):
                 else:
                     file = open("./output/" + out.decode(),"rb" ).read()
                     self.wfile.write(file)
+            
+            elif "start_game" in cmd:
+                cmd = cmd.split("_")
+                out = check_output(["./api","change_scene",cmd[-2],cmd[-1]])
+                file = open("./output/" + out.decode(),"rb" ).read()
+                self.wfile.write(file)
 
 
 server = HTTPServer(host,Server)
