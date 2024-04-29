@@ -39,6 +39,9 @@ void SCRIPT_ANALYZE(){
         else if(!strcmp(para[1],"src")){
             PROCESS_modifySrcElement(FN_mergeString("OBJECT_",para[2]),para[3]);
         }
+        else if(!strcmp(para[1],"click")){
+            
+        }
     }
 
     else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
