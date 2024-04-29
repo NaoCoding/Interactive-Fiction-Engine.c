@@ -5,9 +5,7 @@
 ```py
 make
 ./engine ./example-game/
-Open browser and direct to localhost:8000
 ```
-
 
 ## How to create your own game / story
 
