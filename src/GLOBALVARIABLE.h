@@ -6,9 +6,9 @@
 //character
 //html id : name + src_name
 typedef struct GB_STRUCT_CHARACTER{
-    char *src[50];
-    char *src_name[50];
-    char *moving_src[50];
+    char *src[500];
+    char *src_name[500];
+    char *moving_src[500];
     int src_count;
     char * name;
 

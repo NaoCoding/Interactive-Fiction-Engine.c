@@ -17,7 +17,31 @@ void SCRIPT_ANALYZE(){
 
     char **para = FN_splitDot(in);
 
-    if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
+    if(!strcmp(para[0],"object")){
+        if(!strcmp(para[1],"create")){
+            PROCESS_createObject(FN_mergeString("OBJECT_",para[2]));
+        }
+        else if(!strcmp(para[1],"place")){
+            PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"width",para[3]);
+            PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"height",para[4]);
+            PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"left",para[5]);
+            PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"top",para[6]);
+        }
+        else if(!strcmp(para[1],"style")){
+            PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),para[3],para[4]);
+        }
+        else if(!strcmp(para[1],"show")){
+            PROCESS_showElement(FN_mergeString("OBJECT_",para[2]));
+        }
+        else if(!strcmp(para[1],"hide")){
+            PROCESS_hideElement(FN_mergeString("OBJECT_",para[2]));
+        }
+        else if(!strcmp(para[1],"src")){
+            PROCESS_modifySrcElement(FN_mergeString("OBJECT_",para[2]),para[3]);
+        }
+    }
+
+    else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
 
     else if(!strcmp(para[0],"window")){
         if(!strcmp(para[1],"title"))SCRIPT_window_title(para[2]);
