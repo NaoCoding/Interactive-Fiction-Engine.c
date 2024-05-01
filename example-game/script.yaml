@@ -2,9 +2,9 @@
 window.title:"Hello World"
 character.count:10
 
-
+character.create:Moon
+character.create:Amy
 character.create:Mance
-character.Mance.src.normal_stand:"images/character01.png"
 
 
 dialogBox.background.src:"images/bg.png"
@@ -16,6 +16,12 @@ dialogBox.speaker.style.fontFamily:"Tempus Sans ITC"
 
 dialogBox.speaker.place:"26%","auto","70%","48%"
 dialogBox.content.place:"91%","26%","4%","62%"
+
+character.Moon.moving.1:"images/scene01/black01.png"
+character.Moon.moving.2:"images/scene01/black02.png"
+
+character.Amy.moving.1:"images/scene01/black11.png"
+character.Amy.moving.2:"images/scene01/black12.png"
 
 character.Mance.moving.1:"images/moving_images/moving5.png"
 character.Mance.moving.2:"images/moving_images/moving2.png"
@@ -51,7 +57,17 @@ scene.0
 background:"images/scene01/scene01.png"
 character.Mance.moving_place:"10%","40%","3%","33%"
 character.Mance.moving_src:"images/moving_images/moving2.png"
+character.Mance.moving_style:zIndex,10
 character.Mance.control.start
+
+character.Moon.moving_show
+character.Moon.moveAnimation:1,2
+character.Moon.moving_place:"10%","40%","87%","36%"
+
+character.Amy.moving_show
+character.Amy.moveAnimation:1,2
+character.Amy.moving_style:transform,"scaleX(-1)"
+character.Amy.moving_place:"10%","40%","80%","33%"
 
 object.create:maskBG
 object.place:maskBG,"100%","100%","0px","0px"

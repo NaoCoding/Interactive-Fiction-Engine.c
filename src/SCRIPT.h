@@ -150,10 +150,14 @@ void SCRIPT_ANALYZE(){
                         int qqlast = atoi(para[4]);
                         //printf("%d %d",qq,qqlast);
                         PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
-                        fwrite("control_move = 1",16,1,fnjs);
-                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,qqlast,200,FN_arr2String(i,qq,qqlast),0);
+                        PROCESS_characterMovingAnimation(FN_mergeString(character[i].name,"MOVINGIMG"),qq,qqlast,200,FN_arr2String(i,qq,qqlast),9);
 
                     }
+
+                    else if(!strcmp(para[2],"moving_style"))PROCESS_modifyStyleElement(FN_mergeString(character[i].name,"MOVINGIMG"),para[3],para[4]);
+                
+                    else if(!strcmp(para[2],"moving_show"))PROCESS_showElement(FN_mergeString(character[i].name,"MOVINGIMG"));
+                    else if(!strcmp(para[2],"moving_hide"))PROCESS_hideElement(FN_mergeString(character[i].name,"MOVINGIMG"));
                 }
             }
         }
