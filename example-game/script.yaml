@@ -85,7 +85,7 @@ object.create:bulletin1
 object.style:bulletin1,zIndex,3
 object.place:bulletin1,"10%","26%","21.6%","25%"
 object.src:bulletin1,"images/scene01/bulletin1.png"
-object.click.subscene:bulletin1,subscene1
+object.click.subscene_open:bulletin1,subscene1
 
 object.create:bulletin2
 object.style:bulletin2,zIndex,3
@@ -107,3 +107,4 @@ dialogBox.speaker.set:"Roku"
 character.Mance.show:normal_stand
 character.Mance.style:normal_stand,zIndex,9
 character.Mance.moving_hide
+dialogBox.click.subscene_close

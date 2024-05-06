@@ -51,7 +51,9 @@ class Server(BaseHTTPRequestHandler):
                 self.wfile.write(file)
             elif "close_subgame" in cmd:
                 out = check_output(["./api","closesubscene"])
-                self.wfile.write(out.decode())
+                print(out)
+                self.wfile.write(out)
+
 
 
 server = HTTPServer(host,Server)

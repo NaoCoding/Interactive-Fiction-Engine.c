@@ -28,6 +28,15 @@ void PROCESS_callocObject();
 void PROCESS_freeAll();
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
+void PROCESS_onClickCloseElement(char * id);
+
+
+void PROCESS_onClickCloseElement(char * id){
+    fwrite("document.getElementById(\"",25,1,fnjs);
+     fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").onclick=",11,1,fnjs);
+    fwrite("subsceneclose\n",14,1,fnjs);
+}
 
 void PROCESS_onClickElement(char * id, char * target){
     fwrite("function ",9,1,fnjs);

@@ -40,7 +40,7 @@ void SCRIPT_ANALYZE(){
             PROCESS_modifySrcElement(FN_mergeString("OBJECT_",para[2]),para[3]);
         }
         else if(!strcmp(para[1],"click")){
-            if(!strcmp(para[2],"subscene")){
+            if(!strcmp(para[2],"subscene_open")){
                 PROCESS_onClickElement(FN_mergeString("OBJECT_",para[3]),para[4]);
             }
         }
@@ -48,6 +48,7 @@ void SCRIPT_ANALYZE(){
 
     else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
     else if(!strcmp(para[0],"subscenebackground"))PROCESS_modifySrcElement("HTML_SUB",para[1]);
+
 
     else if(!strcmp(para[0],"window")){
         if(!strcmp(para[1],"title"))SCRIPT_window_title(para[2]);
@@ -252,6 +253,14 @@ void SCRIPT_ANALYZE(){
             }
             else if(!strcmp(para[2],"style"))PROCESS_modifyStyleElement("DIALOG_BOX_CONTENT",para[3],para[4]);
         
+        }
+        else if(!strcmp(para[1],"click")){
+            if(!strcmp(para[2],"subscene_open")){
+                PROCESS_onClickElement("DIALOG_BOX",para[3]);
+            }
+            else if(!strcmp(para[2],"subscene_close")){
+                PROCESS_onClickCloseElement("DIALOG_BOX");
+            }
         }
 
     }

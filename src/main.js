@@ -84,7 +84,7 @@ function subscene_send(){
     document.getElementById("HTML_SUB").style.zIndex = 5;
 }
 
-function subscene_close(){
+function subsceneclose(){
     
     $.ajax({
         url:"command/close_subgame",
