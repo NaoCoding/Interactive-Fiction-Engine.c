@@ -67,7 +67,7 @@ void SCRIPT_ANALYZE(){
                     if(!strcmp(para[2],"src")){
                         int src_count = character[i].src_count ++;
                         character[i].src_name[src_count] = calloc(strlen(para[3]) + 1,sizeof(char));
-                        character[i].src[src_count] = calloc(strlen(para[4]) ,sizeof(char));
+                        character[i].src[src_count] = calloc(strlen(para[4]) + 1,sizeof(char));
                         strcpy(character[i].src_name[src_count],para[3]);
                         strcpy(character[i].src[src_count],para[4]);
                         

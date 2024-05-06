@@ -9,13 +9,14 @@ character.create:Mance
 
 dialogBox.background.src:"images/dialogBox.png"
 dialogBox.background.place:"100%","100%","0px","0px"
-dialogBox.place:"100%","100%","0px","0%"
+dialogBox.place:"100%","40%","0%","60%"
 dialogBox.content.style.fontFamily:"Tempus Sans ITC"
 dialogBox.speaker.style.fontFamily:"Tempus Sans ITC"
+dialogBox.content.style.fontSize:"36px"
+dialogBox.speaker.style.fontSize:"48px"
 
-
-dialogBox.speaker.place:"26%","auto","70%","48%"
-dialogBox.content.place:"91%","26%","4%","62%"
+dialogBox.content.place:"91%","31%","4%","72%"
+dialogBox.speaker.place:"91%","31%","4%","63%"
 
 character.Moon.moving.1:"images/scene01/black01.png"
 character.Moon.moving.2:"images/scene01/black02.png"
@@ -44,14 +45,16 @@ character.Mance.moving.17:"images/moving_images/moving7.png"
 character.Mance.moving.18:"images/moving_images/moving2.png"
 
 
+character.Mance.src:normal_stand,"images/character02.png"
+character.Mance.place:normal_stand,"auto","80%","10%","0%"
 
 character.Mance.control.movingAnimation:11,18
 character.Mance.control.standingAnimation:1,10
 
 first_scene:0
 
-scene.0
 
+scene.1
 #character.Mance.place:moving,"auto","auto","30%","30%"
 
 background:"images/scene01/scene01.png"
@@ -91,5 +94,10 @@ object.style:door_button,zIndex,4
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
 
-dialogBox.hide
+scene.0
 
+dialogBox.show
+background:"images/scene01/scene01.png"
+dialogBox.content.set:"Hello world"
+dialogBox.speaker.set:"Roku"
+character.Mance.show:normal_stand

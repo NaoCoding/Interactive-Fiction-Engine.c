@@ -96,8 +96,8 @@ void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index){
 
     free(target);
     target = FN_mergeString(file_folder,character[character_index].src[src_index]+1);
-    
-    fwrite(target,strlen(target)-1,1,html);
+    //printf("%s",target);
+    fwrite(target,strlen(target),1,html);
 
     fwrite("style=\"display:none;position:absolute;\">\n",41,1,html);
 
