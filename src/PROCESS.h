@@ -27,6 +27,22 @@ void PROCESS_writeInBackGround();
 void PROCESS_callocObject();
 void PROCESS_freeAll();
 void PROCESS_createObject(char * id);
+void PROCESS_onClickElement(char * id, char * target);
+
+void PROCESS_onClickElement(char * id, char * target){
+    fwrite("function ",9,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("onclickccc()",12,1,fnjs);
+    fwrite("{subsceneonclick(\"",18,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\")}\n",4,1,fnjs);
+    fwrite("document.getElementById(\"",25,1,fnjs);
+     fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").onclick=",11,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("onclickccc\n",11,1,fnjs);
+    
+}
 
 void PROCESS_checkScript_NULL(){
     if(script == NULL){
