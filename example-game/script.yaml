@@ -7,7 +7,7 @@ character.create:Amy
 character.create:Mance
 
 
-dialogBox.background.src:"images/bg.png"
+dialogBox.background.src:"images/dialogBox.png"
 dialogBox.background.place:"100%","100%","0px","0px"
 dialogBox.place:"100%","100%","0px","0%"
 dialogBox.content.style.fontFamily:"Tempus Sans ITC"
