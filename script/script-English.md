@@ -9,10 +9,10 @@
 [option]
 - Listen to what they're talking about.
 >**Girl A**: (scoffing) Have you seen the new girl, [Bullied Protagonist]? It’s obvious her family can barely afford her schooling; just look at her outdated clothes.  
-**Girl B**: (dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?
+**Girl B**: (dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?  
 **Girl A**: Exactly, she's always lurking by herself, like a shadow. It’s creepy. Probably too embarrassed to let anyone find out about her home situation.  
 **Girl B**: (snickering) I guess it’s tough being her, but isn’t she just too standoffish? I tried to chat with her once, and she barely gave me the time of day.  
-**Girl A**: That’s just how she is. I heard from Cathy she was a loner at her old school too. Maybe that’s just her personality.
+**Girl A**: That’s just how she is. I heard from Cathy she was a loner at her old school too. Maybe that’s just her personality.  
 **Girl B**: (cynically) Some people are just like that, huh? But honestly, I’m curious about what her deal is. Do you think we should even bother trying to know her better?  
 **Girl A**: (reluctant) Maybe, but honestly, why bother? You know how it is with people like that, always making things complicated when you try to get a little friendly.  
 
