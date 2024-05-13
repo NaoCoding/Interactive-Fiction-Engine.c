@@ -130,3 +130,42 @@ If option 2 is chosen:
 If option 3 is chosen:
 
 **A**: Alright, if you need help, I'll be in the classroom. Be careful.
+
+
+### Bathroom ###
+
+[Memory Flashback] - Memory Increase 5%
+>**I**: Ah...my head hurts so much. 
+
+
+...Suddenly, Your vision blurs and flashes of both familiar and strange scenes flicker through her mind. The surroundings are dim;A girl is surrounded by a group of students. Through the blur, it’s seen that they are kicking her and pulling at her clothes. The girl looks terrified, her eyes brimming with tears...  
+
+>**...** : (voice trembling) "Why are you doing this to me? What did I do wrong?"  
+**...** : (voice stern) "Because you're so annoying, always acting so sweet and making the teachers like you. We can't stand it!"  
+**...** : (jeering) "Yeah, always acting like you're different from us. You're just a freak!"
+
+
+>**I**: (Tears fall) Huh? Have I experienced this before? Is this real? Why am I remembering these things?  
+
+**Back to Reality**  
+...You stands in the bathroom, takes a deep breath trying to calm your emotions, and the scene returns to the empty bathroom...
+
+
+[option]
+- Back to the classroom. Ask A about this.
+>**I** : (confused) Why do I remember these things? Am I... could I be the one who was bullied?   
+**A** : (concernedly) You don't look right. What happened?   
+**I** : (shaking head) I'm not sure, but after I entered the bathroom, I saw a scene where a girl was being bullied by classmates.  
+**A** : (softly comforting) Are you saying you recalled memories of being bullied before school? There were rumors of a girl being bullied here before, but I don’t know the details. Memories can distort for many reasons. Perhaps you need time to sort them out. What’s important now is to stay calm." - **Affinity increases**.
+- Continuing to explore the bathroom - Memory Increase 5%  
+
+
+**Approach the Sink**  
+...You stares at your reflection in the mirror, but something feels off. You reflection seems blurry, as if a thin mist is lingering behind the glass. You reaches out to touch the mirror, but your fingers appear translucent, like wisps of smoke...
+
+
+
+
+
+
+
