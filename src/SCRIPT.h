@@ -278,6 +278,9 @@ void SCRIPT_ANALYZE(){
             else if(!strcmp(para[2],"subscene_close")){
                 PROCESS_onClickCloseElement("DIALOG_BOX_CONTENT",para[3]);
             }
+            else if(!strcmp(para[2],"dialog_next")){
+                PROCESS_ModifyDialogContent("DIALOG_BOX_CONTENT",para[3]);
+            }
         }
 
     }

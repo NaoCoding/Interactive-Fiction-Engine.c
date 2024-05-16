@@ -29,7 +29,17 @@ void PROCESS_freeAll();
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
 void PROCESS_onClickCloseElement(char * id, char * target);
+void PROCESS_ModifyDialogContent(char * id, char * target);
 
+
+void PROCESS_ModifyDialogContent(char * id, char * target){
+    fwrite("document.getElementById(\"",25,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").onclick=function(){",22,1,fnjs);
+    PROCESS_contentAppearAnimation(id,target,30);
+    fwrite(";}\n",3,1,fnjs);
+    
+}
 
 void PROCESS_onClickCloseElement(char * id, char * target){
     fwrite("document.getElementById(\"",25,1,fnjs);

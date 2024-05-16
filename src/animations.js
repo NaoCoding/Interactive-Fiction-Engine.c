@@ -67,7 +67,7 @@ async function PROCESS_playerControlFunction2(){
 
 async function PROCESS_contentAppearAnimation(a,b,c){
     var fade = document.getElementById(a);
-    await new Promise(r => setTimeout(r,800))
+    //await new Promise(r => setTimeout(r,800))
     fade.innerHTML = ""
 
     var q = setInterval(() => {

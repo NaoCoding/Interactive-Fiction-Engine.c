@@ -101,17 +101,19 @@ object.src:door_button,"images/scene01/door_button.png"
 subscene.1
 
 dialogBox.show
-subscenebackground:"images/scene01/scene01.png"
 dialogBox.content.set:"Hello world"
-dialogBox.speaker.set:"Roku"
-character.Mance.show:normal_stand
-character.Mance.style:normal_stand,zIndex,9
+dialogBox.speaker.set:"Bulletin"
 character.Mance.moving_hide
-dialogBox.content.set:"Goodbye world"
-dialogBox.click.subscene_close.1
+dialogBox.click.subscene_open.subscene2
 
-close_subscene.1
+subscene.2
+dialogBox.speaker.set:"Bulletin"
+dialogBox.content.set:"Today is a good day"
+dialogBox.click.subscene_close.2
+
+close_subscene.2
 
 dialogBox.hide
 character.Mance.hide:normal_stand
 character.Mance.moving_show
+
