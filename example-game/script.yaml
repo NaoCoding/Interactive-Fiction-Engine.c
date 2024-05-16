@@ -11,7 +11,7 @@ dialogBox.background.src:"images/dialogBox.png"
 dialogBox.background.place:"100%","100%","0px","0px"
 dialogBox.place:"100%","40%","0%","60%"
 dialogBox.style.zIndex:10
-dialogBox.content.style.zIndex:11
+dialogBox.content.style.zIndex:12
 dialogBox.speaker.style.zIndex:11
 dialogBox.content.style.fontFamily:"Tempus Sans ITC"
 dialogBox.speaker.style.fontFamily:"Tempus Sans ITC"
@@ -107,4 +107,11 @@ dialogBox.speaker.set:"Roku"
 character.Mance.show:normal_stand
 character.Mance.style:normal_stand,zIndex,9
 character.Mance.moving_hide
-dialogBox.click.subscene_close
+dialogBox.content.set:"Goodbye world"
+dialogBox.click.subscene_close.1
+
+close_subscene.1
+
+dialogBox.hide
+character.Mance.hide:normal_stand
+character.Mance.moving_show

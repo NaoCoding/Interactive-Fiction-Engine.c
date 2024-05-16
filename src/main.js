@@ -87,7 +87,18 @@ function subscene_send(){
 function subsceneclose(){
     
     $.ajax({
-        url:"command/close_subgame",
+        url:"command/close_subgame_html_" + subscene_toOpen,
+        method:"GET",
+
+        success:function(res){
+            
+            document.getElementById("HTML_SUB").innerHTML = res;
+        },
+    }
+    )
+    
+    $.ajax({
+        url:"command/close_subgame_js_" + subscene_toOpen,
         method:"GET",
 
         success:function(res){
@@ -95,6 +106,8 @@ function subsceneclose(){
         },
     }
     )
+    document.getElementById("HTML_BODY").style.opacity = 1;
+    document.getElementById("HTML_SUB").style.zIndex = -1;
 }
 
 

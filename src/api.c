@@ -47,8 +47,8 @@ int main(int argc,char *argv_input_path[]){
         //system("make");
         system(FN_mergeString("./engine ",argv_input_path[2]));
     }
-    else if(!strcmp(argv_input_path[1],"close_subgame")){
-        printf("document.getElementById(\"HTML_SUB\").style.zIndex = -1;");
+    else if(!strcmp(argv_input_path[1],"closesubscene")){
+        printf("%s",FN_mergeString("close",FN_mergeString(argv_input_path[3],FN_mergeString(".",argv_input_path[2]))));
     }
     
     //else if(!(strcmp(argv_input_path[1],"character_move")))

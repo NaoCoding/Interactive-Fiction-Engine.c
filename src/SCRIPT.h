@@ -187,6 +187,13 @@ void SCRIPT_ANALYZE(){
         fnjs = fopen(FN_mergeString("./output/subscene",FN_mergeString(para[1],".js")),"w+");
     }
 
+    else if(!strcmp(para[0],"close_subscene")){
+        fclose(html);
+        fclose(fnjs);
+        html = fopen(FN_mergeString("./output/closesubscene",FN_mergeString(para[1],".html")),"w+");
+        fnjs = fopen(FN_mergeString("./output/closesubscene",FN_mergeString(para[1],".js")),"w+");
+    }
+
 
     else if(!strcmp(para[0],"change_scene")){
 
@@ -202,8 +209,18 @@ void SCRIPT_ANALYZE(){
 
     else if(!strcmp(para[0],"dialogBox")){
 
-        if(!strcmp(para[1],"show"))PROCESS_showElement("DIALOG_BOX");
-        else if(!strcmp(para[1],"hide"))PROCESS_hideElement("DIALOG_BOX");
+        if(!strcmp(para[1],"show")){
+            PROCESS_showElement("DIALOG_BOX");
+            PROCESS_showElement("DIALOG_BOX_BG");
+            PROCESS_showElement("DIALOG_BOX_SPEAKER");
+            PROCESS_showElement("DIALOG_BOX_CONTENT");
+        }
+        else if(!strcmp(para[1],"hide")){
+            PROCESS_hideElement("DIALOG_BOX");
+            PROCESS_hideElement("DIALOG_BOX_BG");
+            PROCESS_hideElement("DIALOG_BOX_SPEAKER");
+            PROCESS_hideElement("DIALOG_BOX_CONTENT");
+        }
 
         else if(!strcmp(para[1],"background")){
             if(!strcmp(para[2],"src"))PROCESS_modifySrcElement("DIALOG_BOX_BG",para[3]);
@@ -256,10 +273,10 @@ void SCRIPT_ANALYZE(){
         }
         else if(!strcmp(para[1],"click")){
             if(!strcmp(para[2],"subscene_open")){
-                PROCESS_onClickElement("DIALOG_BOX",para[3]);
+                PROCESS_onClickElement("DIALOG_BOX_CONTENT",para[3]);
             }
             else if(!strcmp(para[2],"subscene_close")){
-                PROCESS_onClickCloseElement("DIALOG_BOX");
+                PROCESS_onClickCloseElement("DIALOG_BOX_CONTENT",para[3]);
             }
         }
 
