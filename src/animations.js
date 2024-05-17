@@ -6,6 +6,19 @@ var control_movingAnimation = []
 var control_standingAnimation = []
 var lastcontrol_move = 0
 
+async function screenfadeIn(tt){
+
+    var s = document.body
+    s.style.opacity = 0
+    var time = 0
+    var q = setInterval(() => {
+        if(time == 50)clearInterval(q);
+        s.style.opacity = (parseFloat(s.style.opacity) + 0.02).toString()
+        time += 1
+    },40)
+
+}
+
 async function change_sceneCharacterFunction(){
 
     var q = setInterval(() =>{

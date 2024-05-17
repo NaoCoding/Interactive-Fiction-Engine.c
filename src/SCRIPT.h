@@ -49,6 +49,12 @@ void SCRIPT_ANALYZE(){
     else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
     else if(!strcmp(para[0],"subscenebackground"))PROCESS_modifySrcElement("HTML_SUB",para[1]);
 
+    else if(!strcmp(para[0],"animation")){
+        if(!strcmp(para[1],"fadeIn")){
+            PROCESS_writeInFadeIn();
+        }
+    }
+
 
     else if(!strcmp(para[0],"window")){
         if(!strcmp(para[1],"title"))SCRIPT_window_title(para[2]);

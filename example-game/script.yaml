@@ -2,8 +2,7 @@
 window.title:"Hello World"
 character.count:10
 
-character.create:Moon
-character.create:Amy
+
 character.create:Mance
 
 
@@ -21,11 +20,8 @@ dialogBox.speaker.style.fontSize:"48px"
 dialogBox.content.place:"91%","31%","4%","72%"
 dialogBox.speaker.place:"91%","31%","4%","63%"
 
-character.Moon.moving.1:"images/scene01/black01.png"
-character.Moon.moving.2:"images/scene01/black02.png"
 
-character.Amy.moving.1:"images/scene01/black11.png"
-character.Amy.moving.2:"images/scene01/black12.png"
+
 
 character.Mance.moving.1:"images/moving_images/moving5.png"
 character.Mance.moving.2:"images/moving_images/moving2.png"
@@ -56,9 +52,27 @@ character.Mance.control.standingAnimation:1,10
 
 first_scene:0
 
+scene:where_am_i
+
+dialogBox.show
+dialogBox.content.set:"Where am I? Is it a dream?"
+dialogBox.speaker.set:""
+character.Mance.moving_hide
+dialogBox.click.subscene_close.where_am_i
+
 
 scene.0
 #character.Mance.place:moving,"auto","auto","30%","30%"
+animation.fadeIn
+
+character.create:Moon
+character.create:Amy
+
+character.Moon.moving.1:"images/scene01/black01.png"
+character.Moon.moving.2:"images/scene01/black02.png"
+
+character.Amy.moving.1:"images/scene01/black11.png"
+character.Amy.moving.2:"images/scene01/black12.png"
 
 background:"images/scene01/scene01.png"
 character.Mance.moving_place:"10%","40%","3%","33%"
