@@ -8,7 +8,7 @@
 
 [option]
 - Listen to what they're talking about.
->**Girl A**: (scoffing) Have you seen the new girl, [Bullied Protagonist]? It’s obvious her family can barely afford her schooling; just look at her outdated clothes.  
+>**Girl A**: (scoffing) Have you seen the new girl? It’s obvious her family can barely afford her schooling; just look at her outdated clothes.  
 **Girl B**: (dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?  
 **Girl A**: Exactly, she's always lurking by herself, like a shadow. It’s creepy. Probably too embarrassed to let anyone find out about her home situation.  
 **Girl B**: (snickering) I guess it’s tough being her, but isn’t she just too standoffish? I tried to chat with her once, and she barely gave me the time of day.  
@@ -163,9 +163,52 @@ If option 3 is chosen:
 **Approach the Sink**  
 ...You stares at your reflection in the mirror, but something feels off. You reflection seems blurry, as if a thin mist is lingering behind the glass. You reaches out to touch the mirror, but your fingers appear translucent, like wisps of smoke...
 
+>**I** : What's happening?... Why is it so blurry?   
+
+
+...You try to wipe the mist from the mirror, but the image remains hazy, unable to clearly reflect your face. Your eyes grow fearful and confused...  
+
+
+>**I** : Could it be… am I really…?  
+
+
+___
+>**A** : (after a moment of thought) "What you just said reminded me... I often saw our teacher with cigarettes, he seemed to be heading to the rooftop to smoke."
+
+**I** : (eagerly) "Really? Do you think the teacher might have a key to the rooftop?"
+
+**A** : "I'm not sure, but I've seen them with some keys heading that way. our teacher usually don’t let students notice these things, but I’ve caught glimpses."
+
+**I** : (hope reignited) "What should we do then? Do you think we can find the key?"
+
+**A** : (nodding) "It might be in the teachers' office. We could find some clues there."
+
+**I** : (determined) "Alright, I have to try. If there’s anything there, it might help me understand what really happened."
+
+**A** : "I'll wait here for your news. If you find something, or need help, just tell me."
+
+### The teachers' office###
+
+...You carefully pushes open the office door and looks around. Under the dim light, the desk is cluttered with various documents and personal items...
 
 
 
+[Item]
+- A set of keys :In a desk drawer, one labeled “Rooftop”. - Memory Increase 7% & **Backpack**
+
+- A disciplinary record sheet : Most of the records inside show the teacher changing Ichina's infractions into warnings.  
 
 
+>**I**: It turns out Ichina really has been bullying classmates, and it looks like the teachers have indeed been covering for her all along.
 
+**[hideout]**  
+... Suddenly, the sound of a doorknob turning interrupts my thoughts. I urgently look for a hiding spot...
+
+>**I**: sh**t! Quick, find somewhare to hide! The teacher is back!
+
+*Action prompt: Choose a hiding spot within 5 seconds to avoid being discovered.*
+
+
+- **Closet** (Successfully hidden, not discovered)
+- **Under the desk**  
+ ...
