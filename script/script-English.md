@@ -187,7 +187,7 @@ ___
 
 **A** : "I'll wait here for your news. If you find something, or need help, just tell me."
 
-### The teachers' office###
+### The teachers' office ###
 
 ...You carefully pushes open the office door and looks around. Under the dim light, the desk is cluttered with various documents and personal items...
 
@@ -206,9 +206,43 @@ ___
 
 >**I**: sh**t! Quick, find somewhare to hide! The teacher is back!
 
-*Action prompt: Choose a hiding spot within 5 seconds to avoid being discovered.*
+  *Action prompt: Choose a hiding spot within 5 seconds to avoid being discovered.*
 
 
 - **Closet** (Successfully hidden, not discovered)
-- **Under the desk**  
- ...
+- **Under the desk**: (...He should see you, but it's as if he can't...)
+>**I**：Can he not see me? Why? He walks right past me, oblivious to my presence.
+
+**The teacher turns off the lights and leaves the office.**
+
+*Action prompt: Quickly head to the rooftop with the key while staying alert.*
+
+### Rooftop ###
+
+...The rooftop is very old, with some tiles broken or loose. It hasn't been cleaned for a long time, with leaves, cigarette butts, and trash everywhere. In the corner, some forgotten school supplies like old chairs and broken equipment are swaying gently in the wind, making creaking sounds...
+
+
+[Item]  
+- A newspaper :(Blowing in the corner of the rooftop.)
+*Campus Tragedy: Suicide Highlights Potential Bullying Issues*
+
+Local News — Earlier this week, a tragic suicide occurred at a well-known high school in the city. A female student ended her young life by overdosing on sleeping pills on campus. It is reported that the girl was a current student at the school, described by friends as an introverted and academically excellent student who seemed to struggle with adapting to school life.
+
+After the incident, rumors about the girl possibly being bullied for a long time spread widely among the students. Some anonymous classmates revealed that the girl might have been targeted because of her appearance and personality traits. They described her as someone who often wandered alone during breaks, rarely interacting with other students.
+
+In a statement, the school expressed deep sorrow and shock over the incident. They have initiated an internal investigation and are cooperating with the police to fully understand the circumstances leading up to the tragedy. The school emphasized their commitment to providing a safe and supportive learning environment and their zero-tolerance policy towards any form of bullying.
+
+Furthermore, the school has contacted professional counselors to provide necessary psychological support services to all students, especially those affected by this incident.
+
+Police stated that the investigation is ongoing and, given the involvement of minors, further details and information will be strictly confidential to respect the privacy of the victim and their family.
+
+The incident calls for society to pay more attention to the mental health of teenagers and strengthen the prevention and intervention of school bullying. This event reminds us again of the importance of focusing on students' psychological well-being and creating a respectful and understanding school environment.
+
+Reported on October 3, 2023
+
+---
+
+
+>**I**: Is this my fate? Suicide... because of bullying? But I... why can't I remember? Did I really go through all this pain and then choose to end my life?
+
+
