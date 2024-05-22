@@ -223,9 +223,9 @@ ___
 
 
 [Item]  
-- A newspaper :(Blowing in the corner of the rooftop.)
-*Campus Tragedy: Suicide Highlights Potential Bullying Issues*
+- A newspaper :(Blowing in the corner of the rooftop.)  
 
+*Campus Tragedy: Suicide Highlights Potential Bullying Issues*  
 Local News — Earlier this week, a tragic suicide occurred at a well-known high school in the city. A female student ended her young life by overdosing on sleeping pills on campus. It is reported that the girl was a current student at the school, described by friends as an introverted and academically excellent student who seemed to struggle with adapting to school life.
 
 After the incident, rumors about the girl possibly being bullied for a long time spread widely among the students. Some anonymous classmates revealed that the girl might have been targeted because of her appearance and personality traits. They described her as someone who often wandered alone during breaks, rarely interacting with other students.
