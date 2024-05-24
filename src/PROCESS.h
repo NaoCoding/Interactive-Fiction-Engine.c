@@ -60,8 +60,8 @@ void PROCESS_onClickElement(char * id, char * target){
     fwrite("document.getElementById(\"",25,1,fnjs);
      fwrite(id,strlen(id),1,fnjs);
     fwrite("\").onclick=",11,1,fnjs);
-    fwrite("function() ",11,1,fnjs);
-    fwrite("{subsceneonclick(\"",18,1,fnjs);
+    fwrite("async function() ",17,1,fnjs);
+    fwrite("{await subsceneonclick(\"",24,1,fnjs);
     fwrite(target,strlen(target),1,fnjs);
     fwrite("\")}\n",4,1,fnjs);
     

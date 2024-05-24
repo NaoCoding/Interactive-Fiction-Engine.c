@@ -1,6 +1,0 @@
-document.getElementById("DIALOG_BOX").style.display="none"
-document.getElementById("DIALOG_BOX_BG").style.display="none"
-document.getElementById("DIALOG_BOX_SPEAKER").style.display="none"
-document.getElementById("DIALOG_BOX_CONTENT").style.display="none"
-document.getElementById("Mancenormal_stand").style.display="none"
-document.getElementById("ManceMOVINGIMG").style.display="block"

@@ -5,6 +5,8 @@ var change_sceneTargetFn = ["",""]
 var control_movingAnimation = []
 var control_standingAnimation = []
 var lastcontrol_move = 0
+var dialog_word = []
+var dialogNow = 0
 
 async function screenfadeIn(tt){
 
@@ -79,19 +81,39 @@ async function PROCESS_playerControlFunction2(){
     lastcontrol_move = control_move}
 
 async function PROCESS_contentAppearAnimation(a,b,c){
-    var fade = document.getElementById(a);
-    //await new Promise(r => setTimeout(r,800))
-    fade.innerHTML = ""
-    var tic = 0
-    var q = setInterval(() => {
-        fade.innerHTML += b[0];
-        if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60) tic = 1
-        if(tic == 1 && b[0] == " "){
-            fade.innerHTML += '<br>'
-            tic  = 0}
-        b = b.substring(1);
-        if(b.length == 0) clearInterval(q)
-    }, c);}
+
+    while(dialogNow == 1) await new Promise(function (resolve) {
+        setTimeout(resolve, 5);
+    });
+
+    await new Promise((resolve) =>{
+        var fade = document.getElementById(a);
+        dialogNow = 1
+        fade.innerHTML = ""
+        var tic = 0
+        var q = setInterval(() => {
+            fade.innerHTML += b[0];
+            if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60) tic = 1
+            if(tic == 1 && b[0] == " "){
+                fade.innerHTML += '<br>'
+                tic  = 0}
+            b = b.substring(1);
+            if(b.length == 0) clearInterval(q)
+        }, c);
+
+        function skip() {
+            document.removeEventListener("click", skip);
+            clearInterval(q);
+            a.innerHTML += b;
+            resolve();
+        }
+
+        document.addEventListener("click", skip);
+
+    })
+    dialogNow = 0
+
+}
 
 function PROCESS_characterMovingAnimation(a,b,c,d,e,f){
     var qs = document.getElementById(a);
