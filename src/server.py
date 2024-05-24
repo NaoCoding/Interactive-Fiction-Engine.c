@@ -29,8 +29,8 @@ class Server(BaseHTTPRequestHandler):
             cmd = self.path.split("/")[-1]
             self.end_headers()
             
-            if "new_game" in cmd:
-                cmd = cmd.split("_")
+            if "new?game" in cmd:
+                cmd = cmd.split("?")
                 out = check_output(["./api","new_game",cmd[-1]])
                 if(cmd[-1] == "createFile"):
                     self.wfile.write(out)
@@ -38,19 +38,19 @@ class Server(BaseHTTPRequestHandler):
                     file = open("./output/" + out.decode(),"rb" ).read()
                     self.wfile.write(file)
             
-            elif "start_game" in cmd:
-                cmd = cmd.split("_")
+            elif "start?game" in cmd:
+                cmd = cmd.split("?")
                 out = check_output(["./api","change_scene",cmd[-2],cmd[-1]])
                 file = open("./output/" + out.decode(),"rb" ).read()
                 self.wfile.write(file)
             
-            elif "sub_game" in cmd:
-                cmd = cmd.split("_")
+            elif "sub?game" in cmd:
+                cmd = cmd.split("?")
                 out = check_output(["./api","change_subscene",cmd[-2],cmd[-1]])
                 file = open("./output/" + out.decode(),"rb" ).read()
                 self.wfile.write(file)
-            elif "close_subgame" in cmd:
-                cmd = cmd.split("_")
+            elif "close?subgame" in cmd:
+                cmd = cmd.split("?")
                 out = check_output(["./api","closesubscene",cmd[-2],cmd[-1]])
                 file = open("./output/" + out.decode(),"rb" ).read()
                 self.wfile.write(file)

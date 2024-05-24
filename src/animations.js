@@ -82,11 +82,13 @@ async function PROCESS_contentAppearAnimation(a,b,c){
     var fade = document.getElementById(a);
     //await new Promise(r => setTimeout(r,800))
     fade.innerHTML = ""
-
+    var tic = 0
     var q = setInterval(() => {
         fade.innerHTML += b[0];
-        if(fade.innerHTML.length%60 == 0){
-            fade.innerHTML += '/n'}
+        if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60) tic = 1
+        if(tic == 1 && b[0] == " "){
+            fade.innerHTML += '<br>'
+            tic  = 0}
         b = b.substring(1);
         if(b.length == 0) clearInterval(q)
     }, c);}

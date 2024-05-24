@@ -25,7 +25,7 @@ function load_save(a){
 function new_save(){
 
     $.ajax({
-        url:"command/new_game_createFile",
+        url:"command/new?game?createFile",
         method:"GET",
 
         success:function(res){
@@ -35,7 +35,7 @@ function new_save(){
     })
 
     $.ajax({
-        url:"command/new_game_html",
+        url:"command/new?game?html",
         method:"GET",
 
         success:function(res){
@@ -45,7 +45,7 @@ function new_save(){
     })
 
     $.ajax({
-        url:"command/new_game_js",
+        url:"command/new?game?js",
         method:"GET",
 
         success:function(res){
@@ -61,7 +61,7 @@ function subscene_send(){
     
 
     $.ajax({
-        url:"command/sub_game_html_" + subscene_toOpen,
+        url:"command/sub?game?html?" + subscene_toOpen,
         method:"GET",
 
         success:function(res){
@@ -72,7 +72,7 @@ function subscene_send(){
     )
     
     $.ajax({
-        url:"command/sub_game_js_" + subscene_toOpen,
+        url:"command/sub?game?js?" + subscene_toOpen,
         method:"GET",
 
         success:function(res){
@@ -87,7 +87,7 @@ function subscene_send(){
 function subsceneclose(){
     
     $.ajax({
-        url:"command/close_subgame_html_" + subscene_toOpen,
+        url:"command/close?subgame?html?" + subscene_toOpen,
         method:"GET",
 
         success:function(res){
@@ -98,7 +98,7 @@ function subsceneclose(){
     )
     
     $.ajax({
-        url:"command/close_subgame_js_" + subscene_toOpen,
+        url:"command/close?subgame?js?" + subscene_toOpen,
         method:"GET",
 
         success:function(res){
@@ -116,7 +116,7 @@ function scene_send(scene){
     
 
     $.ajax({
-        url:"command/start_game_html_" + scene.toString(),
+        url:"command/start?game?html?" + scene.toString(),
         method:"GET",
 
         success:function(res){
@@ -127,7 +127,7 @@ function scene_send(scene){
     )
     
     $.ajax({
-        url:"command/start_game_js_" + scene.toString(),
+        url:"command/start?game?js?" + scene.toString(),
         method:"GET",
 
         success:function(res){
@@ -140,7 +140,7 @@ function scene_send(scene){
 
 function character_move_send(a){
     $.ajax({
-        url:"command/character_move_" + parseFloat(a.style.left).toString() + "_" +  parseFloat(a.style.top).toString(),
+        url:"command/character?move?" + parseFloat(a.style.left).toString() + "?" +  parseFloat(a.style.top).toString(),
         method:"GET",
 
         success:function(res){

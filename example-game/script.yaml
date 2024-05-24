@@ -99,7 +99,7 @@ object.create:bulletin1
 object.style:bulletin1,zIndex,3
 object.place:bulletin1,"10%","26%","21.6%","25%"
 object.src:bulletin1,"images/scene01/bulletin1.png"
-object.click.subscene_open:bulletin1,subscene1
+object.click.subscene_open:bulletin1,subscenebulletin_notice1
 
 object.create:bulletin2
 object.style:bulletin2,zIndex,3
@@ -112,20 +112,23 @@ object.style:door_button,zIndex,3
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
 
-subscene.1
+subscene.bulletin_notice1
 
 dialogBox.show
-dialogBox.content.set:"Hello world"
+dialogBox.content.set:"Attention All Students and Staff :"
 dialogBox.speaker.set:"Bulletin"
 character.Mance.moving_hide
-dialogBox.click.subscene_open.subscene2
+dialogBox.click.subscene_open.subscenebulletin_notice2
 
-subscene.2
-dialogBox.speaker.set:"Bulletin"
-dialogBox.content.set:"Today is a good day"
-dialogBox.click.subscene_close.2
+subscene.bulletin_notice2
+dialogBox.content.set:"Recent inspections have identified areas in need of repair to ensure the structural integrity of the facility. "
+dialogBox.click.subscene_open.subscenebulletin_notice3
 
-close_subscene.2
+subscene.bulletin_notice3
+dialogBox.content.set:"Due to safety concerns, the school rooftop is closed. "
+dialogBox.click.subscene_close.subscenebulletin_notice3
+
+close_subscene.bulletin_notice3
 
 dialogBox.hide
 character.Mance.hide:normal_stand
