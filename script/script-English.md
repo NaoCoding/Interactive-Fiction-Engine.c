@@ -8,7 +8,7 @@
 
 [option]
 - Listen to what they're talking about.
->**Girl A**: (scoffing) Have you seen the new girl, [Bullied Protagonist]? It’s obvious her family can barely afford her schooling; just look at her outdated clothes.  
+>**Girl A**: (scoffing) Have you seen the new girl? It’s obvious her family can barely afford her schooling; just look at her outdated clothes.  
 **Girl B**: (dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?  
 **Girl A**: Exactly, she's always lurking by herself, like a shadow. It’s creepy. Probably too embarrassed to let anyone find out about her home situation.  
 **Girl B**: (snickering) I guess it’s tough being her, but isn’t she just too standoffish? I tried to chat with her once, and she barely gave me the time of day.  
@@ -163,9 +163,86 @@ If option 3 is chosen:
 **Approach the Sink**  
 ...You stares at your reflection in the mirror, but something feels off. You reflection seems blurry, as if a thin mist is lingering behind the glass. You reaches out to touch the mirror, but your fingers appear translucent, like wisps of smoke...
 
+>**I** : What's happening?... Why is it so blurry?   
+
+
+...You try to wipe the mist from the mirror, but the image remains hazy, unable to clearly reflect your face. Your eyes grow fearful and confused...  
+
+
+>**I** : Could it be… am I really…?  
+
+
+___
+>**A** : (after a moment of thought) "What you just said reminded me... I often saw our teacher with cigarettes, he seemed to be heading to the rooftop to smoke."
+
+**I** : (eagerly) "Really? Do you think the teacher might have a key to the rooftop?"
+
+**A** : "I'm not sure, but I've seen them with some keys heading that way. our teacher usually don’t let students notice these things, but I’ve caught glimpses."
+
+**I** : (hope reignited) "What should we do then? Do you think we can find the key?"
+
+**A** : (nodding) "It might be in the teachers' office. We could find some clues there."
+
+**I** : (determined) "Alright, I have to try. If there’s anything there, it might help me understand what really happened."
+
+**A** : "I'll wait here for your news. If you find something, or need help, just tell me."
+
+### The teachers' office ###
+
+...You carefully pushes open the office door and looks around. Under the dim light, the desk is cluttered with various documents and personal items...
 
 
 
+[Item]
+- A set of keys :In a desk drawer, one labeled “Rooftop”. - Memory Increase 7% & **Backpack**
 
+- A disciplinary record sheet : Most of the records inside show the teacher changing Ichina's infractions into warnings.  
+
+
+>**I**: It turns out Ichina really has been bullying classmates, and it looks like the teachers have indeed been covering for her all along.
+
+**[hideout]**  
+... Suddenly, the sound of a doorknob turning interrupts my thoughts. I urgently look for a hiding spot...
+
+>**I**: sh**t! Quick, find somewhare to hide! The teacher is back!
+
+  *Action prompt: Choose a hiding spot within 5 seconds to avoid being discovered.*
+
+
+- **Closet** (Successfully hidden, not discovered)
+- **Under the desk**: (...He should see you, but it's as if he can't...)
+>**I**：Can he not see me? Why? He walks right past me, oblivious to my presence.
+
+**The teacher turns off the lights and leaves the office.**
+
+*Action prompt: Quickly head to the rooftop with the key while staying alert.*
+
+### Rooftop ###
+
+...The rooftop is very old, with some tiles broken or loose. It hasn't been cleaned for a long time, with leaves, cigarette butts, and trash everywhere. In the corner, some forgotten school supplies like old chairs and broken equipment are swaying gently in the wind, making creaking sounds...
+
+
+[Item]  
+- A newspaper :(Blowing in the corner of the rooftop.)  
+
+*Campus Tragedy: Suicide Highlights Potential Bullying Issues*  
+Local News — Earlier this week, a tragic suicide occurred at a well-known high school in the city. A female student ended her young life by overdosing on sleeping pills on campus. It is reported that the girl was a current student at the school, described by friends as an introverted and academically excellent student who seemed to struggle with adapting to school life.
+
+After the incident, rumors about the girl possibly being bullied for a long time spread widely among the students. Some anonymous classmates revealed that the girl might have been targeted because of her appearance and personality traits. They described her as someone who often wandered alone during breaks, rarely interacting with other students.
+
+In a statement, the school expressed deep sorrow and shock over the incident. They have initiated an internal investigation and are cooperating with the police to fully understand the circumstances leading up to the tragedy. The school emphasized their commitment to providing a safe and supportive learning environment and their zero-tolerance policy towards any form of bullying.
+
+Furthermore, the school has contacted professional counselors to provide necessary psychological support services to all students, especially those affected by this incident.
+
+Police stated that the investigation is ongoing and, given the involvement of minors, further details and information will be strictly confidential to respect the privacy of the victim and their family.
+
+The incident calls for society to pay more attention to the mental health of teenagers and strengthen the prevention and intervention of school bullying. This event reminds us again of the importance of focusing on students' psychological well-being and creating a respectful and understanding school environment.
+
+Reported on October 3, 2023
+
+---
+
+
+>**I**: Is this my fate? Suicide... because of bullying? But I... why can't I remember? Did I really go through all this pain and then choose to end my life?
 
 
