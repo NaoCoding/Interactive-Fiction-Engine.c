@@ -5,6 +5,12 @@ function subsceneonclick(a){
 
 }
 
+function sceneonclick(a){
+
+    scene_send(a);
+
+}
+
 function load_save(a){
 
     save_name = a
@@ -136,6 +142,8 @@ function scene_send(scene){
     }
     )
 }
+
+
 
 
 function character_move_send(a){

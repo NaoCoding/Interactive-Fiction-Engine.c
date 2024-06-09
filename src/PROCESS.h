@@ -29,9 +29,49 @@ void PROCESS_freeAll();
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
 void PROCESS_onClickCloseElement(char * id, char * target);
+void PROCESS_onClickBodyElement(char * id, char * target);
+void PROCESS_onClickBodyCloseElement(char * id, char * target);
+void PROCESS_onClickhideElement(char * obj,char * id,int mode);
 void PROCESS_ModifyDialogContent(char * id, char * target);
 void PROCESS_writeInFadeIn();
 
+
+void PROCESS_onClickhideElement(char * obj,char * id,int mode){
+
+    if(!mode){
+        fwrite(obj,strlen(obj),1,fnjs);
+        fwrite("onclickHideEle = [\"",19,1,fnjs);
+        fwrite(id,strlen(id),1,fnjs);
+        fwrite("\"]\n",3,1,fnjs);
+
+        fwrite("document.getElementById(\"",25,1,fnjs);
+        fwrite(obj,strlen(obj),1,fnjs);
+        fwrite("\").onclick=function(){\n",23,1,fnjs);
+        fwrite("for(var i=0;i<",14,1,fnjs);
+        fwrite(obj,strlen(obj),1,fnjs);
+        fwrite("onclickHideEle.length",21,1,fnjs);
+        fwrite(";i++){\n",7,1,fnjs);
+        fwrite("document.getElementById(",24,1,fnjs);
+        fwrite(obj,strlen(obj),1,fnjs);
+        fwrite("onclickHideEle[i]).style.display = \"None\"",41,1,fnjs);
+
+
+        fwrite("}}\n",3,1,fnjs);
+        
+    }
+    else{
+        fwrite(obj,strlen(obj),1,fnjs);
+        fwrite("onclickHideEle.push(\"",21,1,fnjs);
+        fwrite(id,strlen(id),1,fnjs);
+        fwrite("\")\n",3,1,fnjs);
+    }
+
+    
+
+
+    
+
+}
 
 void PROCESS_writeInFadeIn(){
     fwrite("screenfadeIn()\n",15,1,fnjs);
@@ -62,6 +102,20 @@ void PROCESS_onClickElement(char * id, char * target){
     fwrite("\").onclick=",11,1,fnjs);
     fwrite("async function() ",17,1,fnjs);
     fwrite("{await subsceneonclick(\"",24,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\")}\n",4,1,fnjs);
+    
+}
+
+
+
+void PROCESS_onClickBodyElement(char * id, char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+     fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").onclick=",11,1,fnjs);
+    fwrite("async function() ",17,1,fnjs);
+    fwrite("{await scene_send(\"",19,1,fnjs);
     fwrite(target,strlen(target),1,fnjs);
     fwrite("\")}\n",4,1,fnjs);
     

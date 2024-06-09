@@ -284,8 +284,18 @@ void SCRIPT_ANALYZE(){
             else if(!strcmp(para[2],"subscene_close")){
                 PROCESS_onClickCloseElement("DIALOG_BOX_CONTENT",para[3]);
             }
-            else if(!strcmp(para[2],"dialog_next")){
+
+            else if(!strcmp(para[2],"scene_open")){
+                PROCESS_onClickBodyElement("DIALOG_BOX_CONTENT",para[3]);
+            }
+            /*else if(!strcmp(para[2],"dialog_next")){
                 PROCESS_ModifyDialogContent("DIALOG_BOX_CONTENT",para[3]);
+            }*/
+            else if(!strcmp(para[2],"close_dialogBox")){
+                PROCESS_onClickhideElement("DIALOG_BOX_CONTENT","DIALOG_BOX",0);
+                PROCESS_onClickhideElement("DIALOG_BOX_CONTENT","DIALOG_BOX_BG",1);
+                PROCESS_onClickhideElement("DIALOG_BOX_CONTENT","DIALOG_BOX_SPEAKER",1);
+                PROCESS_onClickhideElement("DIALOG_BOX_CONTENT","DIALOG_BOX_CONTENT",1);
             }
         }
 
@@ -305,6 +315,7 @@ void SCRIPT_READ(){
     while(fgets(in,1025,script)){
 
         FN_fgetsDelEndl(in);
+        if(in[0] == '#') continue;
         //printf("%s\n",in);
         if(strlen(in)) SCRIPT_ANALYZE();
 

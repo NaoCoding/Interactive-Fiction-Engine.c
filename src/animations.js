@@ -101,10 +101,10 @@ async function PROCESS_contentAppearAnimation(a,b,c){
             if(b.length == 0) clearInterval(q)
         }, c);
 
-        function skip() {
+        async function skip() {
             document.removeEventListener("click", skip);
             clearInterval(q);
-            a.innerHTML += b;
+            fade.innerHTML += b;
             resolve();
         }
 
