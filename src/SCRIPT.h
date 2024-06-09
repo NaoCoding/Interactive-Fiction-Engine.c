@@ -174,6 +174,9 @@ void SCRIPT_ANALYZE(){
             }
         }
     }
+    else if(!strcmp(para[0],"option")){
+        
+    }
 
     else if(!strcmp(para[0],"first_scene")){
         fwrite("scene_send(",11,1,fnjs);

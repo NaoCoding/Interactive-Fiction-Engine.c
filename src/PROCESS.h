@@ -11,7 +11,7 @@ void PROCESS_getScript();
 
 void PROCESS_writeInHTMLHeader();
 void PROCESS_fnjsToJS();
-void PROCESS_writeInScript();
+void PROCESS_writeInScript(); // discard
 void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index);
 void PROCESS_showElement(char * id);
 void PROCESS_hideElement(char * id);

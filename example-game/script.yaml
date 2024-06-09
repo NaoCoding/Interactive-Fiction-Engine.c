@@ -1,8 +1,13 @@
+#This is the example game's script.yaml
+#To understand the example, the official document and this script may help.
 
+#setup the window's title (html title)
 window.title:"Demo Game"
+
+#Calloc the size of your character in C
 character.count:10
 
-
+#Create a character
 character.create:Mance
 
 
