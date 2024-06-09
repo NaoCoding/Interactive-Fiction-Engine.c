@@ -104,7 +104,17 @@ async function PROCESS_contentAppearAnimation(a,b,c){
         async function skip() {
             document.removeEventListener("click", skip);
             clearInterval(q);
-            fade.innerHTML += b;
+            var toBr = 0
+            for(var i=0;i<b.length;i++){
+                fade.innerHTML += b[i]
+                if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60){
+                   toBr = 1
+                }
+                if(toBr == 1 && b[i] == " "){
+                    fade.innerHTML += '<br>'
+                    toBr = 0
+                }
+            }
             resolve();
         }
 

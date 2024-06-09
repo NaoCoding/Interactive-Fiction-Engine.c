@@ -15,8 +15,10 @@ void SCRIPT_modifyCharacterStyle(int character_index, int src_index, char * attr
 
 void SCRIPT_ANALYZE(){
 
+    // parse the yaml format to Array 
     char **para = FN_splitDot(in);
 
+    // different commands
     if(!strcmp(para[0],"object")){
         if(!strcmp(para[1],"create")){
             PROCESS_createObject(FN_mergeString("OBJECT_",para[2]));

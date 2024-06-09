@@ -16,7 +16,7 @@ int main(int argc,char *argv_input_path[]){
     fnjs = fopen("./output/general.js","w+");
     script = fopen(FN_mergeString(file_folder,"script.yaml"),"r");
 
-    //printf("DEBUG_MESSAGE\n");
+    //("DEBUG_MESSAGE\n");
     PROCESS_checkScript_NULL(script);
 
     //PROCESS_playerControlFunctionWriteInFnJs();    
@@ -25,6 +25,7 @@ int main(int argc,char *argv_input_path[]){
 
     PROCESS_createDialogBox();
 
+    // parse script.yaml and transfer to lots of html and js.
     SCRIPT_READ(script,html,js,fnjs);
 
 
@@ -37,7 +38,7 @@ int main(int argc,char *argv_input_path[]){
 
     system("python3 ./src/server.py");
 
-    system("rm -r ./output");
+    //system("rm -r ./output");
 }
 
 
