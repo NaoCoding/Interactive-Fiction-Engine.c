@@ -15,7 +15,7 @@ void SCRIPT_modifyCharacterStyle(int character_index, int src_index, char * attr
 
 void SCRIPT_ANALYZE(){
 
-    // parse the yaml format to Array 
+    // parse the yaml format to Array
     char **para = FN_splitDot(in);
 
     // different commands
@@ -43,6 +43,9 @@ void SCRIPT_ANALYZE(){
         }
         else if(!strcmp(para[1],"click")){
             if(!strcmp(para[2],"subscene_open")){
+                PROCESS_onClickElement(FN_mergeString("OBJECT_",para[3]),para[4]);
+            }
+            else if(!strcmp(para[2],"scene_open")){
                 PROCESS_onClickElement(FN_mergeString("OBJECT_",para[3]),para[4]);
             }
         }
@@ -142,6 +145,13 @@ void SCRIPT_ANALYZE(){
                     else if(!strcmp(para[2],"moving")){
                         character[i].moving_src[atoi(para[3])-1] = calloc(strlen(para[4])+1,sizeof(char));
                         strcpy(character[i].moving_src[atoi(para[3])-1],para[4]);
+                    }
+
+                    if(!strcmp(para[2],"subscene_open")){
+                        PROCESS_onClickElement(FN_mergeString(character[i].name,"MOVINGIMG"),para[3]);
+                    }
+                    else if(!strcmp(para[2],"subscene_close")){
+                        PROCESS_onClickCloseElement(FN_mergeString(character[i].name,"MOVINGIMG"),para[3]);
                     }
 
                     else if(!strcmp(para[2],"moving_place")){

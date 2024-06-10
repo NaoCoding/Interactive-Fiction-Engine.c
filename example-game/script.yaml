@@ -77,13 +77,58 @@ scene.1
 dialogBox.show
 dialogBox.content.set:"Why I am here? I can't remember anything. ouch...why there are lots of scratches on my arms and knees..."
 dialogBox.speaker.set:""
-dialogBox.click.scene_open:0
+dialogBox.click.scene_open:openingtalk
 
 
-scene.0
+scene.openingtalk
 #character.Mance.place:moving,"auto","auto","30%","30%"
+background:"images/scene01/scene01.png"
+
+#opening talk
+character.Mance.moving_hide
+
+dialogBox.show
+dialogBox.content.set:"(scoffing) Have you seen the new girl? It’s obvious that her family can barely afford the money; just look at her outdated clothes."
+dialogBox.speaker.set:"Girl A"
+dialogBox.click.subscene_open.subsceneopening1
+
+subscene.opening1
+dialogBox.content.set:"(dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?"
+dialogBox.speaker.set:"Girl B"
+dialogBox.click.subscene_open.subsceneopening2
+
+subscene.opening2
+dialogBox.content.set:"Exactly, she's always lurking by herself, like a shadow. It’s creepy. Probably too embarrassed to let anyone find out about her home situation."
+dialogBox.speaker.set:"Girl A"
+dialogBox.click.subscene_open.subsceneopening3
+
+subscene.opening3
+dialogBox.content.set:"(snickering) I guess it’s tough being her, but isn’t she just too standoffish? I tried to chat with her once, and she barely gave me the time of day."
+dialogBox.speaker.set:"Girl B"
+dialogBox.click.subscene_open.subsceneopening4
+
+subscene.opening4
+dialogBox.content.set:"That’s just how she is. I heard from Cathy she was a loner at her old school too. Maybe that’s just her personality."
+dialogBox.speaker.set:"Girl A"
+dialogBox.click.subscene_open.subsceneopening5
+
+subscene.opening5
+dialogBox.content.set:"Some people are just like that, huh? But honestly, I’m curious about what her deal is. Do you think we should even bother trying to know her better?"
+dialogBox.speaker.set:"Girl B"
+dialogBox.click.subscene_open.subsceneopening6
+
+subscene.opening6
+dialogBox.content.set:"Maybe, but honestly, why bother? You know how it is with people like that, always making things complicated when you try to get a little friendly."
+dialogBox.speaker.set:"Girl A"
+dialogBox.click.scene_open.hallway
+
+
+scene.hallway
+character.Mance.moving_show
+
 dialogBox.hide
 animation.fadeIn
+
 
 character.create:Moon
 character.create:Amy
@@ -101,10 +146,12 @@ character.Mance.moving_style:zIndex,10
 character.Mance.control.start
 
 character.Moon.moving_show
+character.Moon.moving_style:zIndex,"20"
 character.Moon.moveAnimation:1,2
 character.Moon.moving_place:"10%","40%","87%","36%"
 
 character.Amy.moving_show
+character.Amy.moving_style:zIndex,"20"
 character.Amy.moveAnimation:1,2
 character.Amy.moving_style:transform,"scaleX(-1)"
 character.Amy.moving_place:"10%","40%","80%","33%"
@@ -125,16 +172,55 @@ object.create:bulletin2
 object.style:bulletin2,zIndex,3
 object.place:bulletin2,"8.5%","23%","42%","25%"
 object.src:bulletin2,"images/scene01/bulletin2.png"
+object.click.subscene_open:bulletin2,subscenebulletin_egg1
 
 
 object.create:door_button
 object.style:door_button,zIndex,3
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
+object.click.scene_open:door_button,sceneclassroom
+
+character.Moon.subscene_open.subscenegirlhallwaytalk1
+character.Amy.subscene_open.subscenegirlhallwaytalk1
+
+character.Moon.moving_show
+character.Amy.moving_show
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
 
 
+subscene.girlhallwaytalk1
+character.Mance.moving_hide
+dialogBox.show
+dialogBox.content.set:"Let's talk about 分"
+dialogBox.speaker.set:"Girl A"
+dialogBox.click.subscene_open.subscenegirlhallwaytalk2
+
+subscene.girlhallwaytalk2
+dialogBox.content.set:"分分"
+dialogBox.speaker.set:"Girl B"
+dialogBox.click.subscene_close.girlhallwaytalk2
+
+close_subscene.girlhallwaytalk2
+dialogBox.hide
+character.Mance.moving_show
 
 
+subscene.bulletin_egg1
+
+dialogBox.show
+dialogBox.speaker.set:"Bulletin"
+character.Mance.moving_hide
+dialogBox.content.set:"Congratuations!!! Class 41047, student Howard09 won the coding competition."
+dialogBox.click.subscene_close.subscenebulletin_bulletin_egg1
+
+close_subscene.bulletin_egg1
+
+dialogBox.hide
+character.Mance.hide:normal_stand
+character.Mance.moving_show
 
 subscene.bulletin_notice1
 
@@ -158,3 +244,13 @@ dialogBox.hide
 character.Mance.hide:normal_stand
 character.Mance.moving_show
 
+
+scene.classroom
+
+character.Moon.moving_hide
+character.Amy.moving_hide
+object.hide:bulletin1
+object.hide:bulletin2
+object.hide:door_button
+character.Mance.moving_place:"10%","40%","3%","33%"
+background:"images/classroom/background.png"

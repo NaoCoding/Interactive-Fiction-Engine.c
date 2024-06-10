@@ -9,6 +9,7 @@ function sceneonclick(a){
 
     scene_send(a);
 
+
 }
 
 function load_save(a){
@@ -141,6 +142,8 @@ function scene_send(scene){
         },
     }
     )
+    document.getElementById("HTML_BODY").style.zIndex = 1;
+    document.getElementById("HTML_SUB").style.zIndex = -1;
 }
 
 

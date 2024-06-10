@@ -17,7 +17,7 @@ async function screenfadeIn(tt){
         if(time == 50)clearInterval(q);
         s.style.opacity = (parseFloat(s.style.opacity) + 0.02).toString()
         time += 1
-    },40)
+    },80)
 
 }
 
@@ -93,7 +93,7 @@ async function PROCESS_contentAppearAnimation(a,b,c){
         var tic = 0
         var q = setInterval(() => {
             fade.innerHTML += b[0];
-            if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60) tic = 1
+            if(fade.innerHTML.length %80 == 0 && fade.innerHTML.length>=80) tic = 1
             if(tic == 1 && b[0] == " "){
                 fade.innerHTML += '<br>'
                 tic  = 0}
@@ -107,7 +107,7 @@ async function PROCESS_contentAppearAnimation(a,b,c){
             var toBr = 0
             for(var i=0;i<b.length;i++){
                 fade.innerHTML += b[i]
-                if(fade.innerHTML.length %60 == 0 && fade.innerHTML.length>=60){
+                if(fade.innerHTML.length %80 == 0 && fade.innerHTML.length>=80){
                    toBr = 1
                 }
                 if(toBr == 1 && b[i] == " "){
