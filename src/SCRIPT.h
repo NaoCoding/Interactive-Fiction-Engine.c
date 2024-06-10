@@ -2,33 +2,88 @@
 #define SCRIPT_H_
 
 #include "std.h"
+//std.h is for all the neccessary include file to make this work
+//in order to make the engine work and be compiled successfully, include std.h is neccessary.
+
 #include "SMALLFUNCTION.h"
+// some small functions, functions from FN
+// Generally, those functions in FN are usually useful and being the core of the engine.
+// such as some small functions to parse the script
+
 #include "GLOBALVARIABLE.h"
+// store global variable and structures
+// characters, objects, storing all needs structure for script.
+
 #include "PROCESS.h"
+// process all command parsed from SCRIPT.h
 
 void SCRIPT_READ();
+// parse script.yaml and transfer to lots of html and js.
+// "not" the core system of the engine
+// all it do is pre-parse and transfer the parameters to SCRIPT_ANALYZE()
+// the core function is SCRIPT_ANALYZE()
+
+
 void SCRIPT_ANALYZE();
+// parse script.yaml and transfer to lots of html and js.
+// the real core function of the engine
+// to check or modify the engine, most of the time just check this function
+// to add functions or to change format, check this functions either.
+
+
 void SCRIPT_window_title();
+// setup the window title of your game/script
+// just fwrite the window title into your html/js
+
 void SCRIPT_showCharacterImage(int character_index, int src_index);
+// show the character image(not animation)
+// must defined the character and make sure the character have the src
+// if not following the rule, segmentation fault may appear since it cannot find the target.
+
+
 void SCRIPT_hideCharacterImage(int character_index, int src_index);
+// hide the character image(not animation)
+// must defined the character and make sure the character have the src
+// if not following the rule, segmentation fault may appear since it cannot find the target.
+
 void SCRIPT_modifyCharacterStyle(int character_index, int src_index, char * attr, char * content);
+// to modify specific image CSS style.
+// must defined the character and make sure the character have the src
+// if not following the rule, segmentation fault may appear since it cannot find the target.
 
 void SCRIPT_ANALYZE(){
 
-    // parse the yaml format to Array
     char **para = FN_splitDot(in);
+    // parse the yaml format to Array
+    // it support parsing : / . / "," / ,
+    // the comma (,) writing inside "" may count as a character, will not be parse to different element
+    // FN_splitDot() is an important function, which parse all the commands in script.yaml into arrays
+    // without this function, the whole system will not work
 
-    // different commands
     if(!strcmp(para[0],"object")){
+        //objects is an important part of engine 
+        //items / doors / buttons(not options) /diary
+        //anything except characters you want to display at screen
+        //anything except characters you want to be able to click at screen
+
         if(!strcmp(para[1],"create")){
             PROCESS_createObject(FN_mergeString("OBJECT_",para[2]));
         }
+        // create a new object named [name]
+        // must be called before other commands relative to object
+        // as you can see, the objects created will create html ID with OBJECT_ prefix
+        // this is to make sure it will not be conflicted to other html ID set from user
+
+
         else if(!strcmp(para[1],"place")){
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"width",para[3]);
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"height",para[4]);
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"left",para[5]);
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),"top",para[6]);
         }
+        // to modify the object's width/height/left/top CSS style
+        // this commands is just for convinients in order to less using style
+
         else if(!strcmp(para[1],"style")){
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),para[3],para[4]);
         }
@@ -50,6 +105,7 @@ void SCRIPT_ANALYZE(){
             }
         }
     }
+
 
     else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
     else if(!strcmp(para[0],"subscenebackground"))PROCESS_modifySrcElement("HTML_SUB",para[1]);

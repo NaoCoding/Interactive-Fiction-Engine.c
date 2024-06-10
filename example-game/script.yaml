@@ -49,7 +49,7 @@ character.Mance.moving.17:"images/moving_images/moving7.png"
 character.Mance.moving.18:"images/moving_images/moving2.png"
 
 
-character.Mance.src:normal_stand,"images/character02.png"
+character.Mance.src:normal_stand,"images/character01.png"
 character.Mance.place:normal_stand,"auto","80%","10%","0%"
 
 character.Mance.control.movingAnimation:11,18
@@ -74,6 +74,7 @@ option.hide:4
 first_scene:1
 
 scene.1
+character.Mance.show:normal_stand
 dialogBox.show
 dialogBox.content.set:"Why I am here? I can't remember anything. ouch...why there are lots of scratches on my arms and knees..."
 dialogBox.speaker.set:""
@@ -82,6 +83,7 @@ dialogBox.click.scene_open:openingtalk
 
 scene.openingtalk
 #character.Mance.place:moving,"auto","auto","30%","30%"
+character.Mance.hide:normal_stand
 background:"images/scene01/scene01.png"
 
 #opening talk
@@ -120,10 +122,10 @@ dialogBox.click.subscene_open.subsceneopening6
 subscene.opening6
 dialogBox.content.set:"Maybe, but honestly, why bother? You know how it is with people like that, always making things complicated when you try to get a little friendly."
 dialogBox.speaker.set:"Girl A"
-dialogBox.click.scene_open.hallway
+dialogBox.click.scene_open.hallway_firsttime
 
 
-scene.hallway
+scene.hallway_firsttime
 character.Mance.moving_show
 
 dialogBox.hide
@@ -252,5 +254,5 @@ character.Amy.moving_hide
 object.hide:bulletin1
 object.hide:bulletin2
 object.hide:door_button
-character.Mance.moving_place:"10%","40%","3%","33%"
+character.Mance.moving_place:"10%","40%","86%","33%"
 background:"images/classroom/background.png"

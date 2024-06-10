@@ -7,15 +7,19 @@ var control_standingAnimation = []
 var lastcontrol_move = 0
 var dialog_word = []
 var dialogNow = 0
+var statusOn = 0
 
 async function screenfadeIn(tt){
 
-    var s = document.body
+    var s = document.getElementById("HTML_BODY")
+    var f = document.body
+    f.style.opacity = 0
     s.style.opacity = 0
     var time = 0
     var q = setInterval(() => {
         if(time == 50)clearInterval(q);
         s.style.opacity = (parseFloat(s.style.opacity) + 0.02).toString()
+        f.style.opacity = (parseFloat(f.style.opacity) + 0.02).toString()
         time += 1
     },80)
 
@@ -41,9 +45,23 @@ async function change_sceneCharacterFunction(){
 
 }
 
+async function toggleStatus(){
+
+    if(statusOn == 0){
+        statusOn = 1
+        document.getElementById("CHARACTER_STATUS").style.display = "block"
+    }
+    else{
+        statusOn = 0
+        document.getElementById("CHARACTER_STATUS").style.display = "none"
+    }
+
+}
+
 async function PROCESS_playerControlFunction(){
     var key = event.keyCode
     var p = document.getElementById(control)
+    if(key == 69) toggleStatus()
     if((key==37 || key==65) && control.length > 0){
     if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + "%"
     p.style.transform = ""
