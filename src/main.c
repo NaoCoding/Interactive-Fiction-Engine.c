@@ -1,8 +1,8 @@
-#include "std.h"
-#include "SMALLFUNCTION.h"
-#include "GLOBALVARIABLE.h"
-#include "SCRIPT.h"
-#include "PROCESS.h"
+#include "std.h" // to include all c library
+#include "SMALLFUNCTION.h" // some small functions, functions from FN
+#include "GLOBALVARIABLE.h" // store global variable and structures
+#include "SCRIPT.h" // parse script.yaml and parse script
+#include "PROCESS.h" // process all command parsed from SCRIPT.h
 
 
 int main(int argc,char *argv_input_path[]){
@@ -24,6 +24,7 @@ int main(int argc,char *argv_input_path[]){
     //PROCESS_contentAppearAnimationFunctionWriteInFnJs();
 
     PROCESS_createDialogBox();
+    PROCESS_OPTIONWriteInHTML();
 
     // parse script.yaml and transfer to lots of html and js.
     SCRIPT_READ(script,html,js,fnjs);

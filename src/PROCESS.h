@@ -9,6 +9,9 @@ void PROCESS_checkScript_NULL();
 void PROCESS_createDialogBox();
 void PROCESS_getScript();
 
+
+void PROCESS_OPTIONWriteInHTML();
+
 void PROCESS_writeInHTMLHeader();
 void PROCESS_fnjsToJS();
 void PROCESS_writeInScript(); // discard
@@ -66,11 +69,13 @@ void PROCESS_onClickhideElement(char * obj,char * id,int mode){
         fwrite("\")\n",3,1,fnjs);
     }
 
-    
+}
 
-
-    
-
+void PROCESS_OPTIONWriteInHTML(){
+    fwrite("<div id=\"OPTIONBOX1\" style=\"display:none;position:absolute;z-index:25;\"></div>\n",78,1,html);
+    fwrite("<div id=\"OPTIONBOX2\" style=\"display:none;position:absolute;z-index:25;\"></div>\n",78,1,html);
+    fwrite("<div id=\"OPTIONBOX3\" style=\"display:none;position:absolute;z-index:25;\"></div>\n",78,1,html);
+    fwrite("<div id=\"OPTIONBOX4\" style=\"display:none;position:absolute;z-index:25;\"></div>\n",78,1,html);
 }
 
 void PROCESS_writeInFadeIn(){

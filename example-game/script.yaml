@@ -55,6 +55,22 @@ character.Mance.place:normal_stand,"auto","80%","10%","0%"
 character.Mance.control.movingAnimation:11,18
 character.Mance.control.standingAnimation:1,10
 
+option.place:1,"35%","15%","10%","55%"
+option.style:1,background,"rgba(255,255,255,0.8)"
+option.hide:1
+
+option.place:2,"35%","15%","55%","55%"
+option.style:2,background,"rgba(255,255,255,0.8)"
+option.hide:2
+
+option.place:3,"35%","15%","10%","75%"
+option.style:3,background,"rgba(255,255,255,0.8)"
+option.hide:3
+
+option.place:4,"35%","15%","55%","75%"
+option.style:4,background,"rgba(255,255,255,0.8)"
+option.hide:4
+
 first_scene:1
 
 scene.1

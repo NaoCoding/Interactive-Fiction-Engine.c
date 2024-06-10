@@ -175,7 +175,24 @@ void SCRIPT_ANALYZE(){
         }
     }
     else if(!strcmp(para[0],"option")){
-        
+        if(!strcmp(para[1],"show")){
+            PROCESS_showElement(FN_mergeString("OPTIONBOX",para[2]));
+        }
+        else if(!strcmp(para[1],"hide")){
+            PROCESS_hideElement(FN_mergeString("OPTIONBOX",para[2]));
+        }
+        else if(!strcmp(para[1],"place")){
+            PROCESS_modifyStyleElement(FN_mergeString("OPTIONBOX",para[2]),"width",para[3]);
+            PROCESS_modifyStyleElement(FN_mergeString("OPTIONBOX",para[2]),"height",para[4]);
+            PROCESS_modifyStyleElement(FN_mergeString("OPTIONBOX",para[2]),"left",para[5]);
+            PROCESS_modifyStyleElement(FN_mergeString("OPTIONBOX",para[2]),"top",para[6]);
+        }
+        else if(!strcmp(para[1],"style")){
+            PROCESS_modifyStyleElement(FN_mergeString("OPTIONBOX",para[2]),para[3],para[4]);
+        }
+        else if(!strcmp(para[1],"src")){
+            PROCESS_modifySrcElement(FN_mergeString("OPTIONBOX",para[2]),para[3]);
+        }
     }
 
     else if(!strcmp(para[0],"first_scene")){

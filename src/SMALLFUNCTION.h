@@ -159,7 +159,14 @@ int FN_charInString(char * target, char token){
 char * FN_STRTOK(char * target, char token){
 
     int size = 0;
-    while(target[size]!=token && size < strlen(target))size += 1;
+    int shun = 0;
+    while(size < strlen(target)){
+        if(!shun && target[size] == token){
+            break;
+        }
+        if(target[size] == '\"')shun = shun == 1 ? 0 : 1;
+        size += 1;    
+    }
     
     char * n = calloc(size + 1,sizeof(char));
     for(int i=0;i<size;i++)n[i] = target[i];
