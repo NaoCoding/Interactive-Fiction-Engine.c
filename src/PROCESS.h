@@ -2,20 +2,54 @@
 #define PROCESS_H_
 
 #include "std.h"
+//std.h is for all the neccessary include file to make this work
+//in order to make the engine work and be compiled successfully, include std.h is neccessary.
+
 #include "GLOBALVARIABLE.h"
+// store global variable and structures
+// characters, objects, storing all needs structure for script.
+
+
 #include "SMALLFUNCTION.h"
+// some small functions, functions from FN
+// Generally, those functions in FN are usually useful and being the core of the engine.
+// such as some small functions to parse the script
+
 
 void PROCESS_checkScript_NULL();
-void PROCESS_createDialogBox();
-void PROCESS_getScript();
+// to check if your script.yaml exists or not
 
+void PROCESS_createDialogBox();
+//to write in the dialogBox into the html
+//without this function, the dialog system will not work since there is no dialogBox
+//therefore, usually this function will be run before any other function written in html and js.
+
+void PROCESS_getScript();
+//the process to read the script.yaml from specific dir.
 
 void PROCESS_OPTIONWriteInHTML();
+//write in the options button into the html
+//without this function, the option system will not work since there is no options.
+//therefore, usually this function will be run before any other function written in html and js.
 
 void PROCESS_writeInHTMLHeader();
+//write in some headers important to html
+//however, this function had been discard after the engine version 0.0.3
+//since we pre-written the html system and some neccessary html
+//therefore, this function is just for supporting older version of the engine
+
 void PROCESS_fnjsToJS();
+//this function is also being discard after the engine version 0.0.3
+//since we have changed our engine into a webserver, the function is useless and
+//not convienence now.
+//this function was mainly for writting js with different files.
+
 void PROCESS_writeInScript(); // discard
+
 void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index);
+//this function is to write in the character's image src into the html.
+//without this function, the character will not display its image.
+
 void PROCESS_showElement(char * id);
 void PROCESS_hideElement(char * id);
 void PROCESS_modifySrcElement(char * id, char * target);
@@ -31,13 +65,49 @@ void PROCESS_callocObject();
 void PROCESS_freeAll();
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
+void PROCESS_onClickScene(char * id, char *target);
+
 void PROCESS_onClickCloseElement(char * id, char * target);
 void PROCESS_onClickBodyElement(char * id, char * target);
 void PROCESS_onClickBodyCloseElement(char * id, char * target);
 void PROCESS_onClickhideElement(char * obj,char * id,int mode);
 void PROCESS_ModifyDialogContent(char * id, char * target);
 void PROCESS_writeInFadeIn();
+void PROCESS_statusNewValue(char * name);
+void PROCESS_setStatusValue(char * name , char * value);
+void PROCESS_addStatusValue(char * name , char * value);
 
+
+
+void PROCESS_onClickScene(char * id, char * target){
+
+    fwrite("document.getElementById(\"",25,1,fnjs);
+     fwrite(id,strlen(id),1,fnjs);
+    fwrite("\").onclick=",11,1,fnjs);
+    fwrite("async function() ",17,1,fnjs);
+    fwrite("{await sceneonclick(\"",21,1,fnjs);
+    fwrite(target,strlen(target),1,fnjs);
+    fwrite("\")}\n",4,1,fnjs);
+    
+}
+
+
+void PROCESS_addStatusValue(char * name , char * value){
+
+
+}
+
+void PROCESS_setStatusValue(char * name , char * value){
+    
+}
+
+void PROCESS_statusNewValue(char * name){
+
+    fwrite("PROCESS_statusNewValueSetup(",28,1,fnjs);
+    fwrite(name,strlen(name),1,fnjs);
+    fwrite(");\n",3,1,fnjs);
+
+}
 
 void PROCESS_onClickhideElement(char * obj,char * id,int mode){
 

@@ -9,6 +9,26 @@ var dialog_word = []
 var dialogNow = 0
 var statusOn = 0
 
+
+function PROCESS_statusNewValueSetup(a){
+    if(status_value.length >= 8) return;
+    status_value.push([a,0])
+    update_statusBar()
+}
+
+function update_statusBar(){
+
+    for(var i=0;i<status_value.length;i++){
+        document.getElementById("STATUS" + (i+1).toString() + "LABEL").style.display = "block"
+        document.getElementById("STATUS" + (i+1).toString()).style.display = "block"
+        document.getElementById("STATUS" + (i+1).toString() + "VALUE").style.display = "block"
+        document.getElementById("STATUS" + (i+1).toString() + "LABEL").innerHTML = status_value[i][0]
+        document.getElementById("STATUS" + (i+1).toString() + "VALUE").innerHTML = status_value[i][1]
+        document.getElementById("STATUS" + (i+1).toString() + "LINK").style.display.width = status_value + "%"
+    }
+
+}
+
 async function screenfadeIn(tt){
 
     var s = document.getElementById("HTML_BODY")

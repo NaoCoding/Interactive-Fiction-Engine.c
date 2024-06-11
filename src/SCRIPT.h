@@ -59,8 +59,59 @@ void SCRIPT_ANALYZE(){
     // the comma (,) writing inside "" may count as a character, will not be parse to different element
     // FN_splitDot() is an important function, which parse all the commands in script.yaml into arrays
     // without this function, the whole system will not work
+    // the paramenter (in) is a string for each line fgets the script.yaml
+    // char * in should be parsed by deleting the last element if it is \n
+    
+    if(!strcmp(para[0],"audio")){
+        //audio is the element to control all the audio input in script.yaml
+        //the usage is to initialize first(add) , and play and stop after you have initialize the music.
+        //if there is no stop command in script, the audio played will be looped.
 
-    if(!strcmp(para[0],"object")){
+        if(!strcmp(para[1],"add")){
+            //to setup a new audio.
+            //it will create a variable MUSIC_[name]
+            //for controling the music
+            //require two parameter, [name] and [src]
+
+
+        }
+
+    }
+
+
+    else if(!strcmp(para[0],"status")){
+        //status is the element to control the status label(E)
+        //the default setting of status is enable and without any speicific elements.
+        //status label includes inventory, character's status, and character's photos.
+
+        if(!strcmp(para[1],"photo")){
+            PROCESS_modifySrcElement("STATUS_CHARACTER_IMAGE",para[2]);
+        }
+        //setup the photo of the status panel.
+        //fwrite one line command to fnjs, change the src.
+
+
+        else if(!strcmp(para[1],"name")){
+            PROCESS_modifyInnerHTMLElement("STATUS_CHARACTER_NAME",para[2]);
+        }
+        //setup the name of the status panel
+        //fwrite one line command to fnjs, change the innerHTML
+        
+        else if(!strcmp(para[1],"value")){
+            if(!strcmp(para[2],"new")){
+                PROCESS_statusNewValue(para[3]);
+            }
+            else if(!strcmp(para[2],"set")){
+                PROCESS_setStatusValue(para[3],para[4]);
+            }
+            else if(!strcmp(para[2],"add")){
+                PROCESS_addStatusValue(para[3],para[4]);
+            }
+        }
+
+    }
+
+    else if(!strcmp(para[0],"object")){
         //objects is an important part of engine 
         //items / doors / buttons(not options) /diary
         //anything except characters you want to display at screen
@@ -101,27 +152,45 @@ void SCRIPT_ANALYZE(){
                 PROCESS_onClickElement(FN_mergeString("OBJECT_",para[3]),para[4]);
             }
             else if(!strcmp(para[2],"scene_open")){
-                PROCESS_onClickElement(FN_mergeString("OBJECT_",para[3]),para[4]);
+                PROCESS_onClickScene(FN_mergeString("OBJECT_",para[3]),para[4]);
             }
         }
     }
 
 
     else if(!strcmp(para[0],"background"))PROCESS_modifySrcElement("BACKGROUND",para[1]);
+    //to setup the background of the game/script
+    //to modify the src of BACKGROUND this element in html
+    //not neccessary if you don't want to have a background
+
     else if(!strcmp(para[0],"subscenebackground"))PROCESS_modifySrcElement("HTML_SUB",para[1]);
+    //already discard after engine version 0.0.3
+    //still can use, but our example-game discard this kind of commands
+    //this will modify the HTML_SUB elements
+    //which was used for subscene's background.
 
     else if(!strcmp(para[0],"animation")){
         if(!strcmp(para[1],"fadeIn")){
             PROCESS_writeInFadeIn();
         }
     }
+    //to make the scene have animation.
+    //the animation source code is written in animation.js
+    //there are some other animaion such as walking and moving animation for character,
+    //if interested in, check the character command below.
 
 
     else if(!strcmp(para[0],"window")){
         if(!strcmp(para[1],"title"))SCRIPT_window_title(para[2]);
     }
+    //to setup the title of the html window.
 
     else if(!strcmp(para[0],"character")){
+        //character is the most important element of the engine
+        //those CG, character moving animations, some other image for character while talking...
+        //character has a structure defined at GLOBALVARAIBLE.h
+        //careful to use, may segmentation fault with bad use method.
+
         
         if(!strcmp(para[1],"count"))character = calloc(atoi(para[2]),sizeof(GB_CHARACTER));
 
@@ -374,7 +443,7 @@ void SCRIPT_ANALYZE(){
             }
 
             else if(!strcmp(para[2],"scene_open")){
-                PROCESS_onClickBodyElement("DIALOG_BOX_CONTENT",para[3]);
+                PROCESS_onClickScene("DIALOG_BOX_CONTENT",para[3]);
             }
             /*else if(!strcmp(para[2],"dialog_next")){
                 PROCESS_ModifyDialogContent("DIALOG_BOX_CONTENT",para[3]);

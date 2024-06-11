@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "smallfunction.h": "c"
+        "smallfunction.h": "c",
+        "std.h": "c"
     }
 }

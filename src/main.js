@@ -163,4 +163,5 @@ function character_move_send(a){
 
 var save_name = ""
 var subscene_toOpen = ""
+var status_value = []
 window.onload = new_save()

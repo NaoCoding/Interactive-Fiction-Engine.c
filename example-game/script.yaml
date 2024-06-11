@@ -10,6 +10,11 @@ character.count:10
 #Create a character
 character.create:Mance
 
+status.photo:"images/character01.png"
+status.name:"Ichina"
+status.value.new:"Memory"
+
+
 
 dialogBox.background.src:"images/dialogBox.png"
 dialogBox.background.place:"100%","100%","0px","0px"
@@ -85,6 +90,7 @@ scene.openingtalk
 #character.Mance.place:moving,"auto","auto","30%","30%"
 character.Mance.hide:normal_stand
 background:"images/scene01/scene01.png"
+
 
 #opening talk
 character.Mance.moving_hide
@@ -181,7 +187,7 @@ object.create:door_button
 object.style:door_button,zIndex,3
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
-object.click.scene_open:door_button,sceneclassroom
+object.click.scene_open:door_button,classroom
 
 character.Moon.subscene_open.subscenegirlhallwaytalk1
 character.Amy.subscene_open.subscenegirlhallwaytalk1
@@ -249,10 +255,5 @@ character.Mance.moving_show
 
 scene.classroom
 
-character.Moon.moving_hide
-character.Amy.moving_hide
-object.hide:bulletin1
-object.hide:bulletin2
-object.hide:door_button
 character.Mance.moving_place:"10%","40%","86%","33%"
 background:"images/classroom/background.png"

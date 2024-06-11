@@ -4,6 +4,8 @@
         <meta charset="big-5">
         <title id="HTML_TITLE"></title>
     </head>
+
+        <script src="./third-party/p5.js" type="text/javascript"></script>
         <script src="./third-party/jquery.js"></script>
         <script src="./src/animations.js"></script>
         <script src="./src/main.js"></script>
@@ -19,10 +21,113 @@
         height: 70%; top: 15%; left: 10%; width: 80%;
         background: rgba(246, 194, 138, 1); border-radius: 1%; z-index: 500;
         position: absolute;">
-            <img id="CHARACTER_IMAGE" style="height:50%; width: 20%;position: absolute;top:7%
+            <img id="STATUS_CHARACTER_IMAGE" style="height:65%; width: 20%;position: absolute;top:7%
             ;left: 4%; border-radius: 1%;background-color: white;">
-            
+            <h2 id="STATUS_CHARACTER_NAME" style="height:7%; width: 20%;position: absolute;top:77%
+            ;left: 4%; text-align: center; font-size: 36px;"></h2>
+
+            <div id="STATUS1LABEL" class="statusName"  style="height:8%; left: 35%;top: 15%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS1" style="height:8%; left: 42%;top: 15%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS1LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS1LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS1VALUE"class="statusName"style="height:8%; left: 60%;top: 15%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS2LABEL"class="statusName"style="height:8%; left: 35%;top: 25%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS2" style="height:8%; left: 42%;top: 25%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS2LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS2LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS2VALUE"class="statusName"style="height:8%; left: 60%;top: 25%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS3LABEL"class="statusName"style="height:8%; left: 35%;top: 35%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS3" style="height:8%; left: 42%;top: 35%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS3LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS3LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS3VALUE"class="statusName"style="height:8%; left: 60%;top: 35%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS4LABEL"class="statusName"style="height:8%; left: 35%;top: 45%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS4" style="height:8%; left: 42%;top: 45%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS4LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS4LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS4VALUE"class="statusName"style="height:8%; left: 60%;top: 45%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS5LABEL"class="statusName"style="height:8%; left: 35%;top: 55%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS5" style="height:8%; left: 42%;top: 55%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS5LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS5LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS5VALUE"class="statusName"style="height:8%; left: 60%;top: 55%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS6LABEL"class="statusName"style="height:8%; left: 35%;top: 65%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS6" style="height:8%; left: 42%;top: 65%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS6LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS6LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS6VALUE"class="statusName"style="height:8%; left: 60%;top: 65%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS7LABEL"class="statusName"style="height:8%; left: 35%;top: 75%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS7" style="height:8%; left: 42%;top: 75%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS7LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS7LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS7VALUE"class="statusName"style="height:8%; left: 60%;top: 75%;width: 5%;position:absolute;
+            display: none;">0%</div>
+
+            <div id="STATUS8LABEL"class="statusName"style="height:8%; left: 35%;top: 85%;width: 5%;position:absolute;
+            display: none;"></div>
+            <div id="STATUS8" style="height:8%; left: 42%;top: 85%;width: 15%;position:absolute;
+            display: none;"> 
+                <div id="STATUS8LINKHIDE" class="dashedLinkHide"></div>
+                <div id="STATUS8LINK" class="dashedLink"></div>
+            </div>
+            <div id="STATUS8VALUE"class="statusName"style="height:8%; left: 60%;top: 85%;width: 5%;position:absolute;
+            display: none;">0%</div>
 
         </div>
+        <style type="text/css">
+            .statusName{
+                font: 1.2rem "Fira Sans", sans-serif;;
+                font-size: 16px;
+            }
+            .dashedLinkHide {
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, #00B5934D, #00B5934D 5px, transparent 5px, transparent);
+            background-size: 10px 100%;
+            }
+            .dashedLink {
+            
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0%;
+            height: 20px;
+            background: linear-gradient(to right, #00B593, #00B593 5px, transparent 5px, transparent);
+            background-size: 10px 100%;
+            }
+        </style>
     </body>
 </html>
