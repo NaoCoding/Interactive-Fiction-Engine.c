@@ -19,6 +19,11 @@
 void PROCESS_checkScript_NULL();
 // to check if your script.yaml exists or not
 
+void PROCESS_createStatusPanel();
+//to write in the status panel into the html
+//without this function, the status panel will not work since there is not status element
+//therefore, usually this function will be run before any other function written in html and js.
+
 void PROCESS_createDialogBox();
 //to write in the dialogBox into the html
 //without this function, the dialog system will not work since there is no dialogBox
@@ -49,13 +54,44 @@ void PROCESS_writeInScript(); // discard
 void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index);
 //this function is to write in the character's image src into the html.
 //without this function, the character will not display its image.
+//this function works in any scene, which means you can change the image of the character
+//in every different scene.
 
 void PROCESS_showElement(char * id);
+//to modify the css style display : block
+//there are some prefix of html element,
+//therefore, check the prefix before using the function
+//otherwise, you may get error from browser's console
+
 void PROCESS_hideElement(char * id);
+//to modify the css style display : none
+//there are some prefix of html element,
+//therefore, check the prefix before using the function
+//otherwise, you may get error from browser's console
+
 void PROCESS_modifySrcElement(char * id, char * target);
+//this function is to write in the object's image src into the html.
+//without this function, the object will not display its image.
+//this function works in any scene, which means you can change the image of the object
+//in every different scene.
+
 void PROCESS_modifyStyleElement(char * id,char * style,char * target);
+//this function is to change the style (css) of a object or any html elements
+//there are some prefix of html element,
+//therefore, check the prefix before using the function
+//otherwise, you may get error from browser's console
+
 void PROCESS_modifyInnerHTMLElement(char * id, char * target);
+//this function is to change the innerHTML of a object or any html elements
+//there are some prefix of html element,
+//therefore, check the prefix before using the function
+//otherwise, you may get error from browser's console/
+
 void PROCESS_contentAppearAnimation(char * target, char * content, int speed);
+//this function is to make the char * display at dialogBox has animation.
+//useful and easy to use function.
+//the speed is the ms between next character appear.
+
 void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f,int moves);
 void PROCESS_characterMovingHTMLWriteIn(char * target);
 void PROCESS_writeInInt(int target, FILE * dir);
@@ -76,8 +112,130 @@ void PROCESS_writeInFadeIn();
 void PROCESS_statusNewValue(char * name);
 void PROCESS_setStatusValue(char * name , char * value);
 void PROCESS_addStatusValue(char * name , char * value);
+void PROCESS_audioCalloc();
+void PROCESS_initialAudio(char * id,char * src);
+void PROCESS_playAudio(char * id);
+void PROCESS_stopAudio(char * id);
 
 
+
+void PROCESS_audioCalloc(){
+    audio = calloc(3000,sizeof(GB_AUDIO));
+}
+
+void PROCESS_initialAudio(char * id,char * src){
+
+    fwrite("AUDIOS_.push(\"",14,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")\n",3,1,fnjs);
+    fwrite("AUDIOSSRC_.push(",16,1,fnjs);
+    fwrite("new Audio(\"",11,1,fnjs);
+    fwrite(file_folder,strlen(file_folder),1,fnjs);
+    fwrite(src+1,strlen(src+1),1,fnjs);
+    fwrite("))\n",3,1,fnjs);
+}
+
+void PROCESS_stopAudio(char * id){
+
+    fwrite("AUDIOSSRC_[AUDIOS_.indexOf(\"",28,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")]",3,1,fnjs);
+    fwrite(".pause();\n",10,1,fnjs);
+
+    fwrite("AUDIOSSRC_[AUDIOS_.indexOf(\"",28,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")]",3,1,fnjs);
+    fwrite(".currentTime = 0;\n",18,1,fnjs);
+
+
+}
+
+void PROCESS_playAudio(char * id){
+
+
+    fwrite("AUDIOSSRC_[AUDIOS_.indexOf(\"",28,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")]",3,1,fnjs);
+    fwrite(".play();\n",9,1,fnjs);
+
+}
+
+
+void PROCESS_createStatusPanel(){
+
+    fwrite("document.getElementById(\"CHARACTER_STATUS\").innerHTML +=\"",57,1,fnjs);
+    //CHARACTER_STATUS is the html element which store the whole status panel.
+    //CHARACTER_STATUS can be active or hide by keystroke(e) while playing the game/script.
+    //CHARACTER_STATUS is the engine standard, should not set other html element same id as CHARACTER_STATUS.
+
+
+    fwrite("<img id=\\\'STATUS_CHARACTER_IMAGE\\\' ",35,1,fnjs);
+    fwrite("style=\\\'height:65%; width: 20%;position: absolute;top:7%;",57,1,fnjs);
+    fwrite("left: 4%; border-radius: 1%;background-color: white;\\\'>",55,1,fnjs);
+    //
+
+
+    fwrite("<h2 id=\\\'STATUS_CHARACTER_NAME\\\' style=\\\'height:7%; width: 20%;position: absolute;top:77%",89,1,fnjs);
+    fwrite(";left: 4%; text-align: center; font-size: 36px;\\\'></h2>",55,1,fnjs);
+    for(int i=1;i<=8;i++){
+        fwrite("<div id=\\\'STATUS",16,1,fnjs);
+        char buf[100] = {0};
+        sprintf(buf,"%d",i);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("LABEL\\\' class=\\\'statusName\\\'",28,1,fnjs);
+        fwrite("  style=\\\'height:8%; left: 32%;top: ",36,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("5%;width: 5%;position:absolute;display: none;\\\'></div>",54,1,fnjs);
+        fwrite("<div id=\\\'STATUS",16,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("\\\' style=\\\'height:8%; left: 39%;top: ",37,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("5%;width: 15%;position:absolute;display: none;\\\'> ",50,1,fnjs);
+        fwrite("<div id=\\\'STATUS",16,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("LINKHIDE\\\' class=\\\'dashedLinkHide\\\'></div>",42,1,fnjs);
+        fwrite("<div id=\\\'STATUS",16,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("LINK\\\' class=\\\'dashedLink\\\'></div>",34,1,fnjs);
+        fwrite("</div><div id=\'STATUS",21,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("VALUE\\\'class=\\\'statusName\\\'style=\\\'height:8%; left: 57%;top: ",61,1,fnjs);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("5%;width: 5%;position:absolute;display: none;\\\'>0%</div>",56,1,fnjs);
+    }
+
+    for(int i=0;i<9;i++){
+        int j = i % 3;
+        int k = i / 3;
+        fwrite("<div id=\\\'STATUS_INVENTORY_",27,1,fnjs);
+        char buf[100] = {0};
+        sprintf(buf,"%d",i+1);
+        fwrite(buf,strlen(buf),1,fnjs);
+        fwrite("\\\' style=\\\'position: absolute;height: 20%;width: 8%;top: ",57,1,fnjs);
+        char buf2[100] = {0};
+        sprintf(buf2,"%d",(3*k+1)*10);
+        fwrite(buf2,strlen(buf2),1,fnjs);
+        fwrite("%;left:",7,1,fnjs);
+        char buf3[100] = {0};
+        sprintf(buf3,"%d",65 + j*12);
+        fwrite(buf3,strlen(buf3),1,fnjs);
+        fwrite("%;background-color: white;\\\'></div>",35,1,fnjs);
+    }
+
+    fwrite("\"\n",2,1,fnjs);
+}
+
+
+
+
+void PROCESS_addStatusValue(char * name , char * value){
+
+
+}
+
+void PROCESS_setStatusValue(char * name , char * value){
+    
+}
 
 void PROCESS_onClickScene(char * id, char * target){
 
@@ -88,16 +246,6 @@ void PROCESS_onClickScene(char * id, char * target){
     fwrite("{await sceneonclick(\"",21,1,fnjs);
     fwrite(target,strlen(target),1,fnjs);
     fwrite("\")}\n",4,1,fnjs);
-    
-}
-
-
-void PROCESS_addStatusValue(char * name , char * value){
-
-
-}
-
-void PROCESS_setStatusValue(char * name , char * value){
     
 }
 

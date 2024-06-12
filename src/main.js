@@ -164,4 +164,8 @@ function character_move_send(a){
 var save_name = ""
 var subscene_toOpen = ""
 var status_value = []
+var status_inventory = []
+var status_inventory_src = []
+var AUDIOS_ = []
+var AUDIOSSRC_ = []
 window.onload = new_save()

@@ -16,6 +16,7 @@
 
 #include "PROCESS.h"
 // process all command parsed from SCRIPT.h
+// most of the fwrite command and the parsing command are written in PROCESS.h
 
 void SCRIPT_READ();
 // parse script.yaml and transfer to lots of html and js.
@@ -61,19 +62,40 @@ void SCRIPT_ANALYZE(){
     // without this function, the whole system will not work
     // the paramenter (in) is a string for each line fgets the script.yaml
     // char * in should be parsed by deleting the last element if it is \n
+
     
     if(!strcmp(para[0],"audio")){
         //audio is the element to control all the audio input in script.yaml
         //the usage is to initialize first(add) , and play and stop after you have initialize the music.
         //if there is no stop command in script, the audio played will be looped.
+        //the typing sound of the dialogBox is setup at src/audio, not setup by the "audio" relative commands
+        //therefore, to disable the typing sound of the dialogBox, check the animaition.js
+
 
         if(!strcmp(para[1],"add")){
             //to setup a new audio.
-            //it will create a variable MUSIC_[name]
+            //it will create a variable AUDIO_[name]
             //for controling the music
             //require two parameter, [name] and [src]
 
+            PROCESS_initialAudio(FN_mergeString("AUDIO_",para[2]) , para[3]);
 
+        }
+        else if(!strcmp(para[1],"play")){
+            //to start playing the audio file.
+            //however, normally the audio file will not stop and you should setup the stop command
+            //in some place of the script.yaml if you want to stop the audio.
+
+
+            PROCESS_playAudio(FN_mergeString("AUDIO_",para[2]));
+        }
+
+        else if(!strcmp(para[1],"stop")){
+            //to pause an audio file and set its currentTime to 0.
+            //if you don't want the engine to set it back to 0,
+            //check the PROCESS_stopAudio and modify the engine.
+
+            PROCESS_stopAudio(FN_mergeString("AUDIO_",para[2]));
         }
 
     }
@@ -98,15 +120,31 @@ void SCRIPT_ANALYZE(){
         //fwrite one line command to fnjs, change the innerHTML
         
         else if(!strcmp(para[1],"value")){
+            //the value of status means to create a progress bar and 
+            //you can change its value in script.yaml
+            //such as when you go to specific subscene or options.
+            //you can also modify the status value easily.
+
+
             if(!strcmp(para[2],"new")){
                 PROCESS_statusNewValue(para[3]);
             }
+            //to define a new status value.
+            //you must define first in order to set or add the value
+            //the default value will be 0 
+            //the range of status value should between 0~100
+
+
             else if(!strcmp(para[2],"set")){
                 PROCESS_setStatusValue(para[3],para[4]);
             }
             else if(!strcmp(para[2],"add")){
                 PROCESS_addStatusValue(para[3],para[4]);
             }
+        }
+
+        else if(!strcmp(para[1],"inventory")){
+
         }
 
     }
@@ -134,6 +172,8 @@ void SCRIPT_ANALYZE(){
         }
         // to modify the object's width/height/left/top CSS style
         // this commands is just for convinients in order to less using style
+        // support different types of value, such as 190% , px , rem .
+        
 
         else if(!strcmp(para[1],"style")){
             PROCESS_modifyStyleElement(FN_mergeString("OBJECT_",para[2]),para[3],para[4]);
@@ -280,6 +320,9 @@ void SCRIPT_ANALYZE(){
                     }
 
                     else if(!strcmp(para[2],"moving_place")){
+                         // recommend % for character since the moving animation is depend on its percentage
+
+
                         char * fq = FN_mergeString(character[i].name,"MOVINGIMG");
                         PROCESS_modifyStyleElement(fq,"width",para[3]);
                         PROCESS_modifyStyleElement(fq,"height",para[4]);
@@ -287,6 +330,8 @@ void SCRIPT_ANALYZE(){
                         PROCESS_modifyStyleElement(fq,"top",para[6]);
                         free(fq);
                     }
+
+                   
                     
                     else if(!strcmp(para[2],"moving_src")){
                         PROCESS_modifySrcElement(FN_mergeString(character[i].name,"MOVINGIMG"),para[3]);

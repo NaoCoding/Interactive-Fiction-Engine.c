@@ -125,6 +125,8 @@ async function PROCESS_contentAppearAnimation(a,b,c){
     });
 
     await new Promise((resolve) =>{
+        var typingSound = new Audio("src/audio/typingSound.mp3")
+        typingSound.play()
         var fade = document.getElementById(a);
         dialogNow = 1
         fade.innerHTML = ""
@@ -136,11 +138,18 @@ async function PROCESS_contentAppearAnimation(a,b,c){
                 fade.innerHTML += '<br>'
                 tic  = 0}
             b = b.substring(1);
-            if(b.length == 0) clearInterval(q)
+            if(b.length == 0){
+                typingSound.pause()
+                typingSound.currentTime = 0
+                clearInterval(q)
+                
+            }
         }, c);
 
         async function skip() {
             document.removeEventListener("click", skip);
+            typingSound.pause()
+            typingSound.currentTime = 0
             clearInterval(q);
             var toBr = 0
             for(var i=0;i<b.length;i++){

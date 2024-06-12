@@ -1,19 +1,28 @@
 #This is the example game's script.yaml
 #To understand the example, the official document and this script may help.
+#as you can see, the script support # like // in c
+#however, it doesn't support multiple line /* */
 
 #setup the window's title (html title)
+#usage: window.title:[src]
 window.title:"Demo Game"
 
 #Calloc the size of your character in C
+#this is important for the engine to setup the structure
 character.count:10
 
 #Create a character
+#the character's name should not be as same as others (should be unique)
 character.create:Mance
 
+#status panel
 status.photo:"images/character01.png"
 status.name:"Ichina"
 status.value.new:"Memory"
 
+
+#music setup
+audio.add.door:"audio/door.mp3"
 
 
 dialogBox.background.src:"images/dialogBox.png"
@@ -76,17 +85,26 @@ option.place:4,"35%","15%","55%","75%"
 option.style:4,background,"rgba(255,255,255,0.8)"
 option.hide:4
 
+#music 
+
+
+
 first_scene:1
 
+
 scene.1
-character.Mance.show:normal_stand
 dialogBox.show
-dialogBox.content.set:"Why I am here? I can't remember anything. ouch...why there are lots of scratches on my arms and knees..."
+dialogBox.content.set:"Click the dialogBox to Start the game"
 dialogBox.speaker.set:""
+dialogBox.click.subscene_open:subscenestart_game
+
+subscene.start_game
+character.Mance.show:normal_stand
+dialogBox.content.set:"Why I am here? I can't remember anything. ouch...why there are lots of scratches on my arms and knees..."
 dialogBox.click.scene_open:openingtalk
 
-
 scene.openingtalk
+
 #character.Mance.place:moving,"auto","auto","30%","30%"
 character.Mance.hide:normal_stand
 background:"images/scene01/scene01.png"
@@ -95,43 +113,58 @@ background:"images/scene01/scene01.png"
 #opening talk
 character.Mance.moving_hide
 
+
+
 dialogBox.show
-dialogBox.content.set:"(scoffing) Have you seen the new girl? It’s obvious that her family can barely afford the money; just look at her outdated clothes."
+dialogBox.content.set:"(scoffing) Have you seen the new girl? Her clothes are so outdated, it's obvious her family can barely afford to send her here."
 dialogBox.speaker.set:"Girl A"
 dialogBox.click.subscene_open.subsceneopening1
 
 subscene.opening1
-dialogBox.content.set:"(dismissive) I noticed. She might be pretty, but that doesn’t make up for much. I mean, why doesn’t she mix with anyone else?"
+
+dialogBox.content.set:"(dismissive) Yeah, I noticed that too. She might be kinda pretty but that doesn't make up for it. Like, why doesn't she ever hang out with anyone else?"
 dialogBox.speaker.set:"Girl B"
 dialogBox.click.subscene_open.subsceneopening2
 
+
 subscene.opening2
-dialogBox.content.set:"Exactly, she's always lurking by herself, like a shadow. It’s creepy. Probably too embarrassed to let anyone find out about her home situation."
+
+dialogBox.content.set:"Exactly, she's always lurking around by herself like a total creep. Probably too embarrassed for anyone to find out how poor her family is."
 dialogBox.speaker.set:"Girl A"
 dialogBox.click.subscene_open.subsceneopening3
 
+
 subscene.opening3
-dialogBox.content.set:"(snickering) I guess it’s tough being her, but isn’t she just too standoffish? I tried to chat with her once, and she barely gave me the time of day."
+
+dialogBox.content.set:"(snickering) Sucks to be her, but she's just so stuck-up too. I tried talking to her once and she barely gave me the time of day."
 dialogBox.speaker.set:"Girl B"
 dialogBox.click.subscene_open.subsceneopening4
 
+
 subscene.opening4
-dialogBox.content.set:"That’s just how she is. I heard from Cathy she was a loner at her old school too. Maybe that’s just her personality."
+
+dialogBox.content.set:"I heard from Cathy that she was like that at her old school too. Maybe that's just her personality."
 dialogBox.speaker.set:"Girl A"
 dialogBox.click.subscene_open.subsceneopening5
 
+
 subscene.opening5
-dialogBox.content.set:"Some people are just like that, huh? But honestly, I’m curious about what her deal is. Do you think we should even bother trying to know her better?"
+
+dialogBox.content.set:"But honestly, I'm kinda curious what her whole deal is. You think we should bother trying to get to know her better?"
 dialogBox.speaker.set:"Girl B"
 dialogBox.click.subscene_open.subsceneopening6
 
+
 subscene.opening6
-dialogBox.content.set:"Maybe, but honestly, why bother? You know how it is with people like that, always making things complicated when you try to get a little friendly."
+
+dialogBox.content.set:"(reluctant) Maybe, but why even bother? You know how it is with people like that - they always make things so complicated when you try being friendly."
 dialogBox.speaker.set:"Girl A"
 dialogBox.click.scene_open.hallway_firsttime
 
 
+
 scene.hallway_firsttime
+
 character.Mance.moving_show
 
 dialogBox.hide
@@ -254,6 +287,8 @@ character.Mance.moving_show
 
 
 scene.classroom
+
+audio.play.door
 
 character.Mance.moving_place:"10%","40%","86%","33%"
 background:"images/classroom/background.png"

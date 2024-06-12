@@ -16,6 +16,14 @@ typedef struct GB_STRUCT_CHARACTER{
 GB_CHARACTER * character;
 int character_count = 0;
 
+
+typedef struct GB_AUDIO{
+    char id[1025];
+    char src[1025];
+} GB_AUDIO;
+int audio_count = 0;
+GB_AUDIO * audio;
+
 // objects
 typedef struct GB_STRUCT_OBJECT{
 

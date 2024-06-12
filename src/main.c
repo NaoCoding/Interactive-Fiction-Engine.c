@@ -42,8 +42,16 @@ int main(int argc,char *argv_input_path[]){
     //PROCESS_characterMovingAnimationFunctionWriteInFnJs(); //already discarded
     //PROCESS_contentAppearAnimationFunctionWriteInFnJs(); //already discarded
 
+    //PROCESS_audioCalloc();
+    //calloc the size to store audio files
+    //this function is to calloc the structure which store the src of the audio
+    //discard after engine version 0.0.4
+
     PROCESS_createDialogBox();
     //write in the dialogBox html 
+
+    PROCESS_createStatusPanel();
+    //write in the status panel html
 
     PROCESS_OPTIONWriteInHTML();
     //write in the options button html
@@ -64,6 +72,13 @@ int main(int argc,char *argv_input_path[]){
     // fnjs, html may be other file ( not general.html , general.js)
     // depends on the script.yaml
     // each time change scene or subscene, the file changed
+
+
+    //free(audio);
+    //to free the audio pointer
+    //audio pointer_size is 3000
+    //which means the engine support 3000 audio src in the same script.
+    //discard after engine version 0.0.4
 
 
     system("python3 ./src/server.py");
