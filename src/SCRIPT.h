@@ -139,7 +139,7 @@ void SCRIPT_ANALYZE(){
                 PROCESS_setStatusValue(para[3],para[4]);
             }
             else if(!strcmp(para[2],"add")){
-                PROCESS_addStatusValue(para[3],para[4]);
+                PROCESS_addStatusValue(para[3],para[4],para[5]);
             }
         }
 
@@ -212,6 +212,9 @@ void SCRIPT_ANALYZE(){
     else if(!strcmp(para[0],"animation")){
         if(!strcmp(para[1],"fadeIn")){
             PROCESS_writeInFadeIn();
+        }
+        else if(!strcmp(para[1],"fadeOutandIn")){
+            PROCESS_writeInFadeOutAndIn();
         }
     }
     //to make the scene have animation.
@@ -372,6 +375,20 @@ void SCRIPT_ANALYZE(){
         }
         else if(!strcmp(para[1],"src")){
             PROCESS_modifySrcElement(FN_mergeString("OPTIONBOX",para[2]),para[3]);
+        }
+        else if(!strcmp(para[1],"content")){
+            PROCESS_modifyInnerHTMLElement(FN_mergeString("OPTIONBOX",para[2]),para[3]);
+        }
+        else if(!strcmp(para[1],"set")){
+            if(!strcmp(para[2],"subscene_open")){
+                PROCESS_onClickElement(FN_mergeString("OPTIONBOX",para[3]),para[4]);
+            }
+            else if(!strcmp(para[2],"subscene_close")){
+                PROCESS_onClickCloseElement(FN_mergeString("OPTIONBOX",para[3]),para[3]);
+            }
+            else if(!strcmp(para[2],"scene_open")){
+                PROCESS_onClickScene(FN_mergeString("OPTIONBOX",para[3]),para[4]);
+            }
         }
     }
 

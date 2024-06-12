@@ -85,6 +85,21 @@ option.place:4,"35%","15%","55%","75%"
 option.style:4,background,"rgba(255,255,255,0.8)"
 option.hide:4
 
+option.style:1,textAlign,"center"
+option.style:2,textAlign,"center"
+option.style:3,textAlign,"center"
+option.style:4,textAlign,"center"
+
+option.style:1,fontSize,"36px"
+option.style:2,fontSize,"36px"
+option.style:3,fontSize,"36px"
+option.style:4,fontSize,"36px"
+
+option.style:1,borderRadius,"1%"
+option.style:2,borderRadius,"1%"
+option.style:3,borderRadius,"1%"
+option.style:4,borderRadius,"1%"
+
 #music 
 
 
@@ -168,7 +183,7 @@ scene.hallway_firsttime
 character.Mance.moving_show
 
 dialogBox.hide
-animation.fadeIn
+animation.fadeOutandIn
 
 
 character.create:Moon
@@ -220,7 +235,7 @@ object.create:door_button
 object.style:door_button,zIndex,3
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
-object.click.scene_open:door_button,classroom
+object.click.subscene_open:door_button,subsceneenter_classroomask
 
 character.Moon.subscene_open.subscenegirlhallwaytalk1
 character.Amy.subscene_open.subscenegirlhallwaytalk1
@@ -286,9 +301,42 @@ character.Mance.hide:normal_stand
 character.Mance.moving_show
 
 
+subscene.enter_classroomask
+
+character.Mance.moving_hide
+character.Moon.moving_hide
+character.Amy.moving_hide
+
+object.hide:bulletin1
+object.hide:bulletin2
+object.hide:door_button
+
+option.content.1:"<br>Enter The Room"
+option.show.1
+option.set.scene_open.1.classroom
+option.content.2:"<br>Close"
+option.show.2
+option.set.subscene_close.2.subsceneenter_classroomask
+
+close_subscene.enter_classroomask
+character.Mance.moving_show
+character.Moon.moving_show
+character.Amy.moving_show
+
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
+option.hide.1
+option.hide.2
+
+
 scene.classroom
+
+option.hide.1
+option.hide.2
 
 audio.play.door
 
+character.Mance.moving_show
 character.Mance.moving_place:"10%","40%","86%","33%"
 background:"images/classroom/background.png"

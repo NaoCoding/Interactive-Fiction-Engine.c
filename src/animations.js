@@ -10,6 +10,10 @@ var dialogNow = 0
 var statusOn = 0
 
 
+function PROCESS_STATUSADDVALUE(a,b,c){
+    
+}
+
 function PROCESS_statusNewValueSetup(a){
     if(status_value.length >= 8) return;
     status_value.push([a,0])
@@ -42,6 +46,37 @@ async function screenfadeIn(tt){
         f.style.opacity = (parseFloat(f.style.opacity) + 0.02).toString()
         time += 1
     },80)
+
+}
+
+async function screenfadeOutandIn(tt){
+
+    var s = document.getElementById("HTML_BODY")
+    var f = document.body
+    f.style.opacity = 1
+    s.style.opacity = 1
+    var time = 0
+    var q = setInterval(() => {
+        if(time == 50)clearInterval(q);
+        s.style.opacity = (parseFloat(s.style.opacity) - 0.02).toString()
+        f.style.opacity = (parseFloat(f.style.opacity) - 0.02).toString()
+        time += 1
+    },40)
+
+    while(time!=50){
+        await delay(20)
+    }
+
+    f.style.opacity = 0
+    s.style.opacity = 0
+    time = 0
+    var ar = setInterval(() => {
+        if(time == 50)clearInterval(ar);
+        s.style.opacity = (parseFloat(s.style.opacity) + 0.02).toString()
+        f.style.opacity = (parseFloat(f.style.opacity) + 0.02).toString()
+        time += 1
+    },40)
+
 
 }
 
@@ -117,6 +152,13 @@ async function PROCESS_playerControlFunction2(){
     PROCESS_characterMovingAnimation(control,0,0,200,control_movingAnimation,0)}else{
     PROCESS_characterMovingAnimation(control,0,0,200,control_standingAnimation,1)}
     lastcontrol_move = control_move}
+
+function delay(n) {
+    return new Promise(function (resolve) {
+        setTimeout(resolve, n);
+    });
+}
+    
 
 async function PROCESS_contentAppearAnimation(a,b,c){
 

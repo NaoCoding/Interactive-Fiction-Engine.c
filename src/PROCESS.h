@@ -109,9 +109,10 @@ void PROCESS_onClickBodyCloseElement(char * id, char * target);
 void PROCESS_onClickhideElement(char * obj,char * id,int mode);
 void PROCESS_ModifyDialogContent(char * id, char * target);
 void PROCESS_writeInFadeIn();
+void PROCESS_writeInFadeOutAndIn();
 void PROCESS_statusNewValue(char * name);
 void PROCESS_setStatusValue(char * name , char * value);
-void PROCESS_addStatusValue(char * name , char * value);
+void PROCESS_addStatusValue(char * name ,char * src, char * value);
 void PROCESS_audioCalloc();
 void PROCESS_initialAudio(char * id,char * src);
 void PROCESS_playAudio(char * id);
@@ -228,8 +229,15 @@ void PROCESS_createStatusPanel(){
 
 
 
-void PROCESS_addStatusValue(char * name , char * value){
+void PROCESS_addStatusValue(char * name ,char * src, char * value){
 
+    fwrite("PROCESS_STATUSADDVALUE(\"",24,1,fnjs);
+    fwrite(name,strlen(name),1,fnjs);
+    fwrite("\",\"",3,1,fnjs);
+    fwrite(src,strlen(src),1,fnjs);
+    fwrite("\",",2,1,fnjs);
+    fwrite(value,strlen(value),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
 
 }
 
@@ -298,6 +306,11 @@ void PROCESS_OPTIONWriteInHTML(){
 
 void PROCESS_writeInFadeIn(){
     fwrite("screenfadeIn()\n",15,1,fnjs);
+
+}
+
+void PROCESS_writeInFadeOutAndIn(){
+    fwrite("screenfadeOutandIn()\n",21,1,fnjs);
 
 }
 
