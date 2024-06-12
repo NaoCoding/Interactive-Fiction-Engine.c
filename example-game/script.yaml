@@ -280,6 +280,8 @@ character.Mance.moving_show
 
 subscene.bulletin_notice1
 
+status.value.add.Memory,BULLETIN,5
+
 dialogBox.show
 dialogBox.speaker.set:"Bulletin"
 character.Mance.moving_hide

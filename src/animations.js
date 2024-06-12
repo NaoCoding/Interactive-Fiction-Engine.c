@@ -11,12 +11,26 @@ var statusOn = 0
 
 
 function PROCESS_STATUSADDVALUE(a,b,c){
-    
+    var index = -1
+    for(var i=0;i<status_value.length;i++){
+        if(status_value[i][0] == a){
+            index = i;
+            break;
+        }
+    }
+    if(index == -1)return;
+
+    for(var i=0;i<status_value[index][2].length;i++){
+        if(status_value[index][2][i] == b) return
+    }
+    status_value[index][1] += c
+    status_value[index][2].push(b)
+    update_statusBar()
 }
 
 function PROCESS_statusNewValueSetup(a){
     if(status_value.length >= 8) return;
-    status_value.push([a,0])
+    status_value.push([a,0,[]])
     update_statusBar()
 }
 
