@@ -192,7 +192,7 @@ function SAVE_SAVEGAME(){
         for(var i=0;i<9;i++){
             if(status_inventory[i] != -1){
                 $.ajax({
-                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory[i],
+                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory_src[i],
                     method:"GET",
                 })
             }
@@ -209,6 +209,102 @@ function SAVE_SAVEGAME(){
 function SAVE_LOADGAME(){
     navigator.clipboard.readText().then((text) => save_name = text)
     document.getElementById("SAVE_PANEL_INPUT").value = save_name
+    var valid = 0
+    if(save_name.length < 10) return
+    $.ajax({
+        url:"command/save?"+save_name+"?valid_check",
+        method:"GET",
+
+        success:function(res){
+            if(res == 0 || res == '0') return
+            for(var i=0;i<1;i++){
+                if(i==0){
+                    scene_subscene[0] = res;
+                    $.ajax({
+                        url:"command/load_save?"+save_name+"?"+i,
+                        method:"GET",
+                
+                        success:function(res){
+                            $.ajax({
+                                url:"command/start?game?html?" + res.toString(),
+                                method:"GET",
+    
+                                success:function(res2){
+                                    
+                                    document.getElementById("HTML_BODY").innerHTML = res2;
+                                },
+                            }
+                            )
+                        
+                            $.ajax({
+                                url:"command/start?game?js?" + res.toString(),
+                                method:"GET",
+    
+                                success:function(res2){
+                                    eval(res2)
+                                },
+                            }
+                            )
+                            document.getElementById("HTML_BODY").style.zIndex = 1;
+                            document.getElementById("HTML_SUB").style.zIndex = -1;
+                        },
+                    })
+                }
+                if(i==1){
+                    subscene_toOpen = res;
+                    scene_subscene[1] = res;
+                    $.ajax({
+                        url:"command/sub?game?html?" + subscene_toOpen,
+                        method:"GET",
+                
+                        success:function(res2){
+                            
+                            document.getElementById("HTML_SUB").innerHTML = res2;
+                        },
+                    }
+                    )
+                    
+                    $.ajax({
+                        url:"command/sub?game?js?" + subscene_toOpen,
+                        method:"GET",
+                
+                        success:function(res2){
+                            eval(res2)
+                        },
+                    }
+                    )
+                    document.getElementById("HTML_BODY").style.opacity = 0.5;
+                    document.getElementById("HTML_SUB").style.zIndex = 5;
+                }
+                
+            }
+            for(var i=0;i<8;i++){
+                $.ajax({
+                    url:"command/load_save?"+save_name+"?"+(i+2).toString(),
+                    method:"GET",
+                    async:false,
+                    success:function(res){
+                        if(res.length < 1)return
+                        status_value[i][1] = res
+                    }
+                })
+                update_statusBar()
+            }
+            for(var i=0;i<9;i++){
+                $.ajax({
+                    url:"command/load_save?"+save_name+"?"+(i+10).toString(),
+                    method:"GET",
+                    async:false,
+            
+                    success:function(res){
+                        status_inventory_src[i] = res
+                    },
+                })
+            }
+        },
+    })
+    //console.log(valid)
+    
     
 }
 

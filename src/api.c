@@ -19,13 +19,34 @@ int main(int argc,char *argv_input_path[]){
 
         exit(0);
     }
+    if(!strcmp(argv_input_path[1],"valid")){
+        FILE * test = fopen(FN_mergeString("./saves/",argv_input_path[2]),"r");
+        if(test!= NULL){
+            printf("1");
+            fclose(test);
+        }
+        else printf("0");
+    }
 
-    if(!strcmp(argv_input_path[1],"new_game")){
+    else if(!strcmp(argv_input_path[1],"load_save")){
+        FILE * target = fopen(FN_mergeString("./saves/",argv_input_path[2]),"r");
+        int index = 0;
+        char in[1025];
+        while(index < atoi(argv_input_path[3])){
+            fgets(in,1025,target);
+            index ++;
+        }
+        fgets(in,1025,target);
+        if(in[strlen(in)-1] == '\n') in[strlen(in)-1] = 0;
+        printf("%s",in);
+        fclose(target);
+    }
+
+    else if(!strcmp(argv_input_path[1],"new_game")){
         if(!strcmp(argv_input_path[2],"createFile")){
             mkdir("./saves",0777);
             char * dir = API_RANDOMFILENAME();
             FILE * save = fopen(FN_mergeString("./saves/",dir),"w+");
-            fwrite("scene=NULL",13,1,save);
             fclose(save);
             printf("%s",dir);
             free(dir);
