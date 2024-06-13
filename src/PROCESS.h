@@ -18,19 +18,27 @@
 
 void PROCESS_checkScript_NULL();
 // to check if your script.yaml exists or not
+// this function is important since if you don't check the file exists or not,
+// the whole engine may be segmentation fault.
+// on the other hand, you can modify this function for more setting if you want to pre-parse other stuff.
+// default : only check the existence of the file(script.yaml)
 
 void PROCESS_createStatusPanel();
 //to write in the status panel into the html
 //without this function, the status panel will not work since there is not status element
 //therefore, usually this function will be run before any other function written in html and js.
+//status panel contains eight status value and nine inventory slots.
+//however, you can modify and choose the amount in your script.
 
 void PROCESS_createDialogBox();
 //to write in the dialogBox into the html
 //without this function, the dialog system will not work since there is no dialogBox
 //therefore, usually this function will be run before any other function written in html and js.
+//dialogBox contains four HTML objects, includes CONTENT, AUTHOR, BACKGROUND_IMG, DialogBox.
 
 void PROCESS_getScript();
 //the process to read the script.yaml from specific dir.
+//file_folder is the variable of argv_[1]
 
 void PROCESS_OPTIONWriteInHTML();
 //write in the options button into the html
@@ -56,6 +64,9 @@ void PROCESS_characterSrcHTMLWriteIn(int character_index, int src_index);
 //without this function, the character will not display its image.
 //this function works in any scene, which means you can change the image of the character
 //in every different scene.
+//character_index is the index of character structure in GLOBALVARIABLE_H
+//src_index is the src index of that character.
+//each character support to save 500 src.
 
 void PROCESS_showElement(char * id);
 //to modify the css style display : block
@@ -93,12 +104,46 @@ void PROCESS_contentAppearAnimation(char * target, char * content, int speed);
 //the speed is the ms between next character appear.
 
 void PROCESS_characterMovingAnimation(char * target, int val,int vallast,int speed, char *f,int moves);
+//this function is to make the moving animation for the characters.
+//as you can see in example-game, idle NPC uses moving animation.
+//it is important that the character should be calloc first from the GLOBALVARIABLE.h
+//target is the html_tag, val and vallast is the img_src id no.
+//the speed is default and you should not change if you don't know how the frequents.
+//char *f is the string parameter, check the SCRIPT.h to see the parameter.
+
 void PROCESS_characterMovingHTMLWriteIn(char * target);
+//this function is to writeIn the character Moving animation into the js file.
+//target is the target character's id.
+//make sure the char * target exists or the JS may returns error.
+//update : engine version 0.0.3
+
 void PROCESS_writeInInt(int target, FILE * dir);
+//this function is to writeIn an int object into specific dir.
+//this function is important since the engine may recieve or calculate lots of int object.
+//and this function can easily writeIn the int object into fwrite()
+//so you won't need to write lots of char buf[] and sprintf.
+//(update : may contains bugs and sometimes should try to use sprintf() instead)
+
 void PROCESS_writeInFN_str2ARR(int  i,int a , int b);
+//this function is to writeIn an for(i,a,b) range array into a string.
+//fwrite(), this function is mainly for making character_movingAnimation() work
+//this object can easily writeIn range() array into specific file (generally javascript)
+
 void PROCESS_writeInBackGround();
+//this function is to writeIn the background of the html
+//this function mainly support the script.yaml for the background parameter.
+//without this function, there will be no background html and no background can be set.
+//basically setup <img id="BACKGROUND">
+
 void PROCESS_callocObject();
+//this function is to calloc the objects in GLOBALVARIABLE_H
+//basically => object = calloc(3000,sizeof(GB_OBJECT));
+
 void PROCESS_freeAll();
+//free all the stuff which defined at GLOBALVARIABLE_H
+//this function is important or the engine may cause serious memory leak.
+
+
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
 void PROCESS_onClickScene(char * id, char *target);
