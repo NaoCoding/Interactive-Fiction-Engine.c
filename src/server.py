@@ -54,6 +54,9 @@ class Server(BaseHTTPRequestHandler):
                 out = check_output(["./api","closesubscene",cmd[-2],cmd[-1]])
                 file = open("./output/" + out.decode(),"rb" ).read()
                 self.wfile.write(file)
+            elif "save?" in cmd:
+                cmd = cmd.split("?")
+                out = check_output(["./api","save",cmd[-3],cmd[-2],cmd[-1]])
 
 
 server = HTTPServer(host,Server)

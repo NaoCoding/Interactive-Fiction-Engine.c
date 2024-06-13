@@ -8,6 +8,7 @@ var lastcontrol_move = 0
 var dialog_word = []
 var dialogNow = 0
 var statusOn = 0
+var saveOn = 0
 
 
 function PROCESS_STATUSADDVALUE(a,b,c){
@@ -127,10 +128,24 @@ async function toggleStatus(){
 
 }
 
+async function toggleSave(){
+
+    if(saveOn == 0){
+        saveOn = 1
+        document.getElementById("SAVE_PANEL").style.display = "block"
+    }
+    else{
+        saveOn = 0
+        document.getElementById("SAVE_PANEL").style.display = "none"
+    }
+
+}
+
 async function PROCESS_playerControlFunction(){
     var key = event.keyCode
     var p = document.getElementById(control)
     if(key == 69) toggleStatus()
+    if(key == 66) toggleSave()
     if((key==37 || key==65) && control.length > 0){
     if(parseInt(p.style.left) > 1){p.style.left = (parseInt(p.style.left) - 1).toString() + "%"
     p.style.transform = ""

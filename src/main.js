@@ -1,6 +1,7 @@
 function subsceneonclick(a){
 
     subscene_toOpen = a;
+    scene_subscene[1] = a;
     subscene_send();
 
 }
@@ -8,6 +9,7 @@ function subsceneonclick(a){
 function sceneonclick(a){
 
     scene_send(a);
+    scene_subscene[0] = a;
 
 
 }
@@ -31,15 +33,6 @@ function load_save(a){
 
 function new_save(){
 
-    $.ajax({
-        url:"command/new?game?createFile",
-        method:"GET",
-
-        success:function(res){
-            save_name = res;
-        }
-
-    })
 
     $.ajax({
         url:"command/new?game?html",
@@ -92,7 +85,7 @@ function subscene_send(){
 }
 
 function subsceneclose(){
-    
+    scene_subscene[1] = ""
     $.ajax({
         url:"command/close?subgame?html?" + subscene_toOpen,
         method:"GET",
@@ -161,11 +154,71 @@ function character_move_send(a){
     )
 }
 
+function SAVE_SAVEGAME(){
+    if(didSaveFile == 0){
+        $.ajax({
+            url:"command/new?game?createFile",
+            method:"GET",
+    
+            success:function(res){
+                save_name = res;
+                document.getElementById("SAVE_PANEL_INPUT").value = save_name
+                didSaveFile = 1
+            }
+    
+        })
+    }
+    else{
+        for(var i=0;i<2;i++){
+            $.ajax({
+                url:"command/save?"+save_name+"?"+ i +"?" + scene_subscene[i],
+                method:"GET",
+            })
+        }
+        for(var i=0;i<8;i++){
+            if(status_value.length > i){
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+2).toString() +"?" + status_value[i][1],
+                    method:"GET",
+                })
+            }
+            else{
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+2).toString() +"?" + "",
+                    method:"GET",
+                })
+            }
+        }
+        for(var i=0;i<9;i++){
+            if(status_inventory[i] != -1){
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory[i],
+                    method:"GET",
+                })
+            }
+            else{
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + "",
+                    method:"GET",
+                })
+            }
+        }
+    }
+}
+
+function SAVE_LOADGAME(){
+    navigator.clipboard.readText().then((text) => save_name = text)
+    document.getElementById("SAVE_PANEL_INPUT").value = save_name
+    
+}
+
 var save_name = ""
+var scene_subscene = ["",""]
 var subscene_toOpen = ""
 var status_value = []
-var status_inventory = []
+var status_inventory = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
 var status_inventory_src = []
 var AUDIOS_ = []
 var AUDIOSSRC_ = []
+var didSaveFile = 0
 window.onload = new_save()
