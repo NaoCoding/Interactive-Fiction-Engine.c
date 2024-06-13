@@ -80,7 +80,7 @@ function subscene_send(){
         },
     }
     )
-    document.getElementById("HTML_BODY").style.opacity = 0.5;
+    //document.getElementById("HTML_BODY").style.opacity = 0.5;
     document.getElementById("HTML_SUB").style.zIndex = 5;
 }
 
@@ -273,7 +273,7 @@ function SAVE_LOADGAME(){
                         },
                     }
                     )
-                    document.getElementById("HTML_BODY").style.opacity = 0.5;
+                    
                     document.getElementById("HTML_SUB").style.zIndex = 5;
                 }
                 
@@ -297,6 +297,7 @@ function SAVE_LOADGAME(){
                     async:false,
             
                     success:function(res){
+                        if(res.length < 1)return
                         status_inventory_src[i] = res
                     },
                 })
