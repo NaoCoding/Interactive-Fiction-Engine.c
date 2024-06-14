@@ -25,6 +25,8 @@ status.name:"???"
 status.value.new:"Memory"
 status.inventory.new:"key"
 status.inventory.new:"cat"
+status.inventory.new:"howard"
+status.inventory.src:howard,"images/inventorys/howard.png"
 status.inventory.src:cat,"images/inventorys/cat.png"
 status.inventory.src:key,"images/inventorys/key.png"
 
@@ -429,6 +431,7 @@ subscene.bulletin_egg1
 
 dialogBox.show
 status.value.add.Memory,HOWARD,3
+status.inventory.get:howard
 dialogBox.speaker.set:"Bulletin"
 character.Ichiha.moving_hide
 character.Moon.moving_hide
@@ -462,7 +465,7 @@ dialogBox.click.subscene_open.subscenebulletin_notice3
 
 subscene.bulletin_notice3
 dialogBox.content.set:"Due to safety concerns, the school rooftop is closed. "
-dialogBox.click.subscene_open.subscenebulletin_notice3
+dialogBox.click.subscene_close.subscenebulletin_notice3
 
 
 close_subscene.bulletin_notice3
