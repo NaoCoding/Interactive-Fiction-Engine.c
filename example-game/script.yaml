@@ -1375,5 +1375,7 @@ subscene.cat
 status.inventory.get:cat
 status.value.add.Memory,CAT,3
 object.src:office_desk,"images/office/desk2.png"
+auto_close_subscene
+
 
 

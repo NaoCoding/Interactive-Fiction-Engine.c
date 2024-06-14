@@ -62,9 +62,11 @@ void SCRIPT_ANALYZE(){
     // without this function, the whole system will not work
     // the paramenter (in) is a string for each line fgets the script.yaml
     // char * in should be parsed by deleting the last element if it is \n
-
+    if(!strcmp(para[0],"auto_close_subscene")){
+        fwrite("document.getElementById(\"HTML_BODY\").style.opacity = 1;\ndocument.getElementById(\"HTML_SUB\").style.zIndex = -1;\n",111,1,fnjs);
+    }
     
-    if(!strcmp(para[0],"audio")){
+    else if(!strcmp(para[0],"audio")){
         //audio is the element to control all the audio input in script.yaml
         //the usage is to initialize first(add) , and play and stop after you have initialize the music.
         //if there is no stop command in script, the audio played will be looped.
