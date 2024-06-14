@@ -65,7 +65,7 @@ function subscene_send(){
     $.ajax({
         url:"command/sub?game?html?" + subscene_toOpen,
         method:"GET",
-
+        async:false,
         success:function(res){
             
             document.getElementById("HTML_SUB").innerHTML = res;
@@ -91,7 +91,7 @@ function subsceneclose(){
     $.ajax({
         url:"command/close?subgame?html?" + subscene_toOpen,
         method:"GET",
-
+        async:false,
         success:function(res){
             
             document.getElementById("HTML_SUB").innerHTML = res;
@@ -120,7 +120,7 @@ function scene_send(scene){
     $.ajax({
         url:"command/start?game?html?" + scene.toString(),
         method:"GET",
-
+        async:false,
         success:function(res){
             
             document.getElementById("HTML_BODY").innerHTML = res;
