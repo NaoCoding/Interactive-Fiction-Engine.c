@@ -243,7 +243,8 @@ Everything went according to plan. When she stood at the edge of the rooftop, I 
 
 *The order in which the player examines the two clues on the rooftop determines the ending.*
 
-![alt text](2c868e5683678b2cc7efdcd21b81787.jpg)
+![2c868e5683678b2cc7efdcd21b81787](https://github.com/NaoCoding/Interactive-Fiction-Engine.c/assets/127291928/5f693650-dee5-4844-9308-fa64ffd6ceb7)
+
 
 #### Examine the newspaper first, followed by the diary page:
 
@@ -268,18 +269,18 @@ Can't catch up:
 *Action prompt: Solve the code to unlock the school exit.*
 
 Catch up:
->**I**: (gently) Wait, please don't be afraid. I won't hurt you.
->**Brain**: (backing away, voice trembling) No... don't come near me! How are you here? Aren't you already...
->**I**: (confused) Already what? I woke up and found myself at school, unable to remember anything. I just want to leave here. Can you help me?
->**Brain**: (mustering some courage) Don't you remember? You... you used to treat us so badly. You always bullied us, made us afraid of you.
->**I**: (shocked and self-doubting) Bully? Me? I... I remember being isolated, being bullied...
->**Brain**: (nervously looking at me) How is that possible? To us, you were the one who made us live in fear every day. I... I thought I'd never have to see you again.
->**I**: (deeply frowning) How can this be? I always thought I was the victim. Could it be that what I just remembered isn't true?
->**Brain**: (trying to speak calmly) I don't know how you're here now, or how you came back. But I really hope you leave me alone. I don't want to be haunted by the past anymore.
->**I**: (tears in eyes) I'm... I'm sorry. If I really did those things, I'm so sorry. I need to figure out what happened, I need to know the truth...
->**Brain**: (softening slightly) Maybe you should. But please give me some space. I'm not sure I'm ready to face you again, at least not now. Goodbye, Ichina.
->**I**: (quickly) Hey! Wait...!
->**Brain**: (already disappearing into the darkness)
+>**I**: (gently) Wait, please don't be afraid. I won't hurt you.  
+>**Brain**: (backing away, voice trembling) No... don't come near me! How are you here? Aren't you already...  
+>**I**: (confused) Already what? I woke up and found myself at school, unable to remember anything. I just want to leave here. Can you help me?  
+>**Brain**: (mustering some courage) Don't you remember? You... you used to treat us so badly. You always bullied us, made us afraid of you.  
+>**I**: (shocked and self-doubting) Bully? Me? I... I remember being isolated, being bullied...  
+>**Brain**: (nervously looking at me) How is that possible? To us, you were the one who made us live in fear every day. I... I thought I'd never have to see you again.  
+>**I**: (deeply frowning) How can this be? I always thought I was the victim. Could it be that what I just remembered isn't true?  
+>**Brain**: (trying to speak calmly) I don't know how you're here now, or how you came back. But I really hope you leave me alone. I don't want to be haunted by the past anymore.  
+>**I**: (tears in eyes) I'm... I'm sorry. If I really did those things, I'm so sorry. I need to figure out what happened, I need to know the truth...  
+>**Brain**: (softening slightly) Maybe you should. But please give me some space. I'm not sure I'm ready to face you again, at least not now. Goodbye, Ichina.  
+>**I**: (quickly) Hey! Wait...!  
+>**Brain**: (already disappearing into the darkness)  
 
 >**I**: How did it come to this... I made others feel so desperate because of me. And I, I became the source of all this pain.
 
