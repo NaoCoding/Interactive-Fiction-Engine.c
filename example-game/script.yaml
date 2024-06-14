@@ -890,6 +890,8 @@ dialogBox.show
 character.Ichiha.show:normal_stand4
 character.Ichiha.moving_hide
 character.Anett.moving_hide
+object.hide.tooffice
+object.hide.torooftop
 dialogBox.content.set:"Why do I remember these things? Am I... could I be the one who was bullied?"
 dialogBox.speaker.set:"???"
 dialogBox.click.subscene_open.subsceneAnettthekey2
@@ -938,6 +940,7 @@ dialogBox.click.subscene_open.subsceneAnettthekey8
 
 subscene.Anettthekey8
 character.Ichiha.hide:normal_stand5
+character.Anett.hide:normal_stand5
 character.Anett.show:normal_stand3
 dialogBox.content.set:"It might be in the teachers' office. We could find some clues there."
 dialogBox.speaker.set:"Anett"
@@ -955,6 +958,8 @@ object.click.subscene_open:tooffice,subsceneenteroffice2
 character.Ichiha.hide:normal_stand
 
 dialogBox.hide
+object.show.tooffice
+object.show.torooftop
 character.Ichiha.moving_show
 character.Anett.moving_show
 
