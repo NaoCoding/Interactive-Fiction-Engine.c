@@ -62,6 +62,19 @@ function PROCESS_requireValueOption(a,b,c){
     else document.getElementById("OPTIONBOX"+c).style.display="block"
 }
 
+function PROCESS_requireInventoryOption(a,b){
+    var index = -1
+    for(var i=0;i<status_value.length;i++){
+        if(status_inventory[i] == a){
+            index = i;
+            break;
+        }
+    }
+    if(index == -1)return;
+    if(status_inventory_have[index] != 1) document.getElementById("OPTIONBOX"+c).style.display="none"
+    else document.getElementById("OPTIONBOX"+c).style.display="block"
+}
+
 function PROCESS_STATUSADDVALUE(a,b,c){
     var index = -1
     for(var i=0;i<status_value.length;i++){

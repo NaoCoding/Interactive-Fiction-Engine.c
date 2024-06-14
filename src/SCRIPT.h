@@ -123,6 +123,9 @@ void SCRIPT_ANALYZE(){
             if(!strcmp(para[2],"value")){
                 PROCESS_requireValueOption(para[3],para[4],para[5]);
             }
+            else if(!strcmp(para[2],"inventory")){
+                PROCESS_requireInventoryOption(para[3],para[4]);
+            }
         }
         
         else if(!strcmp(para[1],"value")){

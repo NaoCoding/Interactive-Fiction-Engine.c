@@ -168,6 +168,7 @@ void PROCESS_stopAudio(char * id);
 void PROCESS_inventoryNew(char * id);
 void PROCESS_inventorySRC(char * id, char * src);
 void PROCESS_inventoryGET(char * id);
+void PROCESS_requireInventoryOption(char * value, char * opt);
 
 void PROCESS_inventoryGET(char * id){
     fwrite("PROCESS_inventoryHAVE(\"",23,1,fnjs);
@@ -193,6 +194,13 @@ void PROCESS_inventoryNew(char * id){
 
 }
 
+void PROCESS_requireInventoryOption(char * value, char * opt){
+    fwrite("PROCESS_requireInventoryOption(\"",32,1,fnjs);
+    fwrite(value,strlen(value),1,fnjs);
+    fwrite("\",",2,1,fnjs);
+    fwrite(opt,strlen(opt),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
+}
 
 void PROCESS_requireValueOption(char * value, char * require, char * opt){
 

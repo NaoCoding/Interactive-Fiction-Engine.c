@@ -744,8 +744,170 @@ object.style:tooffice,zIndex,3
 object.place:tooffice,"15%","35%","30%","27%"
 object.src:tooffice,"images/midhallway/tooffice.png"
 
-
+change_scene.character.right.righthallway_1
 ------
+
+scene.righthallway_1
+object.show:maskBG
+
+background:"images/righthallway/bg.png"
+character.Ichiha.moving_show
+
+object.create:tobathroom
+object.style:tobathroom,zIndex,3
+object.place:tobathroom,"13%","40%","30%","22%"
+object.src:tobathroom,"images/righthallway/tobathroom.png"
+object.click.subscene_open:tobathroom,subsceneenterbathroom
+
+---
+
+subscene.enterbathroom
+
+character.Ichiha.moving_hide
+option.content.1:"<br>Enter the bathroom"
+option.show.1
+option.set.scene_open.1.bathroom
+option.content.2:"<br>Close"
+option.show.2
+option.set.subscene_close.2.subsceneenterbathroom
+
+close_subscene.enterbathroom
+character.Ichiha.moving_show
+option.hide.1
+option.hide.2
+
+----
+
+scene.bathroom
+object.show:maskBG
+
+
+option.hide.1
+option.hide.2
+character.Ichiha.moving_show
+character.Ichiha.moving_place:"10%","40%","80%","33%"
+
+background:"images/bathroom/bg.png"
+
+
+object.create:bathroom_sink
+object.style:bathroom_sink,zIndex,3
+object.place:bathroom_sink,"30.5%","12%","69.5%","45%"
+object.src:bathroom_sink,"images/bathroom/sink.png"
+object.click.subscene_open:bathroom_sink,subscenebathroom_sink
+
+object.create:bathroom_glass
+object.style:bathroom_glass,zIndex,3
+object.place:bathroom_glass,"20%","20%","75%","20%"
+object.src:bathroom_glass,"images/bathroom/glass.png"
+object.click.subscene_open:bathroom_glass,subscenebathroom_glass
+
+
+----
+
+subscene.bathroom_sink
+status.value.add.Memory,bathroom_sink,5
+character.Ichiha.moving_hide
+object.hide.bathroom_glass
+object.hide.bathroom_sink
+dialogBox.show
+dialogBox.content.set:"...You stares at your reflection in the mirror, but something feels off. You reflection seems blurry, as if a thin mist is lingering behind the glass. You reaches out to touch the mirror, but your fingers appear translucent, like wisps of smoke..."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenebathroom_sink2
+
+subscene.bathroom_sink2
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"What's happening?... Why is it so blurry?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenebathroom_sink3
+
+subscene.bathroom_sink3
+character.Ichiha.hide:normal_stand4
+dialogBox.content.set:"...You try to wipe the mist from the mirror, but the image remains hazy, unable to clearly reflect your face. Your eyes grow fearful and confused..."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenebathroom_sink4
+
+subscene.bathroom_sink4
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"Could it really be… am I already becoming...?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenebathroom_sink5
+
+subscene.bathroom_sink5
+character.Ichiha.hide:normal_stand4
+background:"images/bathroom/bg2.png"
+dialogBox.content.set:"Suddenly, your body walked back to the hallway itself"
+dialogBox.speaker.set:""
+dialogBox.click.scene_open.midhallway_Anett
+
+----
+
+scene.midhallway_Anett
+animation.fadeOutandIn
+object.show:maskBG
+dialogBox.hide
+character.Ichiha.moving_show
+background:"images/midhallway/bg.jpg"
+
+----
+
+subscene.bathroom_glass
+status.value.add.Memory,bathroom_glass,5
+character.Ichiha.show:normal_stand6
+character.Ichiha.moving_hide
+object.hide.bathroom_glass
+object.hide.bathroom_sink
+dialogBox.show
+dialogBox.content.set:"Ah...my head hurts so much."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenebathroom_glass2
+
+subscene.bathroom_glass2
+character.Ichiha.hide:normal_stand6
+background:"images/bathroom/bg2.png"
+dialogBox.content.set:"...Suddenly, Your vision blurs and flashes of both familiar and strange scenes flicker through her mind. The surroundings are dim;A girl is surrounded by a group of students. "
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenebathroom_glass3
+
+subscene.bathroom_glass3
+dialogBox.content.set:"Through the blur, it’s seen that they are kicking her and pulling at her clothes. The girl looks terrified, her eyes brimming with tears..."
+dialogBox.click.subscene_open.subscenebathroom_glass4
+
+subscene.bathroom_glass4
+character.Moon.show:normal_stand
+character.Amy.show:normal_stand
+dialogBox.content.set:" ( voice trembling ) Why are you doing this to me? What did I do wrong?"
+dialogBox.speaker.set:"..."
+dialogBox.click.subscene_open.subscenebathroom_glass5
+
+subscene.bathroom_glass5
+dialogBox.content.set:" ( voice stern ) Because you're so annoying, always acting so sweet and making the teachers like you. We can't stand it!"
+dialogBox.click.subscene_open.subscenebathroom_glass6
+
+
+subscene.bathroom_glass6
+dialogBox.content.set:"Yeah, always acting like you're different from us. You're just a freak!"
+dialogBox.click.subscene_open.subscenebathroom_glass7
+
+subscene.bathroom_glass7
+
+character.Ichiha.show:normal_stand4
+character.Moon.hide:normal_stand
+character.Amy.hide:normal_stand
+dialogBox.content.set:"(Tears fall) Huh? Have I experienced this before? Is this real? Why am I remembering these things?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_close.subscenebathroom_glass7
+
+close_subscene.bathroom_glass7
+object.show.bathroom_glass
+object.show.bathroom_sink
+background:"images/bathroom/bg.png"
+character.Ichiha.hide:normal_stand4
+character.Ichiha.moving_show
+dialogBox.hide
+
+
+----
 
 subscene.trash
 dialogBox.show
@@ -838,7 +1000,6 @@ change_scene.character.right.midhallway_1
 
 scene.hallwayleft
 object.show:maskBG
-
 
 character.Anett.moving_hide
 character.Ichiha.moving_place:"10%","40%","80%","33%"
