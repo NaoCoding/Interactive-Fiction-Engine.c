@@ -1254,32 +1254,32 @@ character.Ichiha.moving_hide
 status.value.add.Memory,OFFICE_BULLETIN,5
 dialogBox.show
 dialogBox.content.set:"Received a gift card and an invitation from [Ichina]'s mother. I may need to be more cautious in handling class affairs."
-dialogBox.speaker.set:"September 12"
+dialogBox.speaker.set:"09/12"
 dialogBox.click.subscene_open.subsceneoffice_bulletin2
 
 subscene.office_bulletin2
 dialogBox.content.set:"Some students have reported that [Ichina] exhibited aggressive behavior towards classmates during break time."
-dialogBox.speaker.set:"September 20"
+dialogBox.speaker.set:"09/20"
 dialogBox.click.subscene_open.subsceneoffice_bulletin3
 
 subscene.office_bulletin3
 dialogBox.content.set:"Today during the class meeting, [John] seemed downcast. When asked, he avoided the question. It's necessary to determine if this relates to [Ichina]."
-dialogBox.speaker.set:"September 30"
+dialogBox.speaker.set:"09/30"
 dialogBox.click.subscene_open.subsceneoffice_bulletin4
 
 subscene.office_bulletin4
 dialogBox.content.set:"Student Feedback: Issues involving [Ichina] again, reportedly being unfriendly to a newcomer after class with a few friends."
-dialogBox.speaker.set:"October 3"
+dialogBox.speaker.set:"10/3"
 dialogBox.click.subscene_open.subsceneoffice_bulletin5
 
 subscene.office_bulletin5
 dialogBox.content.set:"Accepted another small gift from [Ichina]'s parents as a thank-you for my 'special attention' during the semester."
-dialogBox.speaker.set:"October 15"
+dialogBox.speaker.set:"10/15"
 dialogBox.click.subscene_open.subsceneoffice_bulletin6
 
 subscene.office_bulletin6
 dialogBox.content.set:"Received another inquiry from a parent about their child's emotional issues at school. I advised the parent to communicate directly with their student."
-dialogBox.speaker.set:"October 25"
+dialogBox.speaker.set:"10/25"
 dialogBox.click.subscene_close.subsceneoffice_bulletin6
 
 close_subscene.office_bulletin6
