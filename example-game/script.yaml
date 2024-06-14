@@ -976,6 +976,7 @@ dialogBox.click.subscene_close.subsceneenterrooftop
 
 close_subscene.enterrooftop
 character.Ichiha.moving_show
+dialogBox.hide
 option.hide.1
 option.hide.2
 
