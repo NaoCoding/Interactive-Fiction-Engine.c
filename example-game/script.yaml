@@ -24,6 +24,8 @@ status.photo:"images/character01/character01.png"
 status.name:"???"
 status.value.new:"Memory"
 status.inventory.new:"key"
+status.inventory.new:"cat"
+status.inventory.src:cat,"images/inventorys/cat.png"
 status.inventory.src:key,"images/inventorys/key.png"
 
 
@@ -391,6 +393,7 @@ object.show:door_button
 
 
 subscene.girlhallwaytalk1
+status.value.add.Memory,TWOGIRL,3
 character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
@@ -425,6 +428,7 @@ object.show:door_button
 subscene.bulletin_egg1
 
 dialogBox.show
+status.value.add.Memory,HOWARD,3
 dialogBox.speaker.set:"Bulletin"
 character.Ichiha.moving_hide
 character.Moon.moving_hide
@@ -458,13 +462,10 @@ dialogBox.click.subscene_open.subscenebulletin_notice3
 
 subscene.bulletin_notice3
 dialogBox.content.set:"Due to safety concerns, the school rooftop is closed. "
-dialogBox.click.subscene_open.subscenebulletin_notice4
+dialogBox.click.subscene_open.subscenebulletin_notice3
 
-subscene.bulletin_notice4
-dialogBox.content.set:"Press E to open character's status panel and inventory."
-dialogBox.click.subscene_close.subscenebulletin_notice4
 
-close_subscene.bulletin_notice4
+close_subscene.bulletin_notice3
 
 dialogBox.hide
 character.Ichiha.hide:normal_stand
@@ -533,7 +534,7 @@ option.hide.2
 
 
 scene.classroom
-
+status.value.add.Memory,CLASSROOM,3
 option.hide.1
 option.hide.2
 object.show:maskBG
@@ -562,6 +563,7 @@ change_scene.character.left.hallway
 
 
 scene.classroom2
+status.value.add.Memory,CLASSROOM2,3
 object.show:maskBG
 audio.play.door
 option.hide.1
@@ -671,6 +673,7 @@ option.hide.1
 option.hide.2
 option.hide.3
 character.Anett.show:normal_stand
+status.value.add.Memory,ANETTFIRST,3
 status.value.add.FriendShip with Anett,FIRST,5
 dialogBox.content.set:"( Friendship with Anett increased ) I really want to help you, but I need to keep studying. Be careful, and if you feel uneasy, I can try to keep an eye out for you from a distance."
 dialogBox.speaker.set:"Anett"
@@ -682,6 +685,7 @@ option.hide.1
 option.hide.2
 option.hide.3
 character.Anett.show:normal_stand
+status.value.add.Memory,ANETTFIRST,3
 status.value.add.FriendShip with Anett,FIRST,5
 dialogBox.content.set:"( Friendship with Anett increased ) Hmm, the rooftop? But I need to continue studying right now. Be careful when you go, and maybe I'll come find you after I'm done studying."
 dialogBox.speaker.set:"Anett"
@@ -693,6 +697,7 @@ option.hide.1
 option.hide.2
 option.hide.3
 character.Anett.show:normal_stand
+status.value.add.Memory,ANETTFIRST,0
 status.value.add.FriendShip with Anett,FIRST,-5
 dialogBox.content.set:"( Friendship with Anett decreased ) Alright, if you need help, I'll be in the classroom. Be careful."
 dialogBox.speaker.set:"Anett"
@@ -703,7 +708,7 @@ dialogBox.click.scene_open.hallwayleft2
 
 scene.hallwayleft2
 object.show:maskBG
-
+status.value.add.Memory,HALLWAYLEFT2,3
 dialogBox.hide
 character.Anett.hide:normal_stand
 character.Anett.moving_hide
@@ -736,6 +741,7 @@ change_scene.character.right.midhallway_2
 
 ----
 scene.midhallway_2
+
 object.show:maskBG
 background:"images/midhallway/bg.jpg"
 character.Ichiha.moving_place:"10%","40%","10%","33%"
@@ -758,7 +764,7 @@ change_scene.character.right.righthallway_1
 
 scene.righthallway_1
 object.show:maskBG
-
+status.value.add.Memory,RIGHTHALLWAY,3
 background:"images/righthallway/bg.png"
 character.Ichiha.moving_show
 
@@ -789,7 +795,7 @@ option.hide.2
 
 scene.bathroom
 object.show:maskBG
-
+status.value.add.Memory,BATHROOM,3
 
 option.hide.1
 option.hide.2
@@ -852,6 +858,7 @@ dialogBox.click.scene_open.midhallway_Anett
 ----
 
 scene.midhallway_Anett
+status.value.add.Memory,MIDANETT,5
 animation.fadeOutandIn
 object.show:maskBG
 dialogBox.hide
@@ -875,6 +882,7 @@ object.src:tooffice,"images/midhallway/tooffice.png"
 
 ----
 subscene.Anettthekey
+status.value.add.Memory,ANETTKEY,3
 dialogBox.show
 character.Ichiha.show:normal_stand4
 character.Ichiha.moving_hide
@@ -966,7 +974,7 @@ option.hide.2
 #office2
 
 scene.office2
-
+status.value.add.Memory,OFFICES2,3
 audio.play.door
 object.show:maskBG
 option.hide.1
@@ -982,8 +990,8 @@ object.src:office_paper,"images/office/paper.png"
 
 object.create:office_desk
 object.style:office_desk,zIndex,3
-object.place:office_desk,"28%","25%","22%","41.1%"
-object.src:office_desk,"images/office/desk.png"
+object.place:office_desk,"28%","25%","22%","41.7%"
+object.src:office_desk,"images/office/desk2.png"
 object.click.subscene_open:office_desk,subsceneoffice_desk
 
 object.create:office_diary
@@ -1278,7 +1286,7 @@ character.Ichiha.moving_show
 -------------------------------
 
 subscene.office_diary
-
+status.value.add.Memory,OFFICEDIARY,3
 character.Ichiha.moving_hide
 dialogBox.show
 dialogBox.content.set:"October 12 is marked with \"birthday\" tag"
@@ -1343,8 +1351,9 @@ object.click.subscene_open:office_paper,subsceneoffice_bulletin
 
 object.create:office_desk
 object.style:office_desk,zIndex,3
-object.place:office_desk,"28%","25%","22%","41.1%"
+object.place:office_desk,"28%","25%","22%","41.7%"
 object.src:office_desk,"images/office/desk.png"
+object.click.subscene_open:office_desk,subscenecat
 
 object.create:office_diary
 object.style:office_diary,zIndex,3
@@ -1358,6 +1367,10 @@ change_scene.character.right.midhallway_1
 
 
 -------------------------------
+subscene.cat
 
+status.inventory.get:cat
+status.value.add.Memory,CAT,3
+object.src:office_desk,"images/office/desk2.png"
 
 
