@@ -165,7 +165,33 @@ void PROCESS_audioCalloc();
 void PROCESS_initialAudio(char * id,char * src);
 void PROCESS_playAudio(char * id);
 void PROCESS_stopAudio(char * id);
+void PROCESS_inventoryNew(char * id);
+void PROCESS_inventorySRC(char * id, char * src);
+void PROCESS_inventoryGET(char * id);
 
+void PROCESS_inventoryGET(char * id){
+    fwrite("PROCESS_inventoryHAVE(\"",23,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")\n",3,1,fnjs);
+}
+
+
+void PROCESS_inventorySRC(char * id, char * src){
+    fwrite("PROCESS_inventorySRC(\"",22,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\",\"",3,1,fnjs);
+    fwrite(file_folder,strlen(file_folder),1,fnjs);
+    fwrite(src+1,strlen(src+1),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
+}
+
+void PROCESS_inventoryNew(char * id){
+
+    fwrite("PROCESS_inventoryNew(",21,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
+
+}
 
 
 void PROCESS_requireValueOption(char * value, char * require, char * opt){
@@ -268,7 +294,7 @@ void PROCESS_createStatusPanel(){
     for(int i=0;i<9;i++){
         int j = i % 3;
         int k = i / 3;
-        fwrite("<div id=\\\'STATUS_INVENTORY_",27,1,fnjs);
+        fwrite("<img id=\\\'STATUS_INVENTORY_",27,1,fnjs);
         char buf[100] = {0};
         sprintf(buf,"%d",i+1);
         fwrite(buf,strlen(buf),1,fnjs);

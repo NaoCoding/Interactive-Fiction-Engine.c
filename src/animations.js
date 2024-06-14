@@ -11,6 +11,44 @@ var statusOn = 0
 var saveOn = 0
 
 
+function PROCESS_inventoryNew(a){
+    if(status_inventory.length < 9)status_inventory.push(a)
+
+}
+
+function PROCESS_inventoryHAVE(a){
+    var index = -1
+    for(var i=0;i<8;i++){
+        if(status_inventory[i] == a){
+            index = i;
+            break;
+        }
+    }
+    if(index == -1) return;
+    status_inventory_have[index] = 1;
+    updateInventory()
+}
+
+function updateInventory(){
+    for(var i=0;i<8;i++){
+        if(status_inventory_have[i] == 1){
+            document.getElementById("STATUS_INVENTORY_" + (i+1).toString()).src = status_inventory_src[i]
+        }
+    }
+}
+
+function PROCESS_inventorySRC(a,b){
+    var index = -1
+    for(var i=0;i<8;i++){
+        if(status_inventory[i] == a){
+            index = i;
+            break;
+        }
+    }
+    if(index == -1) return;
+    status_inventory_src[index] = b
+}
+
 function PROCESS_requireValueOption(a,b,c){
     var index = -1
     for(var i=0;i<status_value.length;i++){

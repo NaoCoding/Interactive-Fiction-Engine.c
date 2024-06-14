@@ -5,7 +5,7 @@
 
 #setup the window's title (html title)
 #usage: window.title:[src]
-window.title:"Demo Game"
+window.title:"Silent Scars"
 
 #Calloc the size of your character in C
 #this is important for the engine to setup the structure
@@ -23,6 +23,11 @@ character.create:Anett
 status.photo:"images/character01/character01.png"
 status.name:"???"
 status.value.new:"Memory"
+status.inventory.new:"key"
+status.inventory.src:key,"images/inventorys/key.png"
+status.inventory.get:key
+
+
 #status.value.new:"FriendShip with Brian"
 
 
@@ -204,6 +209,7 @@ first_scene:1
 
 
 scene.1
+
 background:"images/menu/bg.png"
 
 dialogBox.hide

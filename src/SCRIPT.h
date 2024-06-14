@@ -150,7 +150,15 @@ void SCRIPT_ANALYZE(){
         }
 
         else if(!strcmp(para[1],"inventory")){
-
+            if(!strcmp(para[2],"new")){
+                PROCESS_inventoryNew(para[3]);
+            }
+            else if(!strcmp(para[2],"src")){
+                PROCESS_inventorySRC(para[3],para[4]);
+            }
+            else if(!strcmp(para[2],"get")){
+                PROCESS_inventoryGET(para[3]);
+            }
         }
 
     }
