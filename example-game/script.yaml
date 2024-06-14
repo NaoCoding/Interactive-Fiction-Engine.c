@@ -965,7 +965,7 @@ character.Anett.moving_show
 
 ----
 subscene.enteroffice2
-
+character.Anett.moving_hide
 character.Ichiha.moving_hide
 option.content.1:"<br>Enter the office"
 option.show.1
@@ -982,6 +982,8 @@ option.hide.2
 #office2
 
 scene.office2
+character.Anett.moving_hide
+change_scene.character.right.midhallway_Anett
 status.value.add.Memory,OFFICES2,3
 audio.play.door
 object.show:maskBG
