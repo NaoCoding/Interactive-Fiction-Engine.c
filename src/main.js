@@ -10,6 +10,8 @@ function sceneonclick(a){
 
     scene_send(a);
     scene_subscene[0] = a;
+    change_scenePlace = [-1,-1]
+    change_sceneTargetFn = ["",""]
 
 
 }
@@ -190,18 +192,10 @@ function SAVE_SAVEGAME(){
             }
         }
         for(var i=0;i<9;i++){
-            if(status_inventory[i] != -1){
-                $.ajax({
-                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory_src[i],
-                    method:"GET",
-                })
-            }
-            else{
-                $.ajax({
-                    url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + "",
-                    method:"GET",
-                })
-            }
+            $.ajax({
+                url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory_have[i],
+                method:"GET",
+            })
         }
     }
 }
@@ -217,6 +211,8 @@ function SAVE_LOADGAME(){
 
         success:function(res){
             if(res == 0 || res == '0') return
+            change_scenePlace = [-1,-1]
+            change_sceneTargetFn = ["",""]
             for(var i=0;i<1;i++){
                 if(i==0){
                     scene_subscene[0] = res;
@@ -313,7 +309,8 @@ var save_name = ""
 var scene_subscene = ["",""]
 var subscene_toOpen = ""
 var status_value = []
-var status_inventory = [-1,-1,-1,-1,-1,-1,-1,-1,-1]
+var status_inventory_have = [0,0,0,0,0,0,0,0,0]
+var status_inventory = ['','','','','','','','','']
 var status_inventory_src = []
 var AUDIOS_ = []
 var AUDIOSSRC_ = []

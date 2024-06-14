@@ -13,14 +13,17 @@ character.count:10
 
 #Create a character
 #the character's name should not be as same as others (should be unique)
-character.create:Mance
+character.create:Ichiha
 character.create:Moon
 character.create:Amy
+character.create:Brian
+character.create:Anett
 
 #status panel
-status.photo:"images/character01.png"
-status.name:"Ichina"
+status.photo:"images/character01/character01.png"
+status.name:"???"
 status.value.new:"Memory"
+#status.value.new:"FriendShip with Brian"
 
 
 #music setup
@@ -44,29 +47,44 @@ dialogBox.speaker.place:"91%","31%","4%","63%"
 
 
 
-character.Mance.moving.1:"images/moving_images/moving5.png"
-character.Mance.moving.2:"images/moving_images/moving2.png"
-character.Mance.moving.3:"images/moving_images/moving5.png"
-character.Mance.moving.4:"images/moving_images/moving2.png"
-character.Mance.moving.5:"images/moving_images/moving5.png"
-character.Mance.moving.6:"images/moving_images/moving2.png"
-character.Mance.moving.7:"images/moving_images/moving5.png"
-character.Mance.moving.8:"images/moving_images/moving2.png"
-character.Mance.moving.9:"images/moving_images/moving6.png"
-character.Mance.moving.10:"images/moving_images/moving2.png"
+character.Ichiha.moving.1:"images/moving_images/moving5.png"
+character.Ichiha.moving.2:"images/moving_images/moving2.png"
+character.Ichiha.moving.3:"images/moving_images/moving5.png"
+character.Ichiha.moving.4:"images/moving_images/moving2.png"
+character.Ichiha.moving.5:"images/moving_images/moving5.png"
+character.Ichiha.moving.6:"images/moving_images/moving2.png"
+character.Ichiha.moving.7:"images/moving_images/moving5.png"
+character.Ichiha.moving.8:"images/moving_images/moving2.png"
+character.Ichiha.moving.9:"images/moving_images/moving6.png"
+character.Ichiha.moving.10:"images/moving_images/moving2.png"
 
-character.Mance.moving.11:"images/moving_images/moving1.png"
-character.Mance.moving.12:"images/moving_images/moving2.png"
-character.Mance.moving.13:"images/moving_images/moving3.png"
-character.Mance.moving.14:"images/moving_images/moving2.png"
-character.Mance.moving.15:"images/moving_images/moving1.png"
-character.Mance.moving.16:"images/moving_images/moving2.png"
-character.Mance.moving.17:"images/moving_images/moving7.png"
-character.Mance.moving.18:"images/moving_images/moving2.png"
+character.Ichiha.moving.11:"images/moving_images/moving1.png"
+character.Ichiha.moving.12:"images/moving_images/moving2.png"
+character.Ichiha.moving.13:"images/moving_images/moving3.png"
+character.Ichiha.moving.14:"images/moving_images/moving2.png"
+character.Ichiha.moving.15:"images/moving_images/moving1.png"
+character.Ichiha.moving.16:"images/moving_images/moving2.png"
+character.Ichiha.moving.17:"images/moving_images/moving7.png"
+character.Ichiha.moving.18:"images/moving_images/moving2.png"
 
 
-character.Mance.src:normal_stand,"images/character01.png"
-character.Mance.place:normal_stand,"auto","80%","10%","0%"
+character.Ichiha.src:normal_stand,"images/character01/character01.png"
+character.Ichiha.place:normal_stand,"auto","80%","10%","0%"
+
+character.Ichiha.src:normal_stand2,"images/character01/character02.png"
+character.Ichiha.place:normal_stand2,"auto","80%","10%","0%"
+
+character.Ichiha.src:normal_stand3,"images/character01/character03.png"
+character.Ichiha.place:normal_stand3,"auto","80%","10%","0%"
+
+character.Ichiha.src:normal_stand4,"images/character01/character04.png"
+character.Ichiha.place:normal_stand4,"auto","80%","10%","0%"
+character.Ichiha.src:normal_stand5,"images/character01/character05.png"
+character.Ichiha.place:normal_stand5,"auto","80%","10%","0%"
+character.Ichiha.src:normal_stand6,"images/character01/character06.png"
+character.Ichiha.place:normal_stand6,"auto","80%","10%","0%"
+character.Ichiha.src:normal_stand7,"images/character01/character07.png"
+character.Ichiha.place:normal_stand7,"auto","80%","10%","0%"
 
 character.Moon.src:normal_stand,"images/scene01/moon_normal.png"
 character.Moon.place:normal_stand,"auto","80%","65%","0%"
@@ -74,14 +92,74 @@ character.Moon.place:normal_stand,"auto","80%","65%","0%"
 character.Amy.src:normal_stand,"images/scene01/amy_normal.png"
 character.Amy.place:normal_stand,"auto","80%","10%","0%"
 
+character.Anett.src:normal_stand,"images/character03/01.png"
+character.Anett.place:normal_stand,"auto","80%","65%","0%"
+
+character.Anett.src:normal_stand2,"images/character03/02.png"
+character.Anett.place:normal_stand2,"auto","80%","65%","0%"
+
+character.Anett.src:normal_stand3,"images/character03/03.png"
+character.Anett.place:normal_stand3,"auto","80%","65%","0%"
+
+character.Anett.src:normal_stand4,"images/character03/04.png"
+character.Anett.place:normal_stand4,"auto","80%","65%","0%"
+
+character.Anett.src:normal_stand5,"images/character03/05.png"
+character.Anett.place:normal_stand5,"auto","80%","65%","0%"
+
 character.Moon.moving.1:"images/scene01/black01.png"
 character.Moon.moving.2:"images/scene01/black02.png"
 
 character.Amy.moving.1:"images/scene01/black11.png"
 character.Amy.moving.2:"images/scene01/black12.png"
 
-character.Mance.control.movingAnimation:11,18
-character.Mance.control.standingAnimation:1,10
+character.Brian.moving.1:"images/classroom/brian1.png"
+character.Brian.moving.2:"images/classroom/brian1.png"
+character.Brian.moving.3:"images/classroom/brian2.png"
+character.Brian.moving.4:"images/classroom/brian2.png"
+character.Brian.moving.5:"images/classroom/brian1.png"
+character.Brian.moving.6:"images/classroom/brian1.png"
+character.Brian.moving.7:"images/classroom/brian2.png"
+character.Brian.moving.8:"images/classroom/brian2.png"
+character.Brian.moving.9:"images/classroom/brian1.png"
+character.Brian.moving.10:"images/classroom/brian1.png"
+character.Brian.moving.11:"images/classroom/brian2.png"
+character.Brian.moving.12:"images/classroom/brian2.png"
+character.Brian.moving.13:"images/classroom/brian1.png"
+character.Brian.moving.14:"images/classroom/brian1.png"
+character.Brian.moving.15:"images/classroom/brian2.png"
+character.Brian.moving.16:"images/classroom/brian2.png"
+character.Brian.moving.17:"images/classroom/brian3.png"
+character.Brian.moving.18:"images/classroom/brian3.png"
+
+character.Anett.moving.1:"images/classroom/Anett1.png"
+character.Anett.moving.2:"images/classroom/Anett1.png"
+character.Anett.moving.3:"images/classroom/Anett2.png"
+character.Anett.moving.4:"images/classroom/Anett2.png"
+character.Anett.moving.5:"images/classroom/Anett1.png"
+character.Anett.moving.6:"images/classroom/Anett1.png"
+character.Anett.moving.7:"images/classroom/Anett2.png"
+character.Anett.moving.8:"images/classroom/Anett2.png"
+character.Anett.moving.9:"images/classroom/Anett1.png"
+character.Anett.moving.10:"images/classroom/Anett1.png"
+character.Anett.moving.11:"images/classroom/Anett2.png"
+character.Anett.moving.12:"images/classroom/Anett2.png"
+character.Anett.moving.13:"images/classroom/Anett1.png"
+character.Anett.moving.14:"images/classroom/Anett1.png"
+character.Anett.moving.15:"images/classroom/Anett2.png"
+character.Anett.moving.16:"images/classroom/Anett2.png"
+character.Anett.moving.17:"images/classroom/Anett3.png"
+character.Anett.moving.18:"images/classroom/Anett3.png"
+
+
+character.Ichiha.control.movingAnimation:11,18
+character.Ichiha.control.standingAnimation:1,10
+
+character.Ichiha.moving_place:"10%","40%","3%","33%"
+character.Ichiha.moving_src:"images/moving_images/moving2.png"
+character.Ichiha.moving_style:zIndex,10
+character.Ichiha.control.start
+character.Ichiha.moving_hide
 
 option.place:1,"35%","15%","10%","55%"
 option.style:1,background,"rgba(255,255,255,0.8)"
@@ -114,8 +192,12 @@ option.style:2,borderRadius,"1%"
 option.style:3,borderRadius,"1%"
 option.style:4,borderRadius,"1%"
 
-#music 
-
+object.create:maskBG
+object.place:maskBG,"100%","100%","0px","0px"
+object.hide:maskBG
+object.style:maskBG,zIndex,499
+object.style:maskBG,pointerEvents,"none"
+object.src:maskBG,"images/scene01/scene01_mask.png"
 
 
 first_scene:1
@@ -134,23 +216,39 @@ object.click.subscene_open:start_gamebtn,subscenestart_game
 
 subscene.start_game
 
+object.show:maskBG
 dialogBox.show
 background:"images/scene01/scene01.png"
 object.hide:start_gamebtn
-character.Mance.show:normal_stand
-dialogBox.content.set:"Why I am here? I can't remember anything. ouch...why there are lots of scratches on my arms and knees..."
+character.Ichiha.show:normal_stand2
+dialogBox.content.set:"Why I am here?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open:subscenestart_game2
+
+subscene:start_game2
+
+character.Ichiha.hide:normal_stand2
+character.Ichiha.show:normal_stand6
+dialogBox.content.set:"I can't remember anything."
+dialogBox.click.subscene_open:subscenestart_game3
+
+subscene:start_game3
+
+character.Ichiha.hide:normal_stand6
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"ouch...why there are lots of scratches on my arms and knees..."
 dialogBox.click.scene_open:openingtalk
 
 scene.openingtalk
-
-#character.Mance.place:moving,"auto","auto","30%","30%"
-character.Mance.hide:normal_stand
+object.show:maskBG
+#character.Ichiha.place:moving,"auto","auto","30%","30%"
+character.Ichiha.hide:normal_stand4
 
 
 
 #opening talk
-character.Mance.moving_hide
-
+character.Ichiha.moving_hide
+animation.fadeIn
 character.Moon.show:normal_stand
 character.Amy.hide:normal_stand
 
@@ -222,9 +320,9 @@ dialogBox.click.scene_open.hallway_firsttime
 
 scene.hallway_firsttime
 
+object.show:maskBG
 
-
-character.Mance.moving_show
+character.Ichiha.moving_show
 character.Moon.hide:normal_stand
 character.Amy.hide:normal_stand
 
@@ -233,10 +331,6 @@ animation.fadeOutandIn
 
 
 background:"images/scene01/scene01.png"
-character.Mance.moving_place:"10%","40%","3%","33%"
-character.Mance.moving_src:"images/moving_images/moving2.png"
-character.Mance.moving_style:zIndex,10
-character.Mance.control.start
 
 character.Moon.moving_show
 character.Moon.moving_style:zIndex,"20"
@@ -246,14 +340,10 @@ character.Moon.moving_place:"10%","40%","87%","36%"
 character.Amy.moving_show
 character.Amy.moving_style:zIndex,"20"
 character.Amy.moveAnimation:1,2
-character.Amy.moving_style:transform,"scaleX(-1)"
+character.Amy.moving_style:transform,"scAnett(-1)"
 character.Amy.moving_place:"10%","40%","80%","33%"
 
-object.create:maskBG
-object.place:maskBG,"100%","100%","0px","0px"
-object.show:maskBG
-object.style:maskBG,zIndex,3
-object.src:maskBG,"images/scene01/scene01_mask.png"
+
 
 object.create:bulletin1
 object.style:bulletin1,zIndex,3
@@ -285,7 +375,7 @@ object.show:door_button
 
 
 subscene.girlhallwaytalk1
-character.Mance.moving_hide
+character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
 character.Moon.show:normal_stand
@@ -307,7 +397,7 @@ dialogBox.click.subscene_close.girlhallwaytalk2
 
 close_subscene.girlhallwaytalk2
 dialogBox.hide
-character.Mance.moving_show
+character.Ichiha.moving_show
 character.Amy.hide:normal_stand
 character.Moon.moving_show
 character.Amy.moving_show
@@ -320,7 +410,7 @@ subscene.bulletin_egg1
 
 dialogBox.show
 dialogBox.speaker.set:"Bulletin"
-character.Mance.moving_hide
+character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
 dialogBox.content.set:"Congratuations!!! Class 41047, student Howard09 won the coding competition."
@@ -331,8 +421,8 @@ close_subscene.bulletin_egg1
 dialogBox.hide
 character.Moon.moving_show
 character.Amy.moving_show
-character.Mance.hide:normal_stand
-character.Mance.moving_show
+character.Ichiha.hide:normal_stand
+character.Ichiha.moving_show
 
 subscene.bulletin_notice1
 
@@ -340,7 +430,7 @@ status.value.add.Memory,BULLETIN,5
 
 dialogBox.show
 dialogBox.speaker.set:"Bulletin"
-character.Mance.moving_hide
+character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
 dialogBox.content.set:"Attention All Students and Staff :"
@@ -352,20 +442,24 @@ dialogBox.click.subscene_open.subscenebulletin_notice3
 
 subscene.bulletin_notice3
 dialogBox.content.set:"Due to safety concerns, the school rooftop is closed. "
-dialogBox.click.subscene_close.subscenebulletin_notice3
+dialogBox.click.subscene_open.subscenebulletin_notice4
 
-close_subscene.bulletin_notice3
+subscene.bulletin_notice4
+dialogBox.content.set:"Press E to open character's status panel and inventory."
+dialogBox.click.subscene_close.subscenebulletin_notice4
+
+close_subscene.bulletin_notice4
 
 dialogBox.hide
-character.Mance.hide:normal_stand
-character.Mance.moving_show
+character.Ichiha.hide:normal_stand
+character.Ichiha.moving_show
 character.Moon.moving_show
 character.Amy.moving_show
 
 
 subscene.enter_classroomask
 
-character.Mance.moving_hide
+character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
 
@@ -381,7 +475,37 @@ option.show.2
 option.set.subscene_close.2.subsceneenter_classroomask
 
 close_subscene.enter_classroomask
-character.Mance.moving_show
+character.Ichiha.moving_show
+character.Moon.moving_show
+character.Amy.moving_show
+
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
+option.hide.1
+option.hide.2
+
+---
+
+subscene.enter_classroomask2
+
+character.Ichiha.moving_hide
+character.Moon.moving_hide
+character.Amy.moving_hide
+
+object.hide:bulletin1
+object.hide:bulletin2
+object.hide:door_button
+
+option.content.1:"<br>Enter The Room"
+option.show.1
+option.set.scene_open.1.classroom2
+option.content.2:"<br>Close"
+option.show.2
+option.set.subscene_close.2.subsceneenter_classroomask2
+
+close_subscene.enter_classroomask2
+character.Ichiha.moving_show
 character.Moon.moving_show
 character.Amy.moving_show
 
@@ -396,9 +520,500 @@ scene.classroom
 
 option.hide.1
 option.hide.2
+object.show:maskBG
+audio.play.door
+dialogBox.hide
+
+object.create:trashcan
+object.style:trashcan,zIndex,3
+object.place:trashcan,"10%","17%","1%","52.5%"
+object.src:trashcan,"images/classroom/trashcan.png"
+object.click.subscene_open:trashcan,subscenetrash
+
+object.create:diary
+object.style:diary,zIndex,3
+object.place:diary,"5%","2%","40%","50%"
+object.src:diary,"images/classroom/book.png"
+object.click.subscene_open:diary,subscenediary
+
+character.Ichiha.moving_show
+character.Ichiha.moving_place:"10%","40%","86%","33%"
+background:"images/classroom/background.png"
+
+change_scene.character.left.hallway
+
+-------------
+
+
+scene.classroom2
+object.show:maskBG
+audio.play.door
+option.hide.1
+option.hide.2
+character.Ichiha.moving_show
+character.Anett.moving_show
+character.Anett.moving_style:zIndex,"20"
+character.Anett.moveAnimation:1,18
+character.Anett.moving_style:transform,"scAnett(-1)"
+character.Anett.moving_place:"10%","40%","40%","33%"
+
+background:"images/classroom/background.png"
+character.Ichiha.moving_place:"10%","40%","80%","33%"
+
+
+character.Anett.subscene_open.subscenefirstwithAnett
+----
+subscene.firstwithAnett
+
+status.value.add.Memory,ANETT,10
+character.Ichiha.moving_hide
+character.Anett.moving_hide
+status.value.new:"FriendShip with Anett"
+status.value.add:FriendShip with Anett,BEGINNING,50
+
+character.Anett.show:normal_stand2
+dialogBox.show
+dialogBox.content.set:"It's so late now, why are you still here?"
+dialogBox.speaker.set:"Anett"
+dialogBox.click.subscene_open.subscenefirstwithAnett2
+
+subscene.firstwithAnett2
+character.Anett.hide:normal_stand2
+character.Ichiha.show:normal_stand2
+dialogBox.content.set:"I... I'm not really sure what happened. I just woke up at school. How about you?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenefirstwithAnett3
+
+subscene.firstwithAnett3
+character.Anett.show:normal_stand
+character.Ichiha.hide:normal_stand2
+dialogBox.content.set:"I was studying in the library and lost track of time. It's really quiet here."
+dialogBox.speaker.set:"Anett"
+dialogBox.click.subscene_open.subscenefirstwithAnett4
+
+subscene.firstwithAnett4
+character.Anett.hide:normal_stand
+character.Ichiha.show:normal_stand
+dialogBox.content.set:"By the way, Anett, have you heard about anything strange happening at school recently?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenefirstwithAnett5
+
+subscene.firstwithAnett5
+character.Anett.show:normal_stand5
+character.Ichiha.hide:normal_stand
+dialogBox.content.set:"Hmm, I'm not sure. But, have you heard about the rumors concerning the rooftop?"
+dialogBox.speaker.set:"Anett"
+dialogBox.click.subscene_open.subscenefirstwithAnett6
+
+subscene.firstwithAnett6
+character.Anett.hide:normal_stand5
+character.Ichiha.show:normal_stand5
+dialogBox.content.set:"Rumors about the rooftop? I'm not familiar, can you tell me more?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenefirstwithAnett7
+
+subscene.firstwithAnett7
+character.Anett.show:normal_stand4
+character.Ichiha.hide:normal_stand5
+dialogBox.content.set:"They say sometimes you can hear weird noises up there, and some people have even seen... (pauses) Never mind, it's probably just nonsense."
+dialogBox.speaker.set:"Anett"
+dialogBox.click.subscene_open.subscenefirstwithAnett8
+
+
+subscene.firstwithAnett8
+character.Anett.hide:normal_stand4
+character.Ichiha.show:normal_stand
+dialogBox.content.set:"Do you believe those stories?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenefirstwithAnett9
+
+subscene.firstwithAnett9
+character.Anett.show:normal_stand3
+character.Ichiha.hide:normal_stand
+dialogBox.content.set:"I don't know. But you should be careful, especially when you're alone in places like this."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenefirstwithAnett10
+
+subscene.firstwithAnett10
+dialogBox.hide
+character.Anett.hide:normal_stand3
+option.show.1
+option.show.2
+option.show.3
+
+option.content.1:"I'm really confused, and something feels off here. Could you stay with me for a while?"
+option.content.2:"I'm going to check out the rooftop, are you interested in coming with me?"
+option.content.3:"<br>I can handle it myself, but thanks anyway."
+
+option.set.subscene_open.1.subscenefirstwithAnett11
+option.set.subscene_open.2.subscenefirstwithAnett12
+option.set.subscene_open.3.subscenefirstwithAnett13
+
+
+subscene.firstwithAnett11
+dialogBox.show
+option.hide.1
+option.hide.2
+option.hide.3
+character.Anett.show:normal_stand
+status.value.add.FriendShip with Anett,FIRST,5
+dialogBox.content.set:"( Friendship with Anett increased ) I really want to help you, Ichina, but I need to keep studying. Be careful, and if you feel uneasy, I can try to keep an eye out for you from a distance."
+dialogBox.speaker.set:"Anett"
+dialogBox.click.scene_open.hallwayleft2
+
+subscene.firstwithAnett12
+dialogBox.show
+option.hide.1
+option.hide.2
+option.hide.3
+character.Anett.show:normal_stand
+status.value.add.FriendShip with Anett,FIRST,5
+dialogBox.content.set:"( Friendship with Anett increased ) Hmm, the rooftop? But I need to continue studying right now. Be careful when you go, and maybe I'll come find you after I'm done studying."
+dialogBox.speaker.set:"Anett"
+dialogBox.click.scene_open.hallwayleft2
+
+subscene.firstwithAnett13
+dialogBox.show
+option.hide.1
+option.hide.2
+option.hide.3
+character.Anett.show:normal_stand
+status.value.add.FriendShip with Anett,FIRST,-5
+dialogBox.content.set:"( Friendship with Anett decreased ) Alright, if you need help, I'll be in the classroom. Be careful."
+dialogBox.speaker.set:"Anett"
+dialogBox.click.scene_open.hallwayleft2
+
+
+---
+
+scene.hallwayleft2
+object.show:maskBG
+
+dialogBox.hide
+character.Anett.hide:normal_stand
+character.Anett.moving_hide
+character.Ichiha.moving_place:"10%","40%","80%","33%"
+background:"images/scene01/scene01.png"
+
+object.create:bulletin1
+object.style:bulletin1,zIndex,3
+object.place:bulletin1,"10%","26%","21.6%","25%"
+object.src:bulletin1,"images/scene01/bulletin1.png"
+
+object.create:bulletin2
+object.style:bulletin2,zIndex,3
+object.place:bulletin2,"8.5%","23%","42%","25%"
+object.src:bulletin2,"images/scene01/bulletin2.png"
+
+
+object.create:door_button
+object.style:door_button,zIndex,3
+object.place:door_button,"4%","7%","74%","40%"
+object.src:door_button,"images/scene01/door_button.png"
+
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
+character.Ichiha.moving_show
+
+
+change_scene.character.right.midhallway_2
+
+----
+scene.midhallway_2
+object.show:maskBG
+background:"images/midhallway/bg.jpg"
+character.Ichiha.moving_place:"10%","40%","10%","33%"
+character.Ichiha.moving_show
+
+object.create:torooftop
+object.style:torooftop,zIndex,3
+object.place:torooftop,"20%","55.5%","58.7%","7.8%"
+object.src:torooftop,"images/midhallway/torooftop.png"
+object.click.subscene_open:torooftop,subsceneenterrooftop
+
+
+object.create:tooffice
+object.style:tooffice,zIndex,3
+object.place:tooffice,"15%","35%","30%","27%"
+object.src:tooffice,"images/midhallway/tooffice.png"
+
+
+------
+
+subscene.trash
+dialogBox.show
+object.hide.diary
+object.hide.trashcan
+character.Ichiha.moving_hide
+dialogBox.content.set:"Tell her to go to the rooftop after class"
+dialogBox.speaker.set:""
+dialogBox.click.subscene_close.subscenetrash
+status.value.add.Memory,trash,5
+
+subscene.diary
+dialogBox.show
+object.hide.diary
+object.hide.trashcan
+character.Ichiha.moving_hide
+dialogBox.content.set:"The last few days' pages torn out."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenediary2
+
+
+
+subscene.diary2
+character.Ichiha.show:normal_stand
+dialogBox.content.set:"Why are the latest pages missing..."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subscenediary3
+
+subscene.diary3
+character.Ichiha.hide:normal_stand
+character.Ichiha.show:normal_stand2
+dialogBox.content.set:"what could have been written here?"
+
+
+dialogBox.click.subscene_close.subscenediary3
+
+status.value.add.Memory,diary,5
+
+close_subscene.trash
+dialogBox.hide
+character.Ichiha.moving_show
+object.show.diary
+object.show.trashcan
+
+close_subscene.diary3
+character.Ichiha.hide:normal_stand2
+dialogBox.hide
+character.Ichiha.moving_show
+object.show.diary
+object.show.trashcan
+
+-------------------------------
+
+scene.hallway
+object.show:maskBG
+
+dialogBox.hide
+character.Ichiha.hide:normal_stand5
+background:"images/scene01/scene01.png"
+
+object.create:bulletin1
+object.style:bulletin1,zIndex,3
+object.place:bulletin1,"10%","26%","21.6%","25%"
+object.src:bulletin1,"images/scene01/bulletin1.png"
+
+object.create:bulletin2
+object.style:bulletin2,zIndex,3
+object.place:bulletin2,"8.5%","23%","42%","25%"
+object.src:bulletin2,"images/scene01/bulletin2.png"
+
+object.create:door_button
+object.style:door_button,zIndex,3
+object.place:door_button,"4%","7%","74%","40%"
+object.src:door_button,"images/scene01/door_button.png"
+object.click.subscene_open:door_button,subsceneenter_classroomask
+
+
+
+character.Ichiha.hide:normal_stand5
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
+character.Ichiha.moving_show
+character.Moon.hide:normal_stand
+character.Amy.hide:normal_stand
+
+change_scene.character.right.midhallway_1
+
+-------------------------------
+
+scene.hallwayleft
+object.show:maskBG
+
+
+character.Anett.moving_hide
+character.Ichiha.moving_place:"10%","40%","80%","33%"
+dialogBox.hide
+character.Ichiha.hide:normal_stand5
+background:"images/scene01/scene01.png"
+
+object.create:bulletin1
+object.style:bulletin1,zIndex,3
+object.place:bulletin1,"10%","26%","21.6%","25%"
+object.src:bulletin1,"images/scene01/bulletin1.png"
+
+object.create:bulletin2
+object.style:bulletin2,zIndex,3
+object.place:bulletin2,"8.5%","23%","42%","25%"
+object.src:bulletin2,"images/scene01/bulletin2.png"
+
+
+object.create:door_button
+object.style:door_button,zIndex,3
+object.place:door_button,"4%","7%","74%","40%"
+object.src:door_button,"images/scene01/door_button.png"
+object.click.subscene_open:door_button,subsceneenter_classroomask2
+
+
+
+character.Ichiha.hide:normal_stand5
+object.show:bulletin1
+object.show:bulletin2
+object.show:door_button
+character.Ichiha.moving_show
+character.Moon.hide:normal_stand
+character.Amy.hide:normal_stand
+
+change_scene.character.right.midhallway_1
+
+-------------------------------
+
+scene.midhallway_1
+object.show:maskBG
+background:"images/midhallway/bg.jpg"
+character.Ichiha.moving_place:"10%","40%","10%","33%"
+character.Ichiha.moving_show
+
+object.create:torooftop
+object.style:torooftop,zIndex,3
+object.place:torooftop,"20%","55.5%","58.7%","7.8%"
+object.src:torooftop,"images/midhallway/torooftop.png"
+object.click.subscene_open:torooftop,subsceneenterrooftop
+
+
+object.create:tooffice
+object.style:tooffice,zIndex,3
+object.place:tooffice,"15%","35%","30%","27%"
+object.src:tooffice,"images/midhallway/tooffice.png"
+object.click.subscene_open:tooffice,subsceneenteroffice
+
+change_scene.character.left.hallwayleft
+
+-------------------------------
+
+subscene.office_bulletin
+
+character.Ichiha.moving_hide
+status.value.add.Memory,OFFICE_BULLETIN,5
+dialogBox.show
+dialogBox.content.set:"Received a gift card and an invitation from [Ichina]'s mother. I may need to be more cautious in handling class affairs."
+dialogBox.speaker.set:"September 12"
+dialogBox.click.subscene_open.subsceneoffice_bulletin2
+
+subscene.office_bulletin2
+dialogBox.content.set:"Some students have reported that [Ichina] exhibited aggressive behavior towards classmates during break time."
+dialogBox.speaker.set:"September 20"
+dialogBox.click.subscene_open.subsceneoffice_bulletin3
+
+subscene.office_bulletin3
+dialogBox.content.set:"Today during the class meeting, [John] seemed downcast. When asked, he avoided the question. It's necessary to determine if this relates to [Ichina]."
+dialogBox.speaker.set:"September 30"
+dialogBox.click.subscene_open.subsceneoffice_bulletin4
+
+subscene.office_bulletin4
+dialogBox.content.set:"Student Feedback: Issues involving [Ichina] again, reportedly being unfriendly to a newcomer after class with a few friends."
+dialogBox.speaker.set:"October 3"
+dialogBox.click.subscene_open.subsceneoffice_bulletin5
+
+subscene.office_bulletin5
+dialogBox.content.set:"Accepted another small gift from [Ichina]'s parents as a thank-you for my 'special attention' during the semester."
+dialogBox.speaker.set:"October 15"
+dialogBox.click.subscene_open.subsceneoffice_bulletin6
+
+subscene.office_bulletin6
+dialogBox.content.set:"Received another inquiry from a parent about their child's emotional issues at school. I advised the parent to communicate directly with their student."
+dialogBox.speaker.set:"October 25"
+dialogBox.click.subscene_close.subsceneoffice_bulletin6
+
+close_subscene.office_bulletin6
+dialogBox.hide
+character.Ichiha.moving_show
+
+-------------------------------
+
+subscene.office_diary
+
+character.Ichiha.moving_hide
+dialogBox.show
+dialogBox.content.set:"October 12 is marked with \"birthday\" tag"
+dialogBox.speaker.set:""
+dialogBox.click.subscene_close.subsceneoffice_diary
+
+close_subscene.office_diary
+dialogBox.hide
+character.Ichiha.moving_show
+
+
+-------------------------------
+
+subscene.enteroffice
+
+character.Ichiha.moving_hide
+option.content.1:"<br>Enter the office"
+option.show.1
+option.set.scene_open.1.office
+option.content.2:"<br>Close"
+option.show.2
+option.set.subscene_close.2.subsceneenteroffice
+
+close_subscene.enteroffice
+character.Ichiha.moving_show
+option.hide.1
+option.hide.2
+
+--------------------------------------
+
+subscene.enterrooftop
+
+character.Ichiha.moving_hide
+dialogBox.show
+dialogBox.content.set:"The rooftop is locked, you must find a key."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_close.subsceneenterrooftop
+
+close_subscene.enterrooftop
+character.Ichiha.moving_show
+option.hide.1
+option.hide.2
+
+--------------------------------------
+
+scene.office
 
 audio.play.door
+object.show:maskBG
+option.hide.1
+option.hide.2
+background:"images/office/bg.png"
+character.Ichiha.moving_place:"10%","40%","80%","33%"
+character.Ichiha.moving_show
 
-character.Mance.moving_show
-character.Mance.moving_place:"10%","40%","86%","33%"
-background:"images/classroom/background.png"
+object.create:office_paper
+object.style:office_paper,zIndex,3
+object.place:office_paper,"15%","20%","70%","20%"
+object.src:office_paper,"images/office/paper.png"
+object.click.subscene_open:office_paper,subsceneoffice_bulletin
+
+object.create:office_desk
+object.style:office_desk,zIndex,3
+object.place:office_desk,"22%","25%","24%","41.1%"
+object.src:office_desk,"images/office/desk.png"
+
+object.create:office_diary
+object.style:office_diary,zIndex,3
+object.place:office_diary,"5%","7%","33%","20%"
+object.src:office_diary,"images/office/diary.png"
+object.click.subscene_open:office_diary,subsceneoffice_diary
+
+
+change_scene.character.right.midhallway_1
+
+
+
+-------------------------------
+
+
+

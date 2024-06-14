@@ -118,6 +118,12 @@ void SCRIPT_ANALYZE(){
         }
         //setup the name of the status panel
         //fwrite one line command to fnjs, change the innerHTML
+
+        else if(!strcmp(para[1],"require")){
+            if(!strcmp(para[2],"value")){
+                PROCESS_requireValueOption(para[3],para[4],para[5]);
+            }
+        }
         
         else if(!strcmp(para[1],"value")){
             //the value of status means to create a progress bar and 
@@ -427,6 +433,11 @@ void SCRIPT_ANALYZE(){
                 fwrite("change_sceneTargetFn[1] = \"",27,1,fnjs);
                 fwrite(para[3],strlen(para[3]),1,fnjs);
                 fwrite("\"\nchange_scenePlace[1] = 1\n",27,1,fnjs);
+            }
+            if(!strcmp(para[2],"left")){
+                fwrite("change_sceneTargetFn[0] = \"",27,1,fnjs);
+                fwrite(para[3],strlen(para[3]),1,fnjs);
+                fwrite("\"\nchange_scenePlace[0] = 1\n",27,1,fnjs);
             }
         }
 

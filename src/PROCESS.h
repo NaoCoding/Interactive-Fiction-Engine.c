@@ -142,7 +142,10 @@ void PROCESS_callocObject();
 void PROCESS_freeAll();
 //free all the stuff which defined at GLOBALVARIABLE_H
 //this function is important or the engine may cause serious memory leak.
+//check the GLOBALVARIABLE_H to see what have been defined and what to free inside the function
+// GB_ 
 
+void PROCESS_requireValueOption(char * value, char * require, char * opt);
 
 void PROCESS_createObject(char * id);
 void PROCESS_onClickElement(char * id, char * target);
@@ -164,6 +167,18 @@ void PROCESS_playAudio(char * id);
 void PROCESS_stopAudio(char * id);
 
 
+
+void PROCESS_requireValueOption(char * value, char * require, char * opt){
+
+    fwrite("PROCESS_requireValueOption(\"",28,1,fnjs);
+    fwrite(value,strlen(value),1,fnjs);
+    fwrite("\",",2,1,fnjs);
+    fwrite(require,strlen(require),1,fnjs);
+    fwrite(",",1,1,fnjs);
+    fwrite(opt,strlen(opt),1,fnjs);
+    fwrite(")\n",2,1,fnjs);
+
+}
 
 void PROCESS_audioCalloc(){
     audio = calloc(3000,sizeof(GB_AUDIO));

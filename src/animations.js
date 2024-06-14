@@ -11,6 +11,19 @@ var statusOn = 0
 var saveOn = 0
 
 
+function PROCESS_requireValueOption(a,b,c){
+    var index = -1
+    for(var i=0;i<status_value.length;i++){
+        if(status_value[i][0] == a){
+            index = i;
+            break;
+        }
+    }
+    if(index == -1)return;
+    if(status_value[index][1] < b) document.getElementById("OPTIONBOX"+c).style.display="none"
+    else document.getElementById("OPTIONBOX"+c).style.display="block"
+}
+
 function PROCESS_STATUSADDVALUE(a,b,c){
     var index = -1
     for(var i=0;i<status_value.length;i++){
@@ -43,7 +56,7 @@ function update_statusBar(){
         document.getElementById("STATUS" + (i+1).toString() + "VALUE").style.display = "block"
         document.getElementById("STATUS" + (i+1).toString() + "LABEL").innerHTML = status_value[i][0]
         document.getElementById("STATUS" + (i+1).toString() + "VALUE").innerHTML = status_value[i][1]
-        document.getElementById("STATUS" + (i+1).toString() + "LINK").style.display.width = status_value + "%"
+        document.getElementById("STATUS" + (i+1).toString() + "LINK").style.width = status_value[i][1] + "%"
     }
 
 }
@@ -86,7 +99,7 @@ async function screenfadeOutandIn(tt){
     s.style.opacity = 0
     time = 0
     var ar = setInterval(() => {
-        if(time == 50)clearInterval(ar);
+        if(time == 50 || s.style.opacity > 1)clearInterval(ar);
         s.style.opacity = (parseFloat(s.style.opacity) + 0.02).toString()
         f.style.opacity = (parseFloat(f.style.opacity) + 0.02).toString()
         time += 1
@@ -102,10 +115,15 @@ async function change_sceneCharacterFunction(){
             var p = document.getElementById(control)
             if(parseFloat(p.style.left) >= (95 - parseFloat(p.style.width))  && change_scenePlace[1] != -1){
                 change_scenePlace = [-1,-1]
-                p.style.left = "0%"
                 p.style.display = "none"
-                control = ""
                 scene_send(change_sceneTargetFn[1])
+                change_sceneTargetFn = ["",""]
+            }
+            if(parseFloat(p.style.left) <= (5)  && change_scenePlace[0] != -1){
+                change_scenePlace = [-1,-1]
+                p.style.display = "none"
+                scene_send(change_sceneTargetFn[0])
+                change_scenePlace = [-1,-1]
                 change_sceneTargetFn = ["",""]
             }
         }
