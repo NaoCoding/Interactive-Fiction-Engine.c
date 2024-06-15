@@ -536,8 +536,6 @@ option.set.subscene_close.2.subsceneenter_classroomask2
 
 close_subscene.enter_classroomask2
 character.Ichiha.moving_show
-character.Moon.moving_show
-character.Amy.moving_show
 
 object.show:bulletin1
 object.show:bulletin2
@@ -1358,7 +1356,7 @@ option.content.2:"<br>Close"
 option.show.2
 option.set.subscene_close.2.subsceneenteroffice2
 
-close_subscene.enteroffice
+close_subscene.enteroffice2
 character.Ichiha.moving_show
 option.hide.1
 option.hide.2
