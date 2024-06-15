@@ -1562,8 +1562,6 @@ object.create:door_button
 object.style:door_button,zIndex,3
 object.place:door_button,"4%","7%","74%","40%"
 object.src:door_button,"images/scene01/door_button.png"
-object.click.subscene_open:door_button,subsceneenter_classroomask
-
 
 
 character.Ichiha.hide:normal_stand5
@@ -1652,27 +1650,27 @@ dialogBox.click.subscene_open.subsceneoffice_bulletin2
 
 subscene.office_bulletin2
 dialogBox.content.set:"Some students have reported that [Ichina] exhibited aggressive behavior towards classmates during break time."
-dialogBox.speaker.set:"09/20"
+dialogBox.speaker.set:"09/15"
 dialogBox.click.subscene_open.subsceneoffice_bulletin3
 
 subscene.office_bulletin3
 dialogBox.content.set:"Today during the class meeting, [John] seemed downcast. When asked, he avoided the question. It's necessary to determine if this relates to [Ichina]."
-dialogBox.speaker.set:"09/30"
+dialogBox.speaker.set:"09/17"
 dialogBox.click.subscene_open.subsceneoffice_bulletin4
 
 subscene.office_bulletin4
 dialogBox.content.set:"Student Feedback: Issues involving [Ichina] again, reportedly being unfriendly to a newcomer after class with a few friends."
-dialogBox.speaker.set:"10/3"
+dialogBox.speaker.set:"09/22"
 dialogBox.click.subscene_open.subsceneoffice_bulletin5
 
 subscene.office_bulletin5
 dialogBox.content.set:"Accepted another small gift from [Ichina]'s parents as a thank-you for my 'special attention' during the semester."
-dialogBox.speaker.set:"10/15"
+dialogBox.speaker.set:"09/26"
 dialogBox.click.subscene_open.subsceneoffice_bulletin6
 
 subscene.office_bulletin6
 dialogBox.content.set:"Received another inquiry from a parent about their child's emotional issues at school. I advised the parent to communicate directly with their student."
-dialogBox.speaker.set:"10/25"
+dialogBox.speaker.set:"09/27"
 dialogBox.click.subscene_close.subsceneoffice_bulletin6
 
 close_subscene.office_bulletin6
