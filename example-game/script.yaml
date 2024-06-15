@@ -775,6 +775,7 @@ change_scene.character.right.righthallway_1
 
 scene.righthallway_1
 object.show:maskBG
+character.Ichiha.moving_place:"10%","40%","10%","33%"
 status.value.add.Memory,RIGHTHALLWAY,3
 background:"images/righthallway/bg.png"
 character.Ichiha.moving_show
