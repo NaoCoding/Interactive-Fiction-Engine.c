@@ -29,6 +29,7 @@ status.inventory.new:"howard"
 status.inventory.src:howard,"images/inventorys/howard.png"
 status.inventory.src:cat,"images/inventorys/cat.png"
 status.inventory.src:key,"images/inventorys/key.png"
+status.value.add.Memory,ATTHESTART,10
 
 
 
@@ -405,7 +406,7 @@ object.show:door_button
 
 
 subscene.girlhallwaytalk1
-status.value.add.Memory,TWOGIRL,3
+status.value.add.Memory,TWOGIRL,5
 character.Ichiha.moving_hide
 character.Moon.moving_hide
 character.Amy.moving_hide
@@ -440,7 +441,7 @@ object.show:door_button
 subscene.bulletin_egg1
 
 dialogBox.show
-status.value.add.Memory,HOWARD,3
+status.value.add.Memory,HOWARD,5
 status.inventory.get:howard
 dialogBox.speaker.set:"Bulletin"
 character.Ichiha.moving_hide
@@ -459,7 +460,7 @@ character.Ichiha.moving_show
 
 subscene.bulletin_notice1
 
-status.value.add.Memory,BULLETIN,5
+status.value.add.Memory,BULLETIN,8
 
 dialogBox.show
 dialogBox.speaker.set:"Bulletin"
@@ -545,7 +546,6 @@ option.hide.2
 
 
 scene.classroom
-status.value.add.Memory,CLASSROOM,3
 option.hide.1
 option.hide.2
 object.show:maskBG
@@ -574,7 +574,6 @@ change_scene.character.left.hallway
 
 
 scene.classroom2
-status.value.add.Memory,CLASSROOM2,3
 object.show:maskBG
 audio.play.door
 option.hide.1
@@ -684,7 +683,7 @@ option.hide.1
 option.hide.2
 option.hide.3
 character.Anett.show:normal_stand
-status.value.add.Memory,ANETTFIRST,3
+status.value.add.Memory,ANETTFIRST,5
 status.value.add.FriendShip with Anett,FIRST,5
 dialogBox.content.set:"( Friendship with Anett increased ) I really want to help you, but I need to keep studying. Be careful, and if you feel uneasy, I can try to keep an eye out for you from a distance."
 dialogBox.speaker.set:"Anett"
@@ -696,7 +695,7 @@ option.hide.1
 option.hide.2
 option.hide.3
 character.Anett.show:normal_stand
-status.value.add.Memory,ANETTFIRST,3
+status.value.add.Memory,ANETTFIRST,5
 status.value.add.FriendShip with Anett,FIRST,5
 dialogBox.content.set:"( Friendship with Anett increased ) Hmm, the rooftop? But I need to continue studying right now. Be careful when you go, and maybe I'll come find you after I'm done studying."
 dialogBox.speaker.set:"Anett"
@@ -719,7 +718,6 @@ dialogBox.click.scene_open.hallwayleft2
 
 scene.hallwayleft2
 object.show:maskBG
-status.value.add.Memory,HALLWAYLEFT2,3
 dialogBox.hide
 character.Anett.hide:normal_stand
 character.Anett.moving_hide
@@ -776,7 +774,6 @@ change_scene.character.right.righthallway_1
 scene.righthallway_1
 object.show:maskBG
 character.Ichiha.moving_place:"10%","40%","10%","33%"
-status.value.add.Memory,RIGHTHALLWAY,3
 background:"images/righthallway/bg.png"
 character.Ichiha.moving_show
 
@@ -807,7 +804,6 @@ option.hide.2
 
 scene.bathroom
 object.show:maskBG
-status.value.add.Memory,BATHROOM,3
 
 option.hide.1
 option.hide.2
@@ -833,7 +829,7 @@ object.click.subscene_open:bathroom_glass,subscenebathroom_glass
 ----
 
 subscene.bathroom_sink
-status.value.add.Memory,bathroom_sink,5
+status.value.add.Memory,bathroom_sink,7
 character.Ichiha.moving_hide
 object.hide.bathroom_glass
 object.hide.bathroom_sink
@@ -870,7 +866,6 @@ dialogBox.click.scene_open.midhallway_Anett
 ----
 
 scene.midhallway_Anett
-status.value.add.Memory,MIDANETT,5
 animation.fadeOutandIn
 object.show:maskBG
 dialogBox.hide
@@ -1042,7 +1037,7 @@ character.Brian.hide:normal_stand2
 dialogBox.hide
 
 option.content.1:"Read his diary ( require memory 70+ )"
-status.require.value.Memory.70.1
+status.require.value.Memory.80.1
 option.set.subscene_open.1.subscenereadDiary
 option.content.2:"<br>Don't read the diary"
 option.show.2
@@ -1267,7 +1262,7 @@ dialogBox.click.subscene_open.subscenegamefailed3
 
 ----
 subscene.Anettthekey
-status.value.add.Memory,ANETTKEY,3
+status.value.add.Memory,ANETTKEY,5
 dialogBox.show
 character.Ichiha.show:normal_stand4
 character.Ichiha.moving_hide
@@ -1367,7 +1362,6 @@ option.hide.2
 scene.office2
 character.Anett.moving_hide
 
-status.value.add.Memory,OFFICES2,3
 audio.play.door
 object.show:maskBG
 option.hide.1
@@ -1398,7 +1392,7 @@ subscene.office_desk
 
 character.Ichiha.moving_hide
 status.inventory.get:key
-status.value.add.Memory,office_key,7
+status.value.add.Memory,office_key,8
 object.hide.office_desk
 object.hide.office_paper
 object.hide.office_diary
@@ -1431,7 +1425,7 @@ dialogBox.hide
 ----
 
 subscene.bathroom_glass
-status.value.add.Memory,bathroom_glass,5
+status.value.add.Memory,bathroom_glass,8
 character.Ichiha.show:normal_stand6
 character.Ichiha.moving_hide
 object.hide.bathroom_glass
@@ -1496,7 +1490,7 @@ character.Ichiha.moving_hide
 dialogBox.content.set:"Tell her to go to the rooftop after class"
 dialogBox.speaker.set:""
 dialogBox.click.subscene_close.subscenetrash
-status.value.add.Memory,trash,5
+status.value.add.Memory,trash,8
 
 subscene.diary
 dialogBox.show
@@ -1641,7 +1635,7 @@ change_scene.character.left.hallwayleft
 subscene.office_bulletin
 
 character.Ichiha.moving_hide
-status.value.add.Memory,OFFICE_BULLETIN,5
+status.value.add.Memory,OFFICE_BULLETIN,7
 dialogBox.show
 dialogBox.content.set:"Received a gift card and an invitation from [Ichina]'s mother. I may need to be more cautious in handling class affairs."
 dialogBox.speaker.set:"09/12"
@@ -1679,7 +1673,7 @@ character.Ichiha.moving_show
 -------------------------------
 
 subscene.office_diary
-status.value.add.Memory,OFFICEDIARY,3
+status.value.add.Memory,OFFICEDIARY,5
 character.Ichiha.moving_hide
 dialogBox.show
 dialogBox.content.set:"October 12 is marked with \"birthday\" tag"
@@ -1763,7 +1757,7 @@ change_scene.character.right.midhallway_1
 subscene.cat
 
 status.inventory.get:cat
-status.value.add.Memory,CAT,3
+status.value.add.Memory,CAT,4
 object.src:office_desk,"images/office/desk2.png"
 auto_close_subscene
 

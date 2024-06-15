@@ -145,10 +145,6 @@ void SCRIPT_ANALYZE(){
             //the default value will be 0 
             //the range of status value should between 0~100
 
-
-            else if(!strcmp(para[2],"set")){
-                PROCESS_setStatusValue(para[3],para[4]);
-            }
             else if(!strcmp(para[2],"add")){
                 PROCESS_addStatusValue(para[3],para[4],para[5]);
             }
@@ -296,12 +292,6 @@ void SCRIPT_ANALYZE(){
                         else if(!strcmp(para[3],"standingAnimation")){
                             fwrite("control_standingAnimation = ",28,1,fnjs);
                             PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[5]));
-                        }
-                        else if(!strcmp(para[3],"jumpingAnimation")){
-                            //printf("%d",atoi(para[4]));
-                            fwrite("control_jumpingAnimation = ",27,1,fnjs);
-                            PROCESS_writeInFN_str2ARR(i,atoi(para[4]),atoi(para[4]));
-                            fwrite("\n",1,1,fnjs);
                         }
 
                     }

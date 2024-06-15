@@ -252,7 +252,7 @@ function SAVE_LOADGAME(){
                     $.ajax({
                         url:"command/sub?game?html?" + subscene_toOpen,
                         method:"GET",
-                
+                        async:false,
                         success:function(res2){
                             
                             document.getElementById("HTML_SUB").innerHTML = res2;
@@ -263,7 +263,7 @@ function SAVE_LOADGAME(){
                     $.ajax({
                         url:"command/sub?game?js?" + subscene_toOpen,
                         method:"GET",
-                
+                        async:false,
                         success:function(res2){
                             eval(res2)
                         },
@@ -281,7 +281,7 @@ function SAVE_LOADGAME(){
                     async:false,
                     success:function(res){
                         if(res.length < 1)return
-                        status_value[i][1] = res
+                        status_value[i][1] = parseFloat(res)
                     }
                 })
                 update_statusBar()
@@ -294,10 +294,11 @@ function SAVE_LOADGAME(){
             
                     success:function(res){
                         if(res.length < 1)return
-                        status_inventory_src[i] = res
+                        status_inventory_have[i] = res
                     },
                 })
             }
+            updateInventory()
         },
     })
     //console.log(valid)

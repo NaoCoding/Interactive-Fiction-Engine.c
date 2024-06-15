@@ -30,7 +30,7 @@ function PROCESS_inventoryHAVE(a){
 }
 
 function updateInventory(){
-    for(var i=0;i<8;i++){
+    for(var i=0;i<9;i++){
         if(status_inventory_have[i] == 1){
             document.getElementById("STATUS_INVENTORY_" + (i+1).toString()).src = status_inventory_src[i]
         }
