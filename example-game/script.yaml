@@ -122,6 +122,12 @@ character.Moon.moving.2:"images/scene01/black02.png"
 character.Amy.moving.1:"images/scene01/black11.png"
 character.Amy.moving.2:"images/scene01/black12.png"
 
+character.Brian.src:normal_stand,"images/character02/character01.png"
+character.Brian.place:normal_stand,"auto","80%","65%","0%"
+
+character.Brian.src:normal_stand2,"images/character02/character02.png"
+character.Brian.place:normal_stand2,"auto","80%","65%","0%"
+
 character.Brian.moving.1:"images/classroom/brian1.png"
 character.Brian.moving.2:"images/classroom/brian1.png"
 character.Brian.moving.3:"images/classroom/brian2.png"
@@ -163,6 +169,10 @@ character.Anett.moving.18:"images/classroom/Anett3.png"
 
 character.Ichiha.control.movingAnimation:11,18
 character.Anett.moveAnimation:1,18
+character.Brian.moveAnimation:1,18
+character.Brian.moving_hide
+character.Brian.moving_place:"10%","40%","40%","33%"
+character.Brian.moving_style:transform,"scaleX(-1)"
 character.Ichiha.control.standingAnimation:1,10
 character.Anett.moving_place:"10%","40%","40%","33%"
 character.Anett.moving_style:transform,"scaleX(-1)"
@@ -882,6 +892,379 @@ object.create:tooffice
 object.style:tooffice,zIndex,3
 object.place:tooffice,"15%","35%","30%","27%"
 object.src:tooffice,"images/midhallway/tooffice.png"
+----
+scene.midhallway_torooftop
+object.show:maskBG
+dialogBox.hide
+character.Ichiha.moving_show
+background:"images/midhallway/bg.jpg"
+character.Ichiha.moving_place:"10%","40%","32%","33%"
+
+object.create:torooftop
+object.style:torooftop,zIndex,3
+object.place:torooftop,"20%","55.5%","58.7%","7.8%"
+object.src:torooftop,"images/midhallway/torooftop.png"
+object.click.subscene_open:torooftop,subscenecheck_key
+
+
+object.create:tooffice
+object.style:tooffice,zIndex,3
+object.place:tooffice,"15%","35%","30%","27%"
+object.src:tooffice,"images/midhallway/tooffice.png"
+object.click.subscene_open:tooffice,subsceneenteroffice2
+
+#check_key
+subscene.check_key
+character.Ichiha.moving_hide
+option.content.1:"<br>Go on the rooftop (require key)"
+status.require.inventory.key.1
+option.set.scene_open.1.rooftop
+option.content.2:"<br>Close"
+option.show.2
+option.set.subscene_close.2.subscenecheck_key
+
+close_subscene.check_key
+character.Ichiha.moving_show
+option.hide.1
+option.hide.2
+
+---
+#rooftop
+scene.rooftop
+character.Ichiha.moving_show
+option.hide.1
+option.hide.2
+background:"images/rooftop/bg.png"
+
+character.Ichiha.moving_place:"10%","40%","52%","33%"
+
+object.create:rooftop_paper
+object.style:rooftop_paper,zIndex,3
+object.place:rooftop_paper,"28%","25%","65%","38%"
+object.src:rooftop_paper,"images/rooftop/paper.png"
+object.click.subscene_open:rooftop_paper,subscenerooftop_paper
+
+
+#rooftop_paper
+subscene.rooftop_paper
+
+character.Ichiha.moving_hide
+object.hide.rooftop_paper
+
+dialogBox.show
+dialogBox.content.set:"Campus Tragedy: Suicide Highlights Potential Bullying Issues"
+dialogBox.speaker.set:"News"
+dialogBox.click.subscene_open.subscenerooftop_paper2
+
+
+subscene.rooftop_paper2
+dialogBox.content.set:"Local News — Earlier this week, a tragic suicide occurred at a well-known high school in the city. "
+dialogBox.click.subscene_open.subscenerooftop_paper3
+
+subscene.rooftop_paper3
+dialogBox.content.set:"A female student ended her young life by overdosing on sleeping pills on campus."
+dialogBox.click.subscene_open.subscenerooftop_paper4
+
+
+subscene.rooftop_paper4
+dialogBox.content.set:"The incident calls for society to pay more attention to the mental health of teenagers and strengthen the prevention and intervention of school bullying. "
+dialogBox.click.subscene_open.subscenerooftop_paper5
+
+
+
+subscene.rooftop_paper5
+dialogBox.content.set:"Report Date: October 3, 2023"
+dialogBox.click.subscene_open.subscenerooftop_paper6
+
+
+subscene.rooftop_paper6
+dialogBox.content.set:"I commit suicide because of bullying? But I... why don't I remember? Did I really go through all this pain and then choose to end my life?"
+dialogBox.speaker.set:"???"
+character.Ichiha.show:normal_stand6
+
+dialogBox.click.subscene_open.subscenerooftop_paper7
+
+subscene.rooftop_paper7
+dialogBox.content.set:"Am I really dead? Is all of this, including me standing here, just an illusion?"
+character.Ichiha.hide:normal_stand6
+character.Ichiha.show:normal_stand4
+dialogBox.click.subscene_open.subscenerooftop_paper8
+
+subscene.rooftop_paper8
+dialogBox.content.set:"I can't stay here any longer. Every corner, every hallway, even these walls, remind me of all the pain I went through."
+character.Ichiha.show:normal_stand6
+character.Ichiha.hide:normal_stand4
+dialogBox.click.subscene_close.subscenerooftop_paper8
+
+
+close_subscene.rooftop_paper8
+character.Ichiha.hide:normal_stand6
+character.Brian.moving_show
+character.Brian.moving_style:zIndex,2
+dialogBox.hide
+character.Ichiha.moving_show
+character.Brian.subscene_open.subsceneBriantalk
+
+#Briantalk
+
+subscene.Briantalk
+
+dialogBox.show
+character.Brian.moving_hide
+character.Ichiha.moving_hide
+
+character.Brian.show:normal_stand
+dialogBox.content.set:"Hi ~ Why are you here?"
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneBriantalk2
+
+
+subscene.Briantalk2
+
+character.Brian.hide:normal_stand
+character.Ichiha.show:normal_stand6
+dialogBox.content.set:"I ... I slept too late and I am managing to get out here."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subsceneBriantalk3
+
+
+subscene.Briantalk3
+
+character.Brian.show:normal_stand2
+character.Ichiha.hide:normal_stand6
+dialogBox.content.set:"I am writing my diary. Do you want to read it?"
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneBriantalk4
+
+
+subscene.Briantalk4
+
+character.Brian.hide:normal_stand2
+dialogBox.hide
+
+option.content.1:"Read his diary ( require memory 70+ )"
+status.require.value.Memory.70.1
+option.set.subscene_open.1.subscenereadDiary
+option.content.2:"<br>Don't read the diary"
+option.show.2
+option.set.subscene_open.2.subscenechaseBrian
+
+subscene.readDiary
+option.hide.1
+option.hide.2
+
+dialogBox.show
+dialogBox.content.set:"Today is the second day since [Emily] left. I wish I had been there with her before she took the pills. "
+dialogBox.speaker.set:"10/01"
+dialogBox.click.subscene_open.subscenereadDiary2
+
+subscene.readDiary2
+dialogBox.content.set:"Today I made a plan. I will lure Ichina to the rooftop and make her pay for everything she did. I can't let her continue ruining others' lives."
+dialogBox.speaker.set:"10/03"
+dialogBox.click.subscene_open.subscenereadDiary3
+
+
+subscene.readDiary3
+dialogBox.content.set:"Tomorrow is the day. I plan to push her off the rooftop when she’s not paying attention. It will look like a tragic suicide. I will make sure all signs point to suicide."
+dialogBox.speaker.set:"10/05"
+dialogBox.click.subscene_open.subscenereadDiary4
+
+subscene.readDiary4
+dialogBox.content.set:"Everything went according to plan. When she stood at the edge of the rooftop, I took action. It all happened so fast, she had no chance to react. Now, I must ensure the police don't suspect it was murder."
+dialogBox.speaker.set:"10/06"
+dialogBox.click.subscene_open.subscenechaseBrian
+
+subscene.chaseBrian
+option.hide.1
+option.hide.2
+dialogBox.show
+dialogBox.content.set:"Suddenly, Brian ran away and you have to decide to chase him or not."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenechaseBrian2
+
+subscene.chaseBrian2
+dialogBox.hide
+
+option.content.1:"<br>Chase him"
+option.show.1
+option.set.scene_open.1.last_scene
+option.content.2:"<br>stay here"
+option.show.2
+option.set.subscene_open.2.subsceneending_1_1
+
+subscene.ending_1_1
+option.hide.1
+option.hide.2
+dialogBox.show
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"You stayed at the rooftop, and you gradually found that your body is disappearing..."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subsceneending_1_2
+
+subscene.ending_1_2
+animation.fadeOutAndIn
+character.Ichiha.hide:normal_stand4
+dialogBox.content.set:"You failed to discover the truth... <br> Your body will stay at the campus forever."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subsceneending_1_3
+
+subscene.ending_1_3
+
+dialogBox.content.set:"Game over (Play again to find the truth...)"
+dialogBox.speaker.set:""
+
+
+scene.last_scene
+option.hide.1
+option.hide.2
+dialogBox.show
+background:"images/ending_floor.jpg"
+dialogBox.content.set:"You chased Brian for a long road, and finally he stoped in front a door."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subsceneending_2_1
+
+subscene.ending_2_1
+character.Brian.show:normal_stand2
+dialogBox.content.set:"Why are you chasing me!!! No No No, get away from me!"
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneending_2_2
+
+subscene.ending_2_2
+character.Brian.hide:normal_stand2
+character.Ichiha.show:normal_stand6
+dialogBox.content.set:"Wait, please don't be afraid. I won't hurt you."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subsceneending_2_3
+
+subscene.ending_2_3
+character.Brian.show:normal_stand
+character.Ichiha.hide:normal_stand6
+dialogBox.content.set:"No... don't come near me! How are you here? Aren't you already..."
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneending_2_4
+
+subscene.ending_2_4
+character.Brian.hide:normal_stand
+character.Ichiha.show:normal_stand
+dialogBox.content.set:"Already what? I woke up and found myself at school, unable to remember anything. I just want to leave here. Can you help me?"
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subsceneending_2_5
+
+subscene.ending_2_5
+character.Brian.show:normal_stand2
+character.Ichiha.hide:normal_stand
+dialogBox.content.set:"Don't you remember? You... you used to treat us so badly. You always bullied us, made us afraid of you."
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneending_2_6
+
+subscene.ending_2_6
+character.Brian.hide:normal_stand2
+character.Ichiha.show:normal_stand2
+dialogBox.content.set:"Bully? Me? I... I remember being isolated, being bullied..."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subsceneending_2_7
+
+subscene.ending_2_7
+character.Brian.show:normal_stand
+character.Ichiha.hide:normal_stand2
+dialogBox.content.set:"I don't know how you're here now, or how you came back. But I really hope you leave me alone. I don't want to be haunted by the past anymore."
+dialogBox.speaker.set:"Brian"
+dialogBox.click.subscene_open.subsceneending_2_8
+
+
+subscene.ending_2_8
+character.Brian.hide:normal_stand
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"I'm... I'm sorry. If I really did those things, I'm so sorry. I need to figure out what happened, I need to know the truth..."
+dialogBox.speaker.set:"???"
+dialogBox.click.subscene_open.subsceneending_2_9
+
+subscene.ending_2_9
+character.Brian.show:normal_stand2
+character.Ichiha.hide:normal_stand4
+dialogBox.content.set:"Maybe you should. But please give me some space. I'm not sure I'm ready to face you again, at least not now. Goodbye, Ichina."
+dialogBox.speaker.set:"Brian"
+status.name:"Ichiha"
+dialogBox.click.subscene_open.subsceneending_2_10
+
+subscene.ending_2_10
+character.Brian.hide:normal_stand2
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"Hey! Wait...!"
+dialogBox.speaker.set:"Ichiha"
+dialogBox.click.subscene_open.subsceneending_2_11
+
+subscene.ending_2_11
+character.Ichiha.hide:normal_stand4
+dialogBox.content.set:"He ran away, and now, you must to escape the campus by opening the door. However, there is a password lock. Do you know the password?"
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subsceneending_2_12
+
+subscene.ending_2_12
+dialogBox.hide
+option.content.1:"<br>0929"
+option.show.1
+option.set.subscene_open.1.subscenegamefailed
+option.content.2:"<br>0930"
+option.show.2
+option.set.subscene_open.2.subscenegamewin
+option.content.3:"<br>1001"
+option.show.3
+option.set.subscene_open.3.subscenegamefailed
+option.content.4:"<br>1002"
+option.show.4
+option.set.subscene_open.4.subscenegamefailed
+
+
+subscene.gamewin
+option.hide.1
+option.hide.2
+option.hide.3
+option.hide.4
+dialogBox.show
+character.Ichiha.show:normal_stand
+dialogBox.content.set:"The password is correct! You figured out the whole incidents, including you did bad to classmates, your real name..."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenegamewin2
+
+subscene.gamewin2
+character.Ichiha.hide:normal_stand
+character.Ichiha.show:normal_stand3
+dialogBox.content.set:"Since you felt guilty, you decide to protect students from being bullied after you left the campus successfully by opening the door."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenegamewin3
+
+subscene.gamewin3
+character.Ichiha.hide:normal_stand
+character.Ichiha.show:normal_stand3
+dialogBox.content.set:"Although you did something bad, you are willing to help others in the future. (game over!)"
+dialogBox.speaker.set:""
+
+
+subscene.gamefailed
+option.hide.1
+option.hide.2
+option.hide.3
+option.hide.4
+dialogBox.show
+character.Ichiha.show:normal_stand4
+dialogBox.content.set:"You fail to leave the campus... However, after you have known what you did, you decide to protect those students in the future."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenegamefailed2
+
+subscene.gamefailed2
+character.Ichiha.hide:normal_stand4
+character.Ichiha.show:normal_stand3
+dialogBox.content.set:"You stay at the campus and protect every students from bully, you told yourself to be kind in your next life."
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenegamefailed3
+
+subscene.gamefailed3
+character.Ichiha.hide:normal_stand3
+character.Ichiha.show:normal_stand2
+dialogBox.content.set:"Although you cannot leave the campus, you have known your real name, Ichiha, and the whole incident. ( game over )"
+dialogBox.speaker.set:""
+dialogBox.click.subscene_open.subscenegamefailed3
 
 ----
 subscene.Anettthekey
@@ -955,13 +1338,14 @@ dialogBox.click.subscene_close.subsceneAnettthekey9
 
 close_subscene.Anettthekey9
 object.click.subscene_open:tooffice,subsceneenteroffice2
+object.click.subscene_open:torooftop,subscenecheck_key
 character.Ichiha.hide:normal_stand
+character.Anett.moving_hide
 
 dialogBox.hide
 object.show.tooffice
 object.show.torooftop
 character.Ichiha.moving_show
-character.Anett.moving_show
 
 ----
 subscene.enteroffice2
@@ -983,7 +1367,7 @@ option.hide.2
 
 scene.office2
 character.Anett.moving_hide
-change_scene.character.right.midhallway_Anett
+
 status.value.add.Memory,OFFICES2,3
 audio.play.door
 object.show:maskBG
@@ -1008,6 +1392,7 @@ object.create:office_diary
 object.style:office_diary,zIndex,3
 object.place:office_diary,"5%","7%","33%","20%"
 object.src:office_diary,"images/office/diary.png"
+change_scene.character.right.midhallway_torooftop
 
 #office_desk
 subscene.office_desk
@@ -1020,6 +1405,7 @@ object.hide.office_paper
 object.hide.office_diary
 
 dialogBox.show
+
 dialogBox.content.set:"You receive a rooftop key, press E to check your inventory."
 dialogBox.speaker.set:""
 dialogBox.click.subscene_open.subsceneoffice_desk2

@@ -71,8 +71,8 @@ function PROCESS_requireInventoryOption(a,b){
         }
     }
     if(index == -1)return;
-    if(status_inventory_have[index] != 1) document.getElementById("OPTIONBOX"+c).style.display="none"
-    else document.getElementById("OPTIONBOX"+c).style.display="block"
+    if(status_inventory_have[index] != 1) document.getElementById("OPTIONBOX"+b).style.display="none"
+    else document.getElementById("OPTIONBOX"+b).style.display="block"
 }
 
 function PROCESS_STATUSADDVALUE(a,b,c){
