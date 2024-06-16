@@ -83,6 +83,9 @@ void SCRIPT_ANALYZE(){
             PROCESS_initialAudio(FN_mergeString("AUDIO_",para[2]) , para[3]);
 
         }
+        else if(!strcmp(para[1],"add_loop")){
+            PROCESS_AudioLoop(FN_mergeString("AUDIO_",para[2]) , para[3]);
+        }
         else if(!strcmp(para[1],"play")){
             //to start playing the audio file.
             //however, normally the audio file will not stop and you should setup the stop command

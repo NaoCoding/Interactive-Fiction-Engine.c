@@ -169,6 +169,7 @@ void PROCESS_inventoryNew(char * id);
 void PROCESS_inventorySRC(char * id, char * src);
 void PROCESS_inventoryGET(char * id);
 void PROCESS_requireInventoryOption(char * value, char * opt);
+void PROCESS_AudioLoop(char * id,char * src);
 
 void PROCESS_inventoryGET(char * id){
     fwrite("PROCESS_inventoryHAVE(\"",23,1,fnjs);
@@ -230,6 +231,19 @@ void PROCESS_initialAudio(char * id,char * src){
     fwrite("))\n",3,1,fnjs);
     fwrite("AUDIOSSRC_[AUDIOSSRC_.length-1].volume = 0.5\n",45,1,fnjs);
     
+}
+
+void PROCESS_AudioLoop(char * id,char * src){
+    fwrite("AUDIOS_.push(\"",14,1,fnjs);
+    fwrite(id,strlen(id),1,fnjs);
+    fwrite("\")\n",3,1,fnjs);
+    fwrite("AUDIOSSRC_.push(",16,1,fnjs);
+    fwrite("new Audio(\"",11,1,fnjs);
+    fwrite(file_folder,strlen(file_folder),1,fnjs);
+    fwrite(src+1,strlen(src+1),1,fnjs);
+    fwrite("))\n",3,1,fnjs);
+    fwrite("AUDIOSSRC_[AUDIOSSRC_.length-1].volume = 0.5\n",45,1,fnjs);
+    fwrite("AUDIOSSRC_[AUDIOSSRC_.length-1].loop = true\n",44,1,fnjs);
 }
 
 void PROCESS_stopAudio(char * id){

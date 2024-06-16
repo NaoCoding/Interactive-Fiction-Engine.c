@@ -38,14 +38,14 @@ status.value.add.Memory,ATTHESTART,10
 
 #music setup
 audio.add.door:"audio/door.mp3"
-audio.add.anettappear:"audio/Anett.mp3"
-audio.add.brianappear:"audio/Brain.mp3"
-audio.add.classroom:"audio/Classroom.mp3"
-audio.add.hallway:"audio/Cooridor.mp3"
-audio.add.memory:"audio/Memory.mp3"
-audio.add.office:"audio/Office.mp3"
-audio.add.secret:"audio/Secret.mp3"
-audio.add.toilet:"audio/Toilet.mp3"
+audio.add_loop.anettappear:"audio/Anett.mp3"
+audio.add_loop.brianappear:"audio/Brain.mp3"
+audio.add_loop.classroom:"audio/Classroom.mp3"
+audio.add_loop.hallway:"audio/Cooridor.mp3"
+audio.add_loop.memory:"audio/Memory.mp3"
+audio.add_loop.office:"audio/Office.mp3"
+audio.add_loop.secret:"audio/Secret.mp3"
+audio.add_loop.toilet:"audio/Toilet.mp3"
 
 
 
