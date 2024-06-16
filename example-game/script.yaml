@@ -47,7 +47,7 @@ audio.add_loop.memory:"audio/Memory.mp3"
 audio.add_loop.office:"audio/Office.mp3"
 audio.add_loop.secret:"audio/Secret.mp3"
 audio.add_loop.toilet:"audio/Toilet.mp3"
-
+audio.add_loop.ending:"audio/ending.mp3"
 
 
 dialogBox.background.src:"images/dialogBox.png"
@@ -1152,7 +1152,16 @@ subscene.ending_1_3
 
 dialogBox.content.set:"Game over (Play again to find the truth...)"
 dialogBox.speaker.set:""
+dialogBox.click.scene_open:real_ending
 
+
+scene.real_ending
+audio.stop.secret
+audio.stop.brian
+audio.play.ending
+background:"images/ending.png"
+character.Ichiha.hide:normal_stand2
+character.Ichiha.hide:normal_stand3
 
 scene.last_scene
 audio.play.button
@@ -1282,6 +1291,7 @@ character.Ichiha.hide:normal_stand
 character.Ichiha.show:normal_stand3
 dialogBox.content.set:"Although you did something bad, you are willing to help others in the future. (game over!)"
 dialogBox.speaker.set:""
+dialogBox.click.scene_open:real_ending
 
 
 subscene.gamefailed
@@ -1307,7 +1317,8 @@ character.Ichiha.hide:normal_stand3
 character.Ichiha.show:normal_stand2
 dialogBox.content.set:"Although you cannot leave the campus, you have known your real name, Ichiha, and the whole incident. ( game over )"
 dialogBox.speaker.set:""
-dialogBox.click.subscene_open.subscenegamefailed3
+dialogBox.click.scene_open:real_ending
+
 
 ----
 subscene.Anettthekey
@@ -1814,6 +1825,7 @@ object.click.subscene_open:office_diary,subsceneoffice_diary
 
 
 change_scene.character.right.midhallway_1
+
 
 
 
