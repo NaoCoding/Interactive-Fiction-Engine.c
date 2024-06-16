@@ -260,7 +260,7 @@ object.click.subscene_open:start_gamebtn,subscenestart_game
 
 
 subscene.start_game
-audio.play.memory
+
 object.show:maskBG
 dialogBox.show
 background:"images/scene01/scene01.png"
