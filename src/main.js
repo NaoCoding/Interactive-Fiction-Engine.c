@@ -161,7 +161,7 @@ function SAVE_SAVEGAME(){
         $.ajax({
             url:"command/new?game?createFile",
             method:"GET",
-    
+            async:false,
             success:function(res){
                 save_name = res;
                 document.getElementById("SAVE_PANEL_INPUT").value = save_name
@@ -169,6 +169,32 @@ function SAVE_SAVEGAME(){
             }
     
         })
+        for(var i=0;i<2;i++){
+            $.ajax({
+                url:"command/save?"+save_name+"?"+ i +"?" + scene_subscene[i],
+                method:"GET",
+            })
+        }
+        for(var i=0;i<8;i++){
+            if(status_value.length > i){
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+2).toString() +"?" + status_value[i][1],
+                    method:"GET",
+                })
+            }
+            else{
+                $.ajax({
+                    url:"command/save?"+save_name+"?"+ (i+2).toString() +"?" + "",
+                    method:"GET",
+                })
+            }
+        }
+        for(var i=0;i<9;i++){
+            $.ajax({
+                url:"command/save?"+save_name+"?"+ (i+10).toString() +"?" + status_inventory_have[i],
+                method:"GET",
+            })
+        }
     }
     else{
         for(var i=0;i<2;i++){
@@ -202,107 +228,109 @@ function SAVE_SAVEGAME(){
 
 function SAVE_LOADGAME(){
     navigator.clipboard.readText().then((text) => save_name = text)
-    document.getElementById("SAVE_PANEL_INPUT").value = save_name
-    var valid = 0
     if(save_name.length < 10) return
-    $.ajax({
-        url:"command/save?"+save_name+"?valid_check",
-        method:"GET",
-
-        success:function(res){
-            if(res == 0 || res == '0') return
-            change_scenePlace = [-1,-1]
-            change_sceneTargetFn = ["",""]
-            for(var i=0;i<1;i++){
-                if(i==0){
-                    scene_subscene[0] = res;
+    else{
+        document.getElementById("SAVE_PANEL_INPUT").value = save_name
+        var valid = 0
+        $.ajax({
+            url:"command/save?"+save_name+"?valid_check",
+            method:"GET",
+    
+            success:function(res){
+                if(res == 0 || res == '0') return
+                change_scenePlace = [-1,-1]
+                change_sceneTargetFn = ["",""]
+                for(var i=0;i<1;i++){
+                    if(i==0){
+                        scene_subscene[0] = res;
+                        $.ajax({
+                            url:"command/load_save?"+save_name+"?"+i,
+                            method:"GET",
+                    
+                            success:function(res){
+                                $.ajax({
+                                    url:"command/start?game?html?" + res.toString(),
+                                    method:"GET",
+        
+                                    success:function(res2){
+                                        
+                                        document.getElementById("HTML_BODY").innerHTML = res2;
+                                    },
+                                }
+                                )
+                            
+                                $.ajax({
+                                    url:"command/start?game?js?" + res.toString(),
+                                    method:"GET",
+        
+                                    success:function(res2){
+                                        eval(res2)
+                                    },
+                                }
+                                )
+                                document.getElementById("HTML_BODY").style.zIndex = 1;
+                                document.getElementById("HTML_SUB").style.zIndex = -1;
+                            },
+                        })
+                    }
+                    if(i==1){
+                        subscene_toOpen = res;
+                        scene_subscene[1] = res;
+                        $.ajax({
+                            url:"command/sub?game?html?" + subscene_toOpen,
+                            method:"GET",
+                            async:false,
+                            success:function(res2){
+                                
+                                document.getElementById("HTML_SUB").innerHTML = res2;
+                            },
+                        }
+                        )
+                        
+                        $.ajax({
+                            url:"command/sub?game?js?" + subscene_toOpen,
+                            method:"GET",
+                            async:false,
+                            success:function(res2){
+                                eval(res2)
+                            },
+                        }
+                        )
+                        
+                        document.getElementById("HTML_SUB").style.zIndex = 5;
+                    }
+                    
+                }
+                for(var i=0;i<8;i++){
                     $.ajax({
-                        url:"command/load_save?"+save_name+"?"+i,
+                        url:"command/load_save?"+save_name+"?"+(i+2).toString(),
                         method:"GET",
+                        async:false,
+                        success:function(res){
+                            if(res.length < 1)return
+                            status_value[i][1] = parseFloat(res)
+                        }
+                    })
+                    update_statusBar()
+                }
+                for(var i=0;i<9;i++){
+                    $.ajax({
+                        url:"command/load_save?"+save_name+"?"+(i+10).toString(),
+                        method:"GET",
+                        async:false,
                 
                         success:function(res){
-                            $.ajax({
-                                url:"command/start?game?html?" + res.toString(),
-                                method:"GET",
-    
-                                success:function(res2){
-                                    
-                                    document.getElementById("HTML_BODY").innerHTML = res2;
-                                },
-                            }
-                            )
-                        
-                            $.ajax({
-                                url:"command/start?game?js?" + res.toString(),
-                                method:"GET",
-    
-                                success:function(res2){
-                                    eval(res2)
-                                },
-                            }
-                            )
-                            document.getElementById("HTML_BODY").style.zIndex = 1;
-                            document.getElementById("HTML_SUB").style.zIndex = -1;
+                            if(res.length < 1)return
+                            status_inventory_have[i] = res
                         },
                     })
                 }
-                if(i==1){
-                    subscene_toOpen = res;
-                    scene_subscene[1] = res;
-                    $.ajax({
-                        url:"command/sub?game?html?" + subscene_toOpen,
-                        method:"GET",
-                        async:false,
-                        success:function(res2){
-                            
-                            document.getElementById("HTML_SUB").innerHTML = res2;
-                        },
-                    }
-                    )
-                    
-                    $.ajax({
-                        url:"command/sub?game?js?" + subscene_toOpen,
-                        method:"GET",
-                        async:false,
-                        success:function(res2){
-                            eval(res2)
-                        },
-                    }
-                    )
-                    
-                    document.getElementById("HTML_SUB").style.zIndex = 5;
-                }
-                
-            }
-            for(var i=0;i<8;i++){
-                $.ajax({
-                    url:"command/load_save?"+save_name+"?"+(i+2).toString(),
-                    method:"GET",
-                    async:false,
-                    success:function(res){
-                        if(res.length < 1)return
-                        status_value[i][1] = parseFloat(res)
-                    }
-                })
-                update_statusBar()
-            }
-            for(var i=0;i<9;i++){
-                $.ajax({
-                    url:"command/load_save?"+save_name+"?"+(i+10).toString(),
-                    method:"GET",
-                    async:false,
-            
-                    success:function(res){
-                        if(res.length < 1)return
-                        status_inventory_have[i] = res
-                    },
-                })
-            }
-            updateInventory()
-        },
-    })
-    //console.log(valid)
+                updateInventory()
+            },
+        })
+    }
     
+    //console.log(valid)
     
 }
 
