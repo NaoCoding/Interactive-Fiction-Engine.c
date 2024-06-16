@@ -1,10 +1,2 @@
-## Interactive Fiction Engine, IFE
-
-[Traditional Chinese Official Document](https://naocoding.github.io/Interactive-Fiction-Engine.c.document/)
-
-```
-The English version document is coming soon, since I am too busy to write two different languages' document.
-```
-
-
-
+因readme 檔案太多，寫了一個線上文檔！
+https://naocoding.github.io/Interactive-Fiction-Engine.c.document/
