@@ -38,6 +38,7 @@ status.value.add.Memory,ATTHESTART,10
 
 #music setup
 audio.add.door:"audio/door.mp3"
+audio.add.button:"audio/button.mp3"
 audio.add_loop.anettappear:"audio/Anett.mp3"
 audio.add_loop.brianappear:"audio/Brain.mp3"
 audio.add_loop.classroom:"audio/Classroom.mp3"
@@ -518,6 +519,7 @@ option.show.2
 option.set.subscene_close.2.subsceneenter_classroomask
 
 close_subscene.enter_classroomask
+audio.play.button
 character.Ichiha.moving_show
 character.Moon.moving_show
 character.Amy.moving_show
@@ -548,6 +550,7 @@ option.show.2
 option.set.subscene_close.2.subsceneenter_classroomask2
 
 close_subscene.enter_classroomask2
+audio.play.button
 character.Ichiha.moving_show
 
 object.show:bulletin1
@@ -695,6 +698,7 @@ option.set.subscene_open.3.subscenefirstwithAnett13
 
 
 subscene.firstwithAnett11
+audio.play.button
 dialogBox.show
 option.hide.1
 option.hide.2
@@ -708,6 +712,7 @@ dialogBox.click.scene_open.hallwayleft2
 
 subscene.firstwithAnett12
 dialogBox.show
+audio.play.button
 option.hide.1
 option.hide.2
 option.hide.3
@@ -719,6 +724,7 @@ dialogBox.speaker.set:"Anett"
 dialogBox.click.scene_open.hallwayleft2
 
 subscene.firstwithAnett13
+audio.play.button
 dialogBox.show
 option.hide.1
 option.hide.2
@@ -819,6 +825,7 @@ option.show.2
 option.set.subscene_close.2.subsceneenterbathroom
 
 close_subscene.enterbathroom
+audio.play.button
 character.Ichiha.moving_show
 option.hide.1
 option.hide.2
@@ -826,6 +833,7 @@ option.hide.2
 ----
 
 scene.bathroom
+audio.play.door
 audio.play.toilet
 audio.stop.hallway
 object.show:maskBG
@@ -951,6 +959,7 @@ option.show.2
 option.set.subscene_close.2.subscenecheck_key
 
 close_subscene.check_key
+audio.play.button
 character.Ichiha.moving_show
 option.hide.1
 option.hide.2
@@ -1079,6 +1088,7 @@ option.show.2
 option.set.subscene_open.2.subscenechaseBrian
 
 subscene.readDiary
+audio.play.button
 option.hide.1
 option.hide.2
 
@@ -1122,6 +1132,7 @@ option.show.2
 option.set.subscene_open.2.subsceneending_1_1
 
 subscene.ending_1_1
+audio.play.button
 option.hide.1
 option.hide.2
 dialogBox.show
@@ -1144,6 +1155,7 @@ dialogBox.speaker.set:""
 
 
 scene.last_scene
+audio.play.button
 audio.stop.brianappear
 audio.play.secret
 option.hide.1
