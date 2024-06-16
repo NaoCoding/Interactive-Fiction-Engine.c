@@ -9,6 +9,7 @@ var dialog_word = []
 var dialogNow = 0
 var statusOn = 0
 var saveOn = 0
+var buttonSound = new Audio("src/audio/button.mp3")
 
 
 function PROCESS_inventoryNew(a){
@@ -185,7 +186,7 @@ async function change_sceneCharacterFunction(){
 }
 
 async function toggleStatus(){
-
+    buttonSound.play();
     if(statusOn == 0){
         statusOn = 1
         document.getElementById("CHARACTER_STATUS").style.display = "block"
@@ -198,7 +199,7 @@ async function toggleStatus(){
 }
 
 async function toggleSave(){
-
+    buttonSound.play();
     if(saveOn == 0){
         saveOn = 1
         document.getElementById("SAVE_PANEL").style.display = "block"
