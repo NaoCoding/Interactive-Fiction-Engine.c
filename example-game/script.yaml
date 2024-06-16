@@ -1144,7 +1144,7 @@ dialogBox.click.subscene_open.subsceneending_1_2
 subscene.ending_1_2
 animation.fadeOutAndIn
 character.Ichiha.hide:normal_stand4
-dialogBox.content.set:"You failed to discover the truth... <br> Your body will stay at the campus forever."
+dialogBox.content.set:"You failed to discover the truth... Your body will stay at the campus forever."
 dialogBox.speaker.set:""
 dialogBox.click.subscene_open.subsceneending_1_3
 
