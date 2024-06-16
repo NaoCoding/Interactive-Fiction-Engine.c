@@ -228,6 +228,8 @@ void PROCESS_initialAudio(char * id,char * src){
     fwrite(file_folder,strlen(file_folder),1,fnjs);
     fwrite(src+1,strlen(src+1),1,fnjs);
     fwrite("))\n",3,1,fnjs);
+    fwrite("AUDIOSSRC_[AUDIOSSRC_.length-1].volume = 0.5\n",45,1,fnjs);
+    
 }
 
 void PROCESS_stopAudio(char * id){

@@ -256,7 +256,8 @@ function delay(n) {
         setTimeout(resolve, n);
     });
 }
-    
+
+var typingSound = new Audio("src/audio/typingSound.mp3")
 
 async function PROCESS_contentAppearAnimation(a,b,c){
 
@@ -265,7 +266,7 @@ async function PROCESS_contentAppearAnimation(a,b,c){
     });
 
     await new Promise((resolve) =>{
-        var typingSound = new Audio("src/audio/typingSound.mp3")
+
         typingSound.play()
         var fade = document.getElementById(a);
         dialogNow = 1

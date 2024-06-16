@@ -38,6 +38,15 @@ status.value.add.Memory,ATTHESTART,10
 
 #music setup
 audio.add.door:"audio/door.mp3"
+audio.add.anettappear:"audio/Anett.mp3"
+audio.add.brianappear:"audio/Brain.mp3"
+audio.add.classroom:"audio/Classroom.mp3"
+audio.add.hallway:"audio/Cooridor.mp3"
+audio.add.memory:"audio/Memory.mp3"
+audio.add.office:"audio/Office.mp3"
+audio.add.secret:"audio/Secret.mp3"
+audio.add.toilet:"audio/Toilet.mp3"
+
 
 
 dialogBox.background.src:"images/dialogBox.png"
@@ -251,7 +260,7 @@ object.click.subscene_open:start_gamebtn,subscenestart_game
 
 
 subscene.start_game
-
+audio.play.memory
 object.show:maskBG
 dialogBox.show
 background:"images/scene01/scene01.png"
@@ -355,6 +364,9 @@ dialogBox.click.scene_open.hallway_firsttime
 
 
 scene.hallway_firsttime
+
+audio.stop.memory
+audio.play.hallway
 
 object.show:maskBG
 
@@ -546,6 +558,9 @@ option.hide.2
 
 
 scene.classroom
+
+audio.play.classroom
+audio.stop.hallway
 option.hide.1
 option.hide.2
 object.show:maskBG
@@ -575,6 +590,8 @@ change_scene.character.left.hallway
 
 scene.classroom2
 object.show:maskBG
+audio.play.anettappear
+audio.stop.hallway
 audio.play.door
 option.hide.1
 option.hide.2
@@ -717,6 +734,8 @@ dialogBox.click.scene_open.hallwayleft2
 ---
 
 scene.hallwayleft2
+audio.stop.anettappear
+audio.play.hallway
 object.show:maskBG
 dialogBox.hide
 character.Anett.hide:normal_stand
@@ -750,7 +769,8 @@ change_scene.character.right.midhallway_2
 
 ----
 scene.midhallway_2
-
+audio.stop.office
+audio.play.hallway
 object.show:maskBG
 background:"images/midhallway/bg.jpg"
 character.Ichiha.moving_place:"10%","40%","10%","33%"
@@ -772,6 +792,9 @@ change_scene.character.right.righthallway_1
 ------
 
 scene.righthallway_1
+audio.stop.memory
+audio.stop.toilet
+audio.play.hallway
 object.show:maskBG
 character.Ichiha.moving_place:"10%","40%","10%","33%"
 background:"images/righthallway/bg.png"
@@ -803,6 +826,8 @@ option.hide.2
 ----
 
 scene.bathroom
+audio.play.toilet
+audio.stop.hallway
 object.show:maskBG
 
 option.hide.1
@@ -829,6 +854,8 @@ object.click.subscene_open:bathroom_glass,subscenebathroom_glass
 ----
 
 subscene.bathroom_sink
+audio.play.memory
+audio.stop.toilet
 status.value.add.Memory,bathroom_sink,7
 character.Ichiha.moving_hide
 object.hide.bathroom_glass
@@ -866,6 +893,9 @@ dialogBox.click.scene_open.midhallway_Anett
 ----
 
 scene.midhallway_Anett
+audio.stop.memory
+audio.stop.toilet
+audio.play.anettappear
 animation.fadeOutandIn
 object.show:maskBG
 dialogBox.hide
@@ -888,6 +918,9 @@ object.place:tooffice,"15%","35%","30%","27%"
 object.src:tooffice,"images/midhallway/tooffice.png"
 ----
 scene.midhallway_torooftop
+audio.stop.anettappear
+audio.stop.office
+audio.play.hallway
 object.show:maskBG
 dialogBox.hide
 character.Ichiha.moving_show
@@ -925,6 +958,7 @@ option.hide.2
 ---
 #rooftop
 scene.rooftop
+audio.stop.hallway
 character.Ichiha.moving_show
 option.hide.1
 option.hide.2
@@ -994,6 +1028,7 @@ dialogBox.click.subscene_close.subscenerooftop_paper8
 close_subscene.rooftop_paper8
 character.Ichiha.hide:normal_stand6
 character.Brian.moving_show
+audio.play.brianappear
 character.Brian.moving_style:zIndex,2
 dialogBox.hide
 character.Ichiha.moving_show
@@ -1036,7 +1071,7 @@ subscene.Briantalk4
 character.Brian.hide:normal_stand2
 dialogBox.hide
 
-option.content.1:"Read his diary ( require memory 70+ )"
+option.content.1:"Read his diary ( require memory 80+ )"
 status.require.value.Memory.80.1
 option.set.subscene_open.1.subscenereadDiary
 option.content.2:"<br>Don't read the diary"
@@ -1109,6 +1144,7 @@ dialogBox.speaker.set:""
 
 
 scene.last_scene
+audio.play.secret
 option.hide.1
 option.hide.2
 dialogBox.show
@@ -1360,6 +1396,9 @@ option.hide.2
 #office2
 
 scene.office2
+audio.stop.anettappear
+audio.stop.hallway
+audio.play.office
 character.Anett.moving_hide
 
 audio.play.door
@@ -1535,6 +1574,9 @@ object.show.trashcan
 -------------------------------
 
 scene.hallway
+audio.play.hallway
+audio.stop.anettappear
+audio.stop.classroom
 object.show:maskBG
 
 dialogBox.hide
@@ -1570,6 +1612,9 @@ change_scene.character.right.midhallway_1
 -------------------------------
 
 scene.hallwayleft
+audio.play.hallway
+audio.stop.anettappear
+audio.stop.classroom
 object.show:maskBG
 
 character.Anett.moving_hide
@@ -1610,6 +1655,9 @@ change_scene.character.right.midhallway_1
 -------------------------------
 
 scene.midhallway_1
+audio.play.hallway
+audio.stop.office
+audio.stop.classroom
 object.show:maskBG
 background:"images/midhallway/bg.jpg"
 character.Ichiha.moving_place:"10%","40%","10%","33%"
@@ -1722,6 +1770,9 @@ option.hide.2
 
 scene.office
 
+audio.play.office
+audio.stop.hallway
+audio.stop.anettappear
 audio.play.door
 object.show:maskBG
 option.hide.1
