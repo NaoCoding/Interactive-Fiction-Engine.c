@@ -1144,6 +1144,7 @@ dialogBox.speaker.set:""
 
 
 scene.last_scene
+audio.stop.brianappear
 audio.play.secret
 option.hide.1
 option.hide.2
