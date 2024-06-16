@@ -1157,7 +1157,7 @@ dialogBox.click.scene_open:real_ending
 
 scene.real_ending
 audio.stop.secret
-audio.stop.brian
+audio.stop.brianappear
 audio.play.ending
 background:"images/ending.png"
 character.Ichiha.hide:normal_stand2
