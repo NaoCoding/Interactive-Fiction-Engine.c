@@ -1,19 +1,9 @@
 ## Interactive Fiction Engine, IFE
 
-<h2>Run Example Script</h2>
-
-```py
-make
-./engine ./example-game/
-```
-
-## How to create your own game / story
+[Traditional Chinese Official Document](https://naocoding.github.io/Interactive-Fiction-Engine.c.document/)
 
 ```
-Create a new folder/dir and ready for saving all of your file.
-
-To run your own story/game, you need to write a script.yaml
-It contains all of your game's / story's settings.
+The English version document is coming soon, since I am too busy to write two different languages' document.
 ```
 
 
