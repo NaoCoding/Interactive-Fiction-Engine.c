@@ -273,10 +273,7 @@ async function PROCESS_contentAppearAnimation(a,b,c){
         var tic = 0
         var q = setInterval(() => {
             fade.innerHTML += b[0];
-            if(fade.innerHTML.length %100 == 0 && fade.innerHTML.length>=100) tic = 1
-            if(tic == 1 && b[0] == " "){
-                fade.innerHTML += '<br>'
-                tic  = 0}
+            
             b = b.substring(1);
             if(b.length == 0){
                 typingSound.pause()
@@ -294,13 +291,6 @@ async function PROCESS_contentAppearAnimation(a,b,c){
             var toBr = 0
             for(var i=0;i<b.length;i++){
                 fade.innerHTML += b[i]
-                if(fade.innerHTML.length %100 == 0 && fade.innerHTML.length>=100){
-                   toBr = 1
-                }
-                if(toBr == 1 && b[i] == " "){
-                    fade.innerHTML += '<br>'
-                    toBr = 0
-                }
             }
             resolve();
         }
